@@ -788,7 +788,7 @@ _ = 'Hash Table: Ransom Notes'
 # print('Yes') if res else print('No')
 
 # # At the very end of the exercise, this strategy of accessing the word in the second dictionary was key but also importing Counter from collections since..
-# # the first two comprehensions still was consuming resources.
+# # the first two comprehensions still were consuming resources.
 
 
 
