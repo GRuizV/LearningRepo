@@ -1047,3 +1047,7 @@ _ = "Organizing Container of Balls"
 # res2 = sorted([ sum([ l[y][x] for y in range(len(l[0])) ])  for x in range(len(l)) ])
 
 # print(res2)
+
+# # This problem has, from my opinion, a bad redaction making it difficult to get the constrains and therefore the solution.
+# # But, basically, the solution was to sum up all the balls for each type and also sum up all the balls in each container in the initial state, and this last sums will represent each container capacity
+# # The problem is solved if there are equal amount of ball per type as it is for each container capacity, by just checking that condition the solution could be returned as a 'Possible' or 'Impossible' and that's it.
