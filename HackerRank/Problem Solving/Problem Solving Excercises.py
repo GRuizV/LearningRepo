@@ -1023,3 +1023,27 @@ _ = "ACM ICPC Team"
 #     return [tmaxt, team_max_topics.count(tmaxt)]
 
 # print(acmTeam(topics))
+
+
+
+
+_ = "Organizing Container of Balls"
+
+# l = [[0,2,1],[1,1,1],[2,0,0]]
+
+# res1 = sorted([sum(x) for x in l])
+
+# print(res1)
+
+
+# # res2 = list()
+
+# # for i in range(len(l)):
+# #     temp = list()
+# #     for j in range(len(l[0])):
+# #         temp.append(l[j][i])
+# #     res2.append(temp)
+
+# res2 = sorted([ sum([ l[y][x] for y in range(len(l[0])) ])  for x in range(len(l)) ])
+
+# print(res2)

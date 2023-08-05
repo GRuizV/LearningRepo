@@ -742,11 +742,55 @@ x = '--------------------------------------------'
 
 
 
+_ = 'Hash Table: Ransom Notes'
+
+
+# m = 'ive got a lovely bunch of coconuts'
+# n = 'ive got some coconuts'
+
+# dict_n1 = {k:n.count(k) for k in n.split()} # What I need
+# dict_n2 = {k:m.count(k) for k in n.split()} # What I count with
+
+
+
+# #This was my first solution
+# # print(list(zip(dict_n1.values(), dict_n2.values())))
+
+# x = all([x[0]<=x[1] for x in zip(dict_n1.values(), dict_n2.values())])
+
+# # print(dict_n1)
+# # print(dict_n2)
+
+# print('Yes') if x else print('No')
+
+
+
+
+# # This was my second solution
+# res = sorted(list(map(lambda x: x[1]-x[0],zip(dict_n1.values(),dict_n2.values()))))
+
+# print('Yes') if res[0] >= 0 else print('No')
+
+
+
+
+# # This solution came from ChatGPT
+
+# dict_n1 = {k:n.count(k) for k in n.split()} # What I need
+# dict_n2 = {k:m.count(k) for k in m.split()} # What I count with
+
+# res = True
+
+# for word, count in dict_n1.items():
+#     if word not in dict_n2 or dict_n2[word] < count:
+#         res = False
+
+# print('Yes') if res else print('No')
+
+# # At the very end of the exercise, this strategy of accessing the word in the second dictionary was key but also importing Counter from collections since..
+# # the first two comprehensions still was consuming resources.
+
+
+
+
 _ = 'xxx'
-
-
-
-
-
-
-
