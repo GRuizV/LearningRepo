@@ -2,33 +2,24 @@
 class MaxHeap:
 
     def __init__(self):
+
         self.heap = []
 
-    def insert(self, value):
-        self.heap.append(value)
-        self._heapify_up(len(self.heap) - 1)
 
     def _heapify_up(self, index):
+
         parent_index = (index - 1) // 2
+
         while parent_index >= 0 and self.heap[index] > self.heap[parent_index]:
+
             self.heap[index], self.heap[parent_index] = self.heap[parent_index], self.heap[index]
+
             index = parent_index
             parent_index = (index - 1) // 2
 
-    def extract_max(self):
-        if len(self.heap) == 0:
-            return None
-
-        max_value = self.heap[0]
-        last_value = self.heap.pop()
-        
-        if len(self.heap) > 0:
-            self.heap[0] = last_value
-            self._heapify_down(0)
-        
-        return max_value
 
     def _heapify_down(self, index):
+
         left_child_index = 2 * index + 1
         right_child_index = 2 * index + 2
         largest = index
@@ -42,6 +33,67 @@ class MaxHeap:
         if largest != index:
             self.heap[index], self.heap[largest] = self.heap[largest], self.heap[index]
             self._heapify_down(largest)
+
+
+    def insert(self, value):
+
+        self.heap.append(value)
+        self._heapify_up(len(self.heap) - 1)
+
+
+    def extract_max(self):
+
+        if len(self.heap) == 0:
+            return None
+
+        max_value = self.heap[0]
+        last_value = self.heap.pop()
+        
+        if len(self.heap) > 0:
+            self.heap[0] = last_value
+            self._heapify_down(0)
+        
+        return max_value
+
+
+    def find_min(self):
+
+        """
+        I know is an overkill to look up for minimums like this but is a halfway between actually calling a min() to the list on which the heap is built
+        and to iterate over each parent-child groups, just for sake of learning and coding.
+        
+        everything within a while loop that is going to break when the comparison pass the last leaf node
+        1. Make ranges to pull up the first group of childs and find the minium and store it.
+        2. Refresh the range for the next level of childs, up to the total amount of childs or the end of the heap.
+        """
+
+        if len(self.heap) == 0:
+            return None
+
+        if len(self.heap) == 1:
+            return self.heap[0]             
+       
+        childs_range = [1,2]
+        min_val = min([self.heap[i] for i in range(childs_range[0], childs_range[1]+1)])
+        index = int()
+
+        while index < len(self.heap):
+
+            # Taking all the child node from the next level
+            childs_range = [childs_range[0]*2+1, childs_range[1]*2+2]   
+
+            # If the new upper bound is greater than the heap, take the last index of the heap instead
+            if childs_range[1] > len(self.heap)-1:  
+                childs_range[1] = len(self.heap)-1
+
+            childs_min = min([self.heap[i] for i in range(childs_range[0], childs_range[1]+1)])
+
+            if childs_min < min_val:
+                min_val = childs_min
+
+            index = childs_range[-1] + 1
+
+        return min_val
 
 
     def heap_len(self):
