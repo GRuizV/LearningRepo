@@ -104,6 +104,15 @@ class MaxHeap:
         print(self.heap)
 
 
+    def delete(self, index):
+
+        self.heap[index] = self.heap[-1]
+        self.heap = self.heap[:-1]
+        self._heapify_down(0)
+
+
+
+
     def display_heap(self):
 
         heap = self.heap
@@ -155,3 +164,17 @@ class MaxHeap:
 
         height = get_level(len(heap) - 1) + 1
         print_branches(height, 0, 0)
+
+
+
+
+
+
+
+class MinHeap: pass
+
+
+
+
+
+

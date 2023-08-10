@@ -3,8 +3,8 @@ import random
 
 new_heap = MaxHeap()
 
-# [new_heap.insert(random.randint(0,11)) for _ in range(0,8)]
-[new_heap.insert(i) for i in [10, 10, 9, 5, 3, 1, 6, 0]]
+[new_heap.insert(random.randint(0,11)) for _ in range(0,9)]
+# [new_heap.insert(i) for i in [10, 10, 9, 5, 3, 1, 6, 0]]
 
 new_heap.display()
 
@@ -12,8 +12,18 @@ print()
 
 new_heap.display_heap()
 
+# print()
+# print(new_heap.find_min())
 print()
-print(new_heap.find_min())
+
+new_heap.delete(0)
+new_heap.display()
+print()
+
+new_heap.display_heap()
+
+
+
 
 
 # Heap display func under dev.
