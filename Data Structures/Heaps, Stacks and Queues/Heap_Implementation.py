@@ -134,13 +134,13 @@ class MaxHeap:
 
         ind = self._index_handler(index)
 
-        self.heap[ind] = self.heap[-1]
-        self.heap = self.heap[:-1]
-
         # Deletion at the last leaf
         if ind == self.heap_len() - 1: 
             self.pop()
-            return
+            return        
+
+        self.heap[ind] = self.heap[-1]
+        self.heap = self.heap[:-1]
         
         # Deletion at the root
         if ind == 0:
