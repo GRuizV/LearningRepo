@@ -582,3 +582,25 @@ The first recursion problem I review:
 
 
 
+_ = 'This is a Index Handler (made by me) to deal with indexes while working with DataStructures '
+
+# def _index_handler(self, index):
+
+#     if self.is_empty():
+#         return
+
+#     if index > (self.len()-1) or index < -self.len():
+#         raise IndexError('Index out of range')
+    
+#     # converting the index into a positive index
+#     if index < 0: 
+
+#         norm_index = range(self.len())
+#         inv_index = range(-len(norm_index),0)
+#         dict_index = {k:v for k,v in zip(inv_index, norm_index)}
+
+#         return dict_index[index]
+
+#     else:
+
+#         return index   
