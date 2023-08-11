@@ -125,15 +125,49 @@ class MaxHeap:
 
     def delete(self, index):
 
-        self.heap[index] = self.heap[-1]
+        """
+        This method will handle there cases:
+        1. if the deletion is in the last leaf
+        2. if the deletion is in the root
+        3. if the deletion is anywhere else
+        """
+
+        ind = self._index_handler(index)
+
+        self.heap[ind] = self.heap[-1]
         self.heap = self.heap[:-1]
 
+        # Deletion at the last leaf
+        if ind == self.heap_len() - 1: 
+            self.pop()
+            return
+        
+        # Deletion at the root
+        if ind == 0:
+            self._heapify_down(0)
+            return
+        
+
+        # If the deletion is in between, after the replacement the heap need to validate up and down to maintain the MaxHeap
+        parent = ( ind - 1) // 2
+
+        if self.heap[ind] > self.heap[parent]:
+            self._heapify_up(ind)
+
+        else:
+            self._heapify_down(ind)
+      
 
 
-        # self._heapify_down(0)
-        self._heapify_up(self.heap_len()-1)
+    def pop(self):
+        
+        if not self.heap:
+            return
+        
+        popped = self.heap[-1]
+        self.heap = self.heap[:-1]
 
-
+        return popped
 
 
     def display_heap(self):
