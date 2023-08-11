@@ -6,6 +6,25 @@ class MaxHeap:
         self.heap = []
 
 
+    def _index_handler(self, index):
+
+        if index > (self.heap_len()-1) or index < -self.heap_len():
+            raise IndexError('Index out of range')
+        
+        # converting the index into a positive index
+        if index < 0: 
+
+            norm_index = range(self.heap_len())
+            inv_index = range(-len(norm_index),0)
+            dict_index = {k:v for k,v in zip(inv_index, norm_index)}
+
+            return dict_index[index]
+
+        else:
+
+            return index   
+
+
     def _heapify_up(self, index):
 
         parent_index = (index - 1) // 2
@@ -108,7 +127,11 @@ class MaxHeap:
 
         self.heap[index] = self.heap[-1]
         self.heap = self.heap[:-1]
-        self._heapify_down(0)
+
+
+
+        # self._heapify_down(0)
+        self._heapify_up(self.heap_len()-1)
 
 
 
