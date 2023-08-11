@@ -130,25 +130,24 @@ class DoublyCircularLinkedList:
 
     def _index_handler(self, index):
 
-            if self.is_empty():
-                return
+        if self.is_empty():
+            return
 
-            if index > (self.len()-1) or index < -self.len():
-                raise IndexError('Index out of range')
-            
+        if index > (self.len()-1) or index < -self.len():
+            raise IndexError('Index out of range')
+        
+        # converting the index into a positive index
+        if index < 0: 
 
-            # converting the index into a positive index
-            if index < 0: 
+            norm_index = range(self.len())
+            inv_index = range(-len(norm_index),0)
+            dict_index = {k:v for k,v in zip(inv_index, norm_index)}
 
-                norm_index = range(self.len())
-                inv_index = range(-len(norm_index),0)
-                dict_index = {k:v for k,v in zip(inv_index, norm_index)}
+            return dict_index[index]
 
-                return dict_index[index]
+        else:
 
-            else:
-
-                return index   
+            return index   
 
 
     def append(self, data):
