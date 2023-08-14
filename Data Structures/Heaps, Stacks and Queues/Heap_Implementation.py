@@ -1,3 +1,5 @@
+from math import log
+
 
 class MaxHeap:
 
@@ -171,57 +173,21 @@ class MaxHeap:
 
     def display_heap(self):
         
-        heap = self.heap
-        if not heap:
-            return
+        first = lambda h: 2**h - 1      # H stands for level height
+        last = lambda h: first(h + 1)
+        level = lambda heap, h: heap[first(h):last(h)]
+        prepare = lambda e, field: str(e).center(field)
 
-        def get_level(index):
-            return (index.bit_length() - 1) if index > 0 else 0
+        width = max(len(str(e)) for e in self.heap)
 
-        def get_children_indices(parent_index):
-            left_child_index = 2 * parent_index + 1
-            right_child_index = 2 * parent_index + 2
-            return left_child_index, right_child_index
+        height = int(log(len(self.heap), 2)) + 1    
+        gap = ' ' * width
 
-        def print_spaces(count):
-            print(" " * count, end="")
+        for h in range(height):
+            below = 2 ** (height - h - 1)
+            field = (2 * below - 1) * width
+            print(gap.join(prepare(e, field) for e in level(self.heap, h)))
 
-        height = get_level(len(heap) - 1) + 1
-        max_width = 2 ** height - 1
-
-        # Initialize queue with the root node
-        queue = [(0, 0)]  # (index, level)
-
-        current_level = 0
-        current_line_index = 0
-
-        while queue:
-            index, level = queue.pop(0)
-
-            if level > current_level:
-                # Move to the next line
-                print()
-                current_line_index = 0
-                current_level = level
-
-            if index < len(heap):
-                # Print the value
-                print_spaces(max_width // (2 ** (level + 1)))
-                print(f"{heap[index]:>4}", end="")
-            else:
-                # Print spaces for missing elements
-                print_spaces(max_width // (2 ** (level + 1) + 1))
-
-            current_line_index += 1
-
-            # Add children to the queue
-            left_child_index, right_child_index = get_children_indices(index)
-            if left_child_index < len(heap):
-                queue.append((left_child_index, level + 1))
-            if right_child_index < len(heap):
-                queue.append((right_child_index, level + 1))
-
-        print()  # Print a newline at the end
 
 
 
@@ -397,57 +363,20 @@ class MinHeap:
 
     def display_heap(self):
         
-        heap = self.heap
-        if not heap:
-            return
+        first = lambda h: 2**h - 1      # H stands for level height
+        last = lambda h: first(h + 1)
+        level = lambda heap, h: heap[first(h):last(h)]
+        prepare = lambda e, field: str(e).center(field)
 
-        def get_level(index):
-            return (index.bit_length() - 1) if index > 0 else 0
+        width = max(len(str(e)) for e in self.heap)
 
-        def get_children_indices(parent_index):
-            left_child_index = 2 * parent_index + 1
-            right_child_index = 2 * parent_index + 2
-            return left_child_index, right_child_index
+        height = int(log(len(self.heap), 2)) + 1    
+        gap = ' ' * width
 
-        def print_spaces(count):
-            print(" " * count, end="")
-
-        height = get_level(len(heap) - 1) + 1
-        max_width = 2 ** height - 1
-
-        # Initialize queue with the root node
-        queue = [(0, 0)]  # (index, level)
-
-        current_level = 0
-        current_line_index = 0
-
-        while queue:
-            index, level = queue.pop(0)
-
-            if level > current_level:
-                # Move to the next line
-                print()
-                current_line_index = 0
-                current_level = level
-
-            if index < len(heap):
-                # Print the value
-                print_spaces(max_width // (2 ** (level + 1)))
-                print(f"{heap[index]:>4}", end="")
-            else:
-                # Print spaces for missing elements
-                print_spaces(max_width // (2 ** (level + 1) + 1))
-
-            current_line_index += 1
-
-            # Add children to the queue
-            left_child_index, right_child_index = get_children_indices(index)
-            if left_child_index < len(heap):
-                queue.append((left_child_index, level + 1))
-            if right_child_index < len(heap):
-                queue.append((right_child_index, level + 1))
-
-        print()  # Print a newline at the end
+        for h in range(height):
+            below = 2 ** (height - h - 1)
+            field = (2 * below - 1) * width
+            print(gap.join(prepare(e, field) for e in level(self.heap, h)))
 
 
 

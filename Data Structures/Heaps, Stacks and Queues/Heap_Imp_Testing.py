@@ -1,20 +1,21 @@
 from Heap_Implementation import MaxHeap, MinHeap
 import random
+import math
 
 
 'MaxHeap Testing'
-# new_heap = MaxHeap()
+new_heap = MaxHeap()
 
-# [new_heap.insert(random.randint(0,11)) for _ in range(0,9)]
-# # [new_heap.insert(i) for i in [10, 10, 9, 5, 3, 1, 6, 0]]
+[new_heap.insert(random.randint(0,11)) for _ in range(0,9)]
+# [new_heap.insert(i) for i in [10, 10, 9, 5, 3, 1, 6, 0]]
 
-# new_heap.display()
+new_heap.display()
 
-# print()
+print()
 
-# new_heap.display_heap()
+new_heap.display_heap()
 
-# print()
+print()
 # print(new_heap.find_min())
 # print()
 
@@ -29,16 +30,17 @@ import random
 
 'MinHeap Testing'
 
-# new_heap = MinHeap()
+new_heap = MinHeap()
 
-# # [new_heap.insert(random.randint(0,11)) for _ in range(0,9)]
-# [new_heap.insert(i) for i in [5, 11, 6, 2, 3, 11, 6, 4, 2]]
+# [new_heap.insert(random.randint(0,11)) for _ in range(0,9)]
+# [5, 11, 6, 2, 3, 11, 6, 4, 2]
+[new_heap.insert(i) for i in [5, 11, 6, 2, 3, 11, 6, 4, 2]]
 
-# new_heap.display()
+new_heap.display()
 
-# # print()
+print()
 
-# # new_heap.display_heap()
+new_heap.display_heap()
 # print()
 
 
@@ -62,3 +64,4 @@ import random
 # new_heap.display()
 # print()
 # new_heap.display_heap()
+
