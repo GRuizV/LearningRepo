@@ -173,8 +173,12 @@ class MaxHeap:
 
     def display_heap(self):
         
+        #This stands for the index of the first node of each level
         first = lambda h: 2**h - 1      # H stands for level height
+
+        #This stands for the index of the last node of each level
         last = lambda h: first(h + 1)
+
         level = lambda heap, h: heap[first(h):last(h)]
         prepare = lambda e, field: str(e).center(field)
 
@@ -184,6 +188,10 @@ class MaxHeap:
         gap = ' ' * width
 
         for h in range(height):
+
+            #This below calculation brought me confusion, byt my conclusion is that it represents the number of nodes
+            #at the end of the heap if the curren level where the lvl 0, i.e. each node in the level act as the root
+            #from there, that the in lvl 0: is 8, in lvl 1: is 4, ... lvl 4: is 1
             below = 2 ** (height - h - 1)
             field = (2 * below - 1) * width
             print(gap.join(prepare(e, field) for e in level(self.heap, h)))
@@ -363,8 +371,12 @@ class MinHeap:
 
     def display_heap(self):
         
+        #This stands for the index of the first node of each level
         first = lambda h: 2**h - 1      # H stands for level height
+
+        #This stands for the index of the last node of each level
         last = lambda h: first(h + 1)
+
         level = lambda heap, h: heap[first(h):last(h)]
         prepare = lambda e, field: str(e).center(field)
 
@@ -374,6 +386,10 @@ class MinHeap:
         gap = ' ' * width
 
         for h in range(height):
+
+            #This below calculation brought me confusion, byt my conclusion is that it represents the number of nodes
+            #at the end of the heap if the curren level where the lvl 0, i.e. each node in the level act as the root
+            #from there, that the in lvl 0: is 8, in lvl 1: is 4, ... lvl 4: is 1
             below = 2 ** (height - h - 1)
             field = (2 * below - 1) * width
             print(gap.join(prepare(e, field) for e in level(self.heap, h)))
