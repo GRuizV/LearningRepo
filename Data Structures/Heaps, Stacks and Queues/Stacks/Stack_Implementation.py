@@ -16,12 +16,16 @@ class Stack:
 
     def insert(self, data):
 
-        self.stack = [data] + self.stack
+        self.stack.append(data)
 
     
     def pop(self):
 
-        self.stack = self.stack[1:]
+        if self.is_empty():
+            return
+        
+        popped = self.stack.pop()
+        return popped
     
 
     def peak(self):
@@ -29,7 +33,7 @@ class Stack:
         if self.is_empty():
             return print('Empty Stack')
 
-        return print(self.stack[0])
+        return print(self.stack[-1])
 
 
     def stack_size(self):
