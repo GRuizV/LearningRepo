@@ -18,7 +18,7 @@ class MyCircularQueue:
     
 
     def is_full(self):    
-        return (self.rear + 1)% self.size == self.front
+        return (self.rear + 1) % self.size == self.front
     
 
     def enqueue(self, data):
@@ -62,7 +62,7 @@ class MyCircularQueue:
 
         idx = self.front
 
-        while idx < self.rear:
+        while idx != self.rear:
 
             print(self.queue[idx], end=' ')
             idx = (idx + 1) % self.size
