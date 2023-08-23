@@ -258,6 +258,85 @@ import Queues_Implementation
 
 
 
+'Priority Queue'
+
+# pr_queue = Queues_Implementation.MyPriorityQueue()
+
+# # [pr_queue.enqueue(elem, priority = random.randint(1,4)) for elem in 'WXYZ']
+# [pr_queue.enqueue(*elem) for elem in [('Z', 4), ('X', 3), ('Y', 1), ('W', 2)]]
+
+# # pr_queue.display()
+
+
+
+
+# print(f'Queue:', end=' ')
+# pr_queue.display()
+# print(f'Queue front: {pr_queue.queue[0]}')
+# print(f'Queue rear: {pr_queue.queue[-1]}')
+# print(f'Queue as att.: {pr_queue.queue}')
+
+
+# pr_queue.dequeue()
+# print()
+
+
+# print(f'Queue:', end=' ')
+# pr_queue.display()
+# print(f'Queue front: {pr_queue.queue[0]}')
+# print(f'Queue rear: {pr_queue.queue[-1]}')
+# print(f'Queue as att.: {pr_queue.queue}')
+
+
+# pr_queue.enqueue('A',5)
+# pr_queue.enqueue('B',5)
+# pr_queue.enqueue('Z',3)
+# pr_queue.enqueue('D',1)
+# pr_queue.enqueue('Z',3)
+# print()
+
+
+# print(f'Queue:', end=' ')
+# pr_queue.display()
+# print(f'Queue front: {pr_queue.queue[0]}')
+# print(f'Queue rear: {pr_queue.queue[-1]}')
+# print(f'Queue as att.: {pr_queue.queue}')
+
+
+
+# pr_queue.dequeue()
+# pr_queue.dequeue()
+# pr_queue.dequeue()
+# print()
+
+
+
+# print(f'Queue:', end=' ')
+# pr_queue.display()
+# print(f'Queue front: {pr_queue.queue[0]}')
+# print(f'Queue rear: {pr_queue.queue[-1]}')
+# print(f'Queue as att.: {pr_queue.queue}')
+
+
+
+# pr_queue.dequeue()
+# print()
+
+
+
+# print(f'Queue:', end=' ')
+# pr_queue.display()
+# print(f'Queue front: {pr_queue.queue[0]}' if not pr_queue.is_empty() else None)
+# print(f'Queue rear: {pr_queue.queue[-1]}' if not pr_queue.is_empty() else None)
+# print(f'Queue as att.: {pr_queue.queue}')
+
+
+
+
+
+'Deque'
+
+
 
 
 

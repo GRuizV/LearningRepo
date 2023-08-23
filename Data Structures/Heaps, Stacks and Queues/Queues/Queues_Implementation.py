@@ -89,7 +89,7 @@ class ListQueue:
 
     def dequeue(self):
 
-        self.queue.pop(0)
+        return self.queue.pop(0)
 
     
     def display(self):
@@ -102,8 +102,8 @@ class ListQueue:
         print(self.queue[-1])
 
 
-  
-    
+
+
 class MyCircularQueue:
 
     def __init__(self, size):
@@ -168,6 +168,75 @@ class MyCircularQueue:
             idx = (idx + 1) % self.size
         
         print(self.queue[self.rear])
+
+
+
+
+class MyPriorityQueue:
+
+    "This implementation is based on a Z-A prioritization criteria"
+
+    
+    def __init__(self):
+
+        self.queue = list()
+
+    
+    def is_empty(self):
+
+        return len(self.queue) == 0
+    
+
+    def enqueue(self, data, priority):
+
+        self.queue.append((data, priority))
+        self.queue.sort(key = lambda x: -x[1])
+    
+
+    def dequeue(self):
+
+        return self.queue.pop(0)
+
+    
+    def display(self):
+
+        if self.is_empty():
+           return print('Empty Queue')
+        
+        [print(elem, end=' ') for elem in self.queue[:-1]]
+
+        print(self.queue[-1])
+
+
+
+
+class Deque:
+
+    def __init__(self): pass
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
