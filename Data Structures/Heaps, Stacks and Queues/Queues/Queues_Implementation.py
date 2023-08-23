@@ -1,6 +1,11 @@
 
 class MyQueue: 
 
+    """
+    This implementation of Queues were base on the circular Queue implementation made prior this one.
+    This implementation supposed a Queue with a limited capacity
+    """
+
     def __init__(self, size):
         
         self.size = size
@@ -60,6 +65,45 @@ class MyQueue:
 
 
 
+class ListQueue:
+
+    """
+    This is a simplyfied version of the Queue implementation based on built-in list datatype
+    This implementation supposed a Queue with an unlimited capacity
+    """
+
+    def __init__(self):
+
+        self.queue = list()
+
+    
+    def is_empty(self):
+
+        return len(self.queue) == 0
+    
+
+    def enqueue(self, data):
+
+        self.queue.append(data)
+    
+
+    def dequeue(self):
+
+        self.queue.pop(0)
+
+    
+    def display(self):
+
+        if self.is_empty():
+           return print('Empty Queue')
+        
+        [print(elem, end=' ') for elem in self.queue[:-1]]
+
+        print(self.queue[-1])
+
+
+  
+    
 class MyCircularQueue:
 
     def __init__(self, size):

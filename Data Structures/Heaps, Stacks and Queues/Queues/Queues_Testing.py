@@ -4,6 +4,7 @@ import Queues_Implementation
 
 'Regular Queues'
 
+'   Queue based on circular implementation'
 # my_queue = Queues_Implementation.MyQueue(size = 5)
 # [my_queue.enqueue(x) for x in [1, 8, 3, 5, 2]]
 # my_queue.display()
@@ -75,6 +76,75 @@ import Queues_Implementation
 # print(f'Queue as att.: {my_queue.queue}')
 # print(f'Queue front index: {my_queue.front}')
 # print(f'Queue rear index: {my_queue.rear}')
+
+
+
+
+'   Queue based on circular implementation'
+
+# my_queue = Queues_Implementation.ListQueue()
+# [my_queue.enqueue(x) for x in [1, 8, 3, 5, 2]]
+# # my_queue.display()
+# print()
+
+
+# print(f'Queue:', end=' ')
+# my_queue.display()
+# print(f'Queue front: {my_queue.queue[0]}')
+# print(f'Queue rear: {my_queue.queue[-1]}')
+# print(f'Queue as att.: {my_queue.queue}')
+
+
+# my_queue.dequeue()
+# print()
+
+
+# print(f'Queue:', end=' ')
+# my_queue.display()
+# print(f'Queue front: {my_queue.queue[0]}')
+# print(f'Queue rear: {my_queue.queue[-1]}')
+# print(f'Queue as att.: {my_queue.queue}')
+
+
+# my_queue.enqueue('X')
+# print()
+
+
+# print(f'Queue:', end=' ')
+# my_queue.display()
+# print(f'Queue front: {my_queue.queue[0]}')
+# print(f'Queue rear: {my_queue.queue[-1]}')
+# print(f'Queue as att.: {my_queue.queue}')
+
+
+
+# my_queue.dequeue()
+# my_queue.dequeue()
+# my_queue.dequeue()
+# my_queue.dequeue()
+# print()
+
+
+
+# print(f'Queue:', end=' ')
+# my_queue.display()
+# print(f'Queue front: {my_queue.queue[0]}')
+# print(f'Queue rear: {my_queue.queue[-1]}')
+# print(f'Queue as att.: {my_queue.queue}')
+
+
+
+# my_queue.dequeue()
+# print()
+
+
+
+# print(f'Queue:', end=' ')
+# my_queue.display()
+# print(f'Queue front: {my_queue.queue[0]}' if not my_queue.is_empty() else None)
+# print(f'Queue rear: {my_queue.queue[-1]}' if not my_queue.is_empty() else None)
+# print(f'Queue as att.: {my_queue.queue}')
+
 
 
 
