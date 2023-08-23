@@ -337,6 +337,66 @@ import Queues_Implementation
 'Deque'
 
 
+deque = Queues_Implementation.MyDeque()
+
+# [deque.enqueue_right(random.randint(1,10)) for _ in range(5)]
+[deque.enqueue_right(elem) for elem in  [2, 1, 5, 7, 9]]
+# deque.display()
+
+
+print(f'Queue:', end=' ')
+deque.display()
+print(f'Queue front: {deque.queue[0]}')
+print(f'Queue rear: {deque.queue[-1]}')
+print(f'Queue as att.: {deque.queue}')
+
+
+deque.enqueue_left('X')
+print()
+
+
+print(f'Queue:', end=' ')
+deque.display()
+print(f'Queue front: {deque.queue[0]}')
+print(f'Queue rear: {deque.queue[-1]}')
+print(f'Queue as att.: {deque.queue}')
+
+
+deque.dequeue_right()
+print()
+
+
+print(f'Queue:', end=' ')
+deque.display()
+print(f'Queue front: {deque.queue[0]}')
+print(f'Queue rear: {deque.queue[-1]}')
+print(f'Queue as att.: {deque.queue}')
+
+
+deque.dequeue_left()
+print()
+
+
+print(f'Queue:', end=' ')
+deque.display()
+print(f'Queue front: {deque.queue[0]}')
+print(f'Queue rear: {deque.queue[-1]}')
+print(f'Queue as att.: {deque.queue}')
+
+
+deque.dequeue_left()
+deque.dequeue_right()
+deque.dequeue_left()
+deque.dequeue_right()
+print()
+
+
+print(f'Queue:', end=' ')
+deque.display()
+print(f'Queue front: {deque.queue[0]}' if not deque.is_empty() else None)
+print(f'Queue rear: {deque.queue[-1]}' if not deque.is_empty() else None)
+print(f'Queue as att.: {deque.queue}')
+
 
 
 

@@ -210,9 +210,40 @@ class MyPriorityQueue:
 
 
 
-class Deque:
+class MyDeque:
 
-    def __init__(self): pass
+    def __init__(self):
+        self.queue = list()
+
+    
+    def is_empty(self):
+        return len(self.queue) == 0
+    
+
+    def enqueue_right(self, data):
+        self.queue.append(data)
+    
+
+    def enqueue_left(self, data):
+        self.queue.insert(0,data)
+
+    
+    def dequeue_right(self):
+        return self.queue.pop()
+
+    
+    def dequeue_left(self):
+        return self.queue.pop(0)
+    
+
+    def display(self):
+
+        if self.is_empty():
+           return print('Empty Queue')
+        
+        [print(elem, end=' ') for elem in self.queue[:-1]]
+
+        print(self.queue[-1])
 
 
     
