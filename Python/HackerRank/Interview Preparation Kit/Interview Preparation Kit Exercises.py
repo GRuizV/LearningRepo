@@ -605,40 +605,111 @@ x = '--------------------------------------------'
 
 
 
-_ = 'Sorting - Fraudulent Activity Notifications'
+'Sorting - Fraudulent Activity Notifications'
 
 
-_ = 'This current solution works for smaller trailing days data but fails to encompass larger sizes of data.'
-# There'll be pending find another solution / Apparently the problem is finding the Median.
-# Link: https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem?h_l=interview&isFullScreen=false&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+# # exp = [2, 3, 4, 2, 3, 6, 8, 4, 5]
+# # exp = [1,2,3,4,4]
+# exp = [10, 20, 30, 40, 50]
 
-# exp = [1,2,3,4,4]
+# # d = 5
+# # d = 4
+# d = 3
 
-# d = 4
+
+
+' My solution'
 
 # notifications = int()
 
+# exp_base = sorted(exp[:d])
 
-# for i in range(len(exp)-d):
+# if d % 2 == 0:
+#     median = sum([exp_base[d//2-1], exp_base[d//2]]) / 2
 
-#     trail_days = sorted(exp[i:i+d])
+# else:
+#     median = exp_base[d//2]
 
-#     current_day = exp[i+d]
 
-#     if len(trail_days)%2 == 0:
-
-#         median = sum([trail_days[len(trail_days)//2-1], trail_days[len(trail_days)//2]]) / 2
-
-#     else:
-
-#         median = trail_days[len(trail_days)//2]
+# for i in exp[d:]:
     
-    
-#     if current_day >= 2*median:
+#     if i >= 2 * median:
 #         notifications += 1
 
 
 # print(notifications)
+
+
+
+
+"   ChatGPT's solution - Sliding window for meadian algorithm "
+
+
+# def activity_notifications(expenditure, d):
+
+#     def get_median(count_array, d):
+
+#         if d % 2 == 1:
+
+#             # For odd days, the median is the middle value
+#             middle_index = d // 2
+
+#             for i, count in enumerate(count_array):
+
+#                 middle_index -= count
+
+#                 if middle_index < 0:
+#                     return i
+                
+#         else:
+
+#             # For even days, the median is the average of two middle values
+#             first_middle = None
+#             second_middle = None
+#             middle_count = 0
+
+#             for i, count in enumerate(count_array):
+
+#                 middle_count += count
+
+#                 if middle_count >= d // 2 and first_middle is None:
+#                     first_middle = i
+
+#                 if middle_count >= d // 2 + 1 and second_middle is None:
+#                     second_middle = i                    
+#                     break
+
+#             return (first_middle + second_middle) / 2
+
+
+#     n = len(expenditure)
+
+#     fraud_count = 0
+
+#     # Initialize the count array for the first d days
+#     count_array = [0] * 201
+
+#     for i in range(d):
+#         count_array[expenditure[i]] += 1
+
+
+#     for i in range(d, n):
+#         median = get_median(count_array, d)
+#         if expenditure[i] >= 2 * median:
+#             fraud_count += 1
+#         print(f'\nmedian: {median}\n')
+#         # Update the count array for the sliding window
+#         count_array[expenditure[i - d]] -= 1
+#         count_array[expenditure[i]] += 1
+
+#     return fraud_count
+
+
+# res = activity_notifications(exp,d)
+
+# print(res)
+
+
 
 
 
