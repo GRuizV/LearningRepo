@@ -614,7 +614,6 @@ The first recursion problem I review:
 
 'Slinding window for median calculation'
 
-
 data = [random.randint(0,9) for _ in range(9)]
 
 sliding_size = 5

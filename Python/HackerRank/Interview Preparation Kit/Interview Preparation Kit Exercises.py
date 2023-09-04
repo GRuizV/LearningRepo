@@ -1,4 +1,5 @@
-# import math
+import math
+from collections import deque, Counter
 
 
 _ = '2D Arrays - DS'
@@ -864,4 +865,46 @@ _ = 'Hash Table: Ransom Notes'
 
 
 
-_ = 'xxx'
+'Stacks and Queues - Balanced Brackets'
+
+
+# s = '{{[[(())]]}}'
+# # s = '({}([][]))[]()'
+
+
+# stack = list()
+
+# bracket_map = {')':'(', '}':'{', ']':'['}
+
+# for bracket in s:
+
+#     if bracket in '({[':
+#         stack.append(bracket)
+
+#     elif bracket in ')]}':
+
+#         if len(stack) == 0:
+#             print('NO')
+#             break
+
+#         stack_top = stack.pop()
+
+#         if bracket_map[bracket] != stack_top:
+#             print('NO')
+#             break
+    
+#         print('YES')
+
+# print()
+
+# if len(stack) != 0:
+#     print('Not Pass')
+
+# else:
+#     print('Pass')
+
+
+
+
+'Queues: A Tale of Two Stacks'
+
