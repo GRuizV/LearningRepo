@@ -614,70 +614,70 @@ The first recursion problem I review:
 
 'Slinding window for median calculation'
 
-data = [random.randint(0,9) for _ in range(9)]
+# data = [random.randint(0,9) for _ in range(9)]
 
-sliding_size = 5
+# sliding_size = 5
 
-print(f'Base data: {data}\n')
+# print(f'Base data: {data}\n')
 
 
-def get_median(count_array, d):
+# def get_median(count_array, d):
 
-    if d % 2 == 1:
+#     if d % 2 == 1:
 
-        middle_index = d // 2
+#         middle_index = d // 2
 
-        for i, count in enumerate(count_array):
+#         for i, count in enumerate(count_array):
 
-            middle_index -= count
+#             middle_index -= count
 
-            if middle_index < 0:
+#             if middle_index < 0:
 
-                return i
+#                 return i
     
-    else:
+#     else:
 
-        first_middle = None
-        second_middle = None
-        middle_count = 0
+#         first_middle = None
+#         second_middle = None
+#         middle_count = 0
 
-        for i, count in enumerate(count_array):
+#         for i, count in enumerate(count_array):
 
-            middle_count += count
+#             middle_count += count
 
-            if middle_count >= d // 2 and first_middle is None:
+#             if middle_count >= d // 2 and first_middle is None:
 
-                first_middle = i
+#                 first_middle = i
 
-            if middle_count >= d // 2 + 1 and second_middle is None:
+#             if middle_count >= d // 2 + 1 and second_middle is None:
 
-                second_middle = i
+#                 second_middle = i
 
-                return (first_middle + second_middle) / 2
-
-
-n = len(data)
-
-# the '10' is the max value the data could be, so it will count occurrences by each data item
-count_array = [0]*10
-
-# Counting occurrences
-for i in range(sliding_size):
-    count_array[data[i]] += 1
+#                 return (first_middle + second_middle) / 2
 
 
-for i in range(sliding_size, n):
+# n = len(data)
 
-    median = get_median(count_array, sliding_size)
-    unsorted_slice = data[i-sliding_size:i]
-    sorted_slice = sorted(data[i-sliding_size:i])
+# # the '10' is the max value the data could be, so it will count occurrences by each data item
+# count_array = [0]*10
 
-    print(f'base median piece: {unsorted_slice}\nsorted base median piece: {sorted_slice}\nmedian: {median}\n')
+# # Counting occurrences
+# for i in range(sliding_size):
+#     count_array[data[i]] += 1
 
-    # Update the count_array
 
-    count_array[data[i - sliding_size]] -= 1
-    count_array[data[i]] += 1
+# for i in range(sliding_size, n):
+
+#     median = get_median(count_array, sliding_size)
+#     unsorted_slice = data[i-sliding_size:i]
+#     sorted_slice = sorted(data[i-sliding_size:i])
+
+#     print(f'base median piece: {unsorted_slice}\nsorted base median piece: {sorted_slice}\nmedian: {median}\n')
+
+#     # Update the count_array
+
+#     count_array[data[i - sliding_size]] -= 1
+#     count_array[data[i]] += 1
 
 
 
