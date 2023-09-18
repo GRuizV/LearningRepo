@@ -1,7 +1,7 @@
 import random
 
 
-_ = 'Bubble Sort'
+'Bubble Sort'
 
 # a = [random.randint(0,10) for x in range(10)]
 
@@ -32,7 +32,7 @@ _ = 'Bubble Sort'
 
 
 
-_ = 'Merge Sort'
+'Merge Sort'
 
 # a = [random.randint(0,10) for x in range(10)]
 
