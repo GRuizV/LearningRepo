@@ -79,12 +79,12 @@ later I will try to find an optimal solution
 
 '''
 
-# buildings = [1, 2, 3, 4, 5, 1, 2, 4, 6]
-# buildings = [1, 2, 3, 4, 5]
-# buildings = [11,11,10,10,10]
-buildings = [2,1,3,4,2,1,3,2,4]
+# # buildings = [1, 2, 3, 4, 5, 1, 2, 4, 6]
+# # buildings = [1, 2, 3, 4, 5]
+# # buildings = [11,11,10,10,10]
+# buildings = [2,1,3,4,2,1,3,2,4]
 
-rectangles = list()
+# rectangles = list()
 
 
 # 1st approach
@@ -149,31 +149,145 @@ Finally the solution with stacks is below
     But, the logic behind it actually eludes me :/
 '''
 
-h = [2,1,3,4,2,1,3,2,4]
+# h = [2,1,3,4,2,1,3,2,4]
 
-max_area = 0
-stack = list()
+# max_area = 0
+# stack = list()
 
-for i, current_height in enumerate(h):
+# for i, current_height in enumerate(h):
 
-    start_position = i
+#     start_position = i
 
-    while stack and (stack[-1][1] > current_height):
+#     while stack and (stack[-1][1] > current_height):
 
-        index, height = stack.pop()
+#         index, height = stack.pop()
 
-        current_area = (i - index) * height
+#         current_area = (i - index) * height
 
-        max_area = max(max_area, current_area)
+#         max_area = max(max_area, current_area)
 
-        start_position = index
+#         start_position = index
 
-    stack.append((start_position, current_height))
+#     stack.append((start_position, current_height))
 
-for i, current_height in stack:
+# for i, current_height in stack:
 
-    current_area = current_height * (len(h) - i)
+#     current_area = current_height * (len(h) - i)
 
-    max_area = max(max_area, current_area)
+#     max_area = max(max_area, current_area)
 
-print (max_area)
+# print (max_area)
+
+
+
+
+'Stacks and Queues - Max Min Riddle'
+
+'''
+    Here I thik I got idea on how I can tackle the problem using a deque,
+    but just as exercise to regain confidence I will try first by brute force
+    and then try with a deque, which is my best guess at the moment
+
+'''
+
+'''
+    Cases
+
+    arr = [int(x) for x in '2 6 1 12'.split()] / sol: 12 2 1 1
+    arr = [int(x) for x in '1 2 3 5 1 13 3'.split()] / sol: 13 3 2 1 1 1 1
+    arr = [int(x) for x in '3 5 4 7 6 2'.split()] / sol: 7 6 4 4 3 2
+    
+'''
+
+
+# arr = [2, 6, 1, 12]
+# arr = [int(x) for x in '3 5 4 7 6 2'.split()]
+
+
+
+# res = list()
+
+# for i in range(1, len(arr)+1):
+
+#     temp = list()
+
+#     for j in range((len(arr)+1)-i):
+
+#         temp.append(arr[j:j+i])
+
+#     temp = map(min,temp)    
+#     res.append(max(temp))
+
+# print(res)
+
+
+'''
+Brute forcing it worked 70% but it isn't optimal since complexity goes up to O(N)^2
+
+'''
+
+'This is the farthest I got with my own knowledge'
+
+# arr = [int(x) for x in '2 6 1 12'.split()]
+
+# xdeque = list()
+
+# for i in range(len(arr)):
+
+#     mins = list()    
+#     xdeque = arr[:i+1]
+   
+#     for j in range(len(arr)-1,0,-1):
+
+#         mins.append(xdeque[:])
+#         xdeque.pop(0)
+#         xdeque.append(arr[-j+i])
+
+#     print(mins)
+#     print(xdeque)
+
+
+
+'Here is the chatGPTs Solution for this - but how neccessary and practical is for me to have this kinds of solutions?'
+'   Id like to discuss this with Juan'
+
+def min_max_riddle(arr):
+    n = len(arr)
+    stack = []
+    max_min = [0] * n
+
+    # Iterate through the sorted array in descending order
+    for i in range(n):
+        while stack and arr[i] <= arr[stack[-1]]:
+            stack.pop()
+        j = stack[-1] if stack else -1
+        max_min[i] = i - j - 1
+        stack.append(i)
+
+    # Process the max_min values to get the final answer
+    result = [0] * (n + 1)
+    for i in range(n):
+        result[max_min[i]] = max(result[max_min[i]], arr[i])
+
+    # Fill in any gaps in the result
+    for i in range(n - 1, 0, -1):
+        result[i] = max(result[i], result[i + 1])
+
+    return result[1:]
+
+# Example usage:
+n = int(input())
+arr = list(map(int, input().split()))
+result = min_max_riddle(arr)
+print(" ".join(map(str, result)))
+
+
+
+
+
+
+
+
+
+
+
