@@ -261,54 +261,54 @@ import random
 
 # ChatGPT's solution
 
-def count_inversions(arr):
+# def count_inversions(arr):
 
-    # Base case: If the array has 0 or 1 elements, it's already sorted with 0 inversions.
-    if len(arr) <= 1:
-        return arr, 0
+#     # Base case: If the array has 0 or 1 elements, it's already sorted with 0 inversions.
+#     if len(arr) <= 1:
+#         return arr, 0
 
-    # Split the array into two halves.
-    mid = len(arr) // 2
-    left_half, right_half = arr[:mid], arr[mid:]
+#     # Split the array into two halves.
+#     mid = len(arr) // 2
+#     left_half, right_half = arr[:mid], arr[mid:]
 
-    # Recursive step: Sort and count inversions in the left and right halves.
-    left_half, left_inversions = count_inversions(left_half)
-    right_half, right_inversions = count_inversions(right_half)
+#     # Recursive step: Sort and count inversions in the left and right halves.
+#     left_half, left_inversions = count_inversions(left_half)
+#     right_half, right_inversions = count_inversions(right_half)
 
-    # Merge the sorted halves while counting split inversions.
-    merged_arr, split_inversions = merge_and_count_split_inversions(left_half, right_half)
+#     # Merge the sorted halves while counting split inversions.
+#     merged_arr, split_inversions = merge_and_count_split_inversions(left_half, right_half)
 
-    # Total inversions = left inversions + right inversions + split inversions
-    total_inversions = left_inversions + right_inversions + split_inversions
+#     # Total inversions = left inversions + right inversions + split inversions
+#     total_inversions = left_inversions + right_inversions + split_inversions
 
-    return merged_arr, total_inversions
-
-
-
-def merge_and_count_split_inversions(left, right):
-
-    merged = []
-    split_inversions = 0
-    i = j = 0
-
-    while i < len(left) and j < len(right):
-
-        if left[i] <= right[j]:
-            merged.append(left[i])
-            i += 1
-
-        else:
-            # If left[i] > right[j], it's an inversion with all elements remaining in the left array.
-            merged.append(right[j])
-            j += 1
-            split_inversions += len(left) - i
+#     return merged_arr, total_inversions
 
 
-    # Append the remaining elements from both halves (if any).
-    merged.extend(left[i:])
-    merged.extend(right[j:])
 
-    return merged, split_inversions
+# def merge_and_count_split_inversions(left, right):
+
+#     merged = []
+#     split_inversions = 0
+#     i = j = 0
+
+#     while i < len(left) and j < len(right):
+
+#         if left[i] <= right[j]:
+#             merged.append(left[i])
+#             i += 1
+
+#         else:
+#             # If left[i] > right[j], it's an inversion with all elements remaining in the left array.
+#             merged.append(right[j])
+#             j += 1
+#             split_inversions += len(left) - i
+
+
+#     # Append the remaining elements from both halves (if any).
+#     merged.extend(left[i:])
+#     merged.extend(right[j:])
+
+#     return merged, split_inversions
 
 
 # # Example usage:

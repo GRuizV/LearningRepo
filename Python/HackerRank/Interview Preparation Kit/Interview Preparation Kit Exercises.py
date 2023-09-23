@@ -249,37 +249,55 @@ Brute forcing it worked 70% but it isn't optimal since complexity goes up to O(N
 
 
 'Here is the chatGPTs Solution for this - but how neccessary and practical is for me to have this kinds of solutions?'
-'   Id like to discuss this with Juan'
+'   Id like to discuss this with Juan / The way to get to the solution really eludes me at this point'
 
-def min_max_riddle(arr):
-    n = len(arr)
-    stack = []
-    max_min = [0] * n
+# def min_max_riddle(arr):
+ 
+#     n = len(arr)
+#     stack = []
+#     max_min = [0] * n
 
-    # Iterate through the sorted array in descending order
-    for i in range(n):
-        while stack and arr[i] <= arr[stack[-1]]:
-            stack.pop()
-        j = stack[-1] if stack else -1
-        max_min[i] = i - j - 1
-        stack.append(i)
+#     # Create an array to store the indices of the previous smaller elements
+#     prev_smaller = [-1] * n
 
-    # Process the max_min values to get the final answer
-    result = [0] * (n + 1)
-    for i in range(n):
-        result[max_min[i]] = max(result[max_min[i]], arr[i])
+#     # Find the indices of the previous smaller elements for each element in the array
+#     for i in range(n):
+#         while stack and arr[i] <= arr[stack[-1]]:
+#             stack.pop()
+#         if stack:
+#             prev_smaller[i] = stack[-1]
+#         stack.append(i)
 
-    # Fill in any gaps in the result
-    for i in range(n - 1, 0, -1):
-        result[i] = max(result[i], result[i + 1])
+#     # Clear the stack for the next step
+#     stack = []
 
-    return result[1:]
+#     # Find the indices of the next smaller elements for each element in the array
+#     for i in range(n - 1, -1, -1):
+#         while stack and arr[i] <= arr[stack[-1]]:
+#             stack.pop()
+#         if stack:
+#             max_min[i] = stack[-1] - prev_smaller[i] - 1
+#         else:
+#             max_min[i] = n - prev_smaller[i] - 1
+#         stack.append(i)
 
-# Example usage:
-n = int(input())
-arr = list(map(int, input().split()))
-result = min_max_riddle(arr)
-print(" ".join(map(str, result)))
+#     # Process the max_min values to get the final answer
+#     result = [0] * (n + 1)
+#     for i in range(n):
+#         result[max_min[i]] = max(result[max_min[i]], arr[i])
+
+#     # Fill in any gaps in the result
+#     for i in range(n - 1, 0, -1):
+#         result[i] = max(result[i], result[i + 1])
+
+#     return result[1:]
+
+
+
+# # Example usage:
+# arr = [2,6,1,12]
+# result = min_max_riddle(arr)
+# print(" ".join(map(str, result)))
 
 
 
