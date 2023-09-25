@@ -4,57 +4,92 @@ import itertools
 
 'Encryption'
 
+# My Approach
 
-s = 'ifmanwasmeanttostayonthegroundgodwouldhavegivenusroots'
-print(len(s))
+# s = 'ifmanwasmeanttostayonthegroundgodwouldhavegivenusroots'
+# # print(len(s))
 
-columns = math.ceil(math.sqrt(len(s)))
-print(f'ceil: {columns}')
+# columns = math.ceil(math.sqrt(len(s)))
+# # print(f'ceil: {columns}')
 
-rows = math.floor(math.sqrt(len(s)))
-print(f'floor: {rows}')
+# rows = math.floor(math.sqrt(len(s)))
+# # print(f'floor: {rows}')
 
-if rows * columns < len(s):
-    rows = columns
+# if rows * columns < len(s):
+#     rows = columns
 
+# result, rows_words = list(), list()
 
-result, rows_words = list(), list()
-
-for i in range(rows):
-    rows_words.append(s[i*columns:i*columns+columns])
+# for i in range(rows):
+#     rows_words.append(s[i*columns:i*columns+columns])
     
-print(rows_words)
+# # print(rows_words)
 
+# for i in range(columns):
 
-for i in range(columns):
+#     temp = str()
 
-    temp = str()
+#     for j in rows_words:
 
-    for j in rows_words:
-
-        if i > len(j)-1:
-            continue
+#         if i > len(j)-1:
+#             continue
         
-        temp += j[i]
+#         temp += j[i]
     
-    result.append(temp)
+#     result.append(temp)
 
-print(result)
+# # print(result)
 
-result_string = str()
+# result_string = str()
 
-for i in result:
+# for i in result:    
+#     result_string += i + ' '
+
+# result_string.rstrip()
+
+# print(result_string)
+
+
+'''
+This solution is the first draft that came to mind but I'm sure it could be a lot more efficient,
+Below there is a solution that came from ChatGPT
+'''
+
+# def encryption(s):
+
+#     s = s.replace(" ", "")  # Remove spaces
+#     L = len(s)
+#     R = int(math.floor(math.sqrt(L)))
+#     C = int(math.ceil(math.sqrt(L)))
     
-    result_string += i + ' '
+#     while R * C < L:
+#         R += 1
 
-result_string.rstrip()
+#     grid = [['' for _ in range(C)] for _ in range(R)]
 
-print(result_string)
+#     for i in range(L):
+#         row = i // C
+#         col = i % C
+#         grid[row][col] = s[i]
+
+#     encrypted_message = ""
+#     for col in range(C):
+#         for row in range(R):
+#             if grid[row][col] != '':
+#                 encrypted_message += grid[row][col]
+#         encrypted_message += " "  # Add space between columns
+
+#     return encrypted_message
+
+# # Example usage:
+# input_string = "ifmanwasmeanttostayonthegroundgodwouldhavegivenusroots"
+# result = encryption(input_string)
+# print(result)
 
 
 
 
-
+'xxx'
 
 
 
