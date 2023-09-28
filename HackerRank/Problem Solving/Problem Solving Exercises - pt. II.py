@@ -89,23 +89,87 @@ Below there is a solution that came from ChatGPT
 
 
 
-'xxx'
+'Bigger is Greater'
+
+
+w = 'dkhc'
+
+
+# # Base solution
+# comb = list(map(list, itertools.permutations(w)))
+# comb = list(map(''.join,comb))
+
+# comb.sort(reverse=True)
+# ind = comb.index(w)
+# result = comb[ind-1]
+
+# print(comb)
+# print(len(comb))
+# print(result)
+
+
+# # Solution sent to HackerRank
+# def biggerIsGreater(w):
+    
+#     comb = list(map(list,itertools.permutations(w)))
+#     comb = list(map(''.join,comb))
+#     comb.sort(reverse=True)
+#     ind = comb.index(w)
+#     result = comb[ind-1]
+    
+#     if ind == 0 or result == w:
+#         return 'no answer'
+    
+#     return result
+
+''' 
+This solution evidently is based on brute force,
+3 out of the 5 cases failed due to time limit excedeed or runtime error,
+
+    Pending: needs optimization.
+'''
+
+
+# ChatGPT's Solution
+
+'''
+According to ChatGPT here, the optimal solution which will be O(n), is to find the inmediate next permutation bigger
+by finding the first pair (a,b) where a > b within the characters in the string, then find the rightmost character (c) which satisfies c > a, and then
+swap those two and reverse that part of the string
+'''
+
+# def biggerIsGreater(w):
+    
+#     w = list(w)
+
+#     i = len(w) - 2
+
+#     while i >= 0 and w[i] >= w[i + 1]:
+#         i -= 1
+
+#     if i == -1:
+#         return 'no answer'    
+
+
+#     j = len(w) - 1
+
+#     while w[j] <= w[i]:
+#         j -= 1
+
+#     w[i], w[j] = w[j], w[i]
+
+
+#     w[i + 1:] = reversed(w[i + 1:])
+
+#     return ''.join(w)
+
+# print(biggerIsGreater(w))
+
+'''
+Done!
+'''
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+'Xxx'
