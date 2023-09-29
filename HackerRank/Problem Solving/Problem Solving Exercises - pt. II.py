@@ -92,7 +92,7 @@ Below there is a solution that came from ChatGPT
 'Bigger is Greater'
 
 
-w = 'dkhc'
+# w = 'dkhc'
 
 
 # # Base solution
@@ -172,4 +172,46 @@ Done!
 
 
 
-'Xxx'
+'Modified Kaprekar Numbers'
+
+
+# # My Solution
+# p = 1
+# q = 100
+
+# rang = range(p,q+1)
+
+# kapr_nums = list()
+
+# for i in rang:
+
+#     d = len(str(i))
+
+#     pow2 = pow(i,2)
+#     pow2 = str(pow2)
+#     r = pow2[-d:]
+#     l = pow2[:-d]
+
+#     if l != '':
+#         l,r = int(l),int(r) 
+    
+#     else:
+#         l,r = 0, int(r)
+
+#     if r + l == i:
+#         kapr_nums.append(i)
+        
+# print(kapr_nums)
+
+
+'''
+My solution worked just fine, but I am curious if there was another way to do it without brut forcing it
+
+    Note: After reviewing the discussion board and ChatGPTs opinion, all the solutions converge in the same solution.
+'''
+
+
+
+
+'xxx'
+
