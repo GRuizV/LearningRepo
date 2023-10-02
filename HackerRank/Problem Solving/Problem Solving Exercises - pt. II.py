@@ -213,5 +213,87 @@ My solution worked just fine, but I am curious if there was another way to do it
 
 
 
+'Beutiful triplets'
+
+
+# arr = [1, 2, 4, 5, 7, 8, 10]
+# arr = [2,2,3,4,5]
+# d = 3
+
+# # First approach
+# triplets = list(itertools.combinations(arr,3))
+
+# b_triplets = list()
+
+# for i in triplets:
+
+#     if i[2] - i[1] == i[1] - i[0] == 3:
+#         b_triplets.append(i)
+
+# print(b_triplets)
+
+'Brute forcing it wont do, Ill try somehting different'
+
+
+# # Second approach
+# b_triplets = list()
+
+# for i in range(len(arr) - 2):
+
+#     triplet = list()
+#     triplet.append(arr[i])
+    
+#     for j in range(i+1, (len(arr)-2) + 1):
+
+#         if arr[j] - arr[i] == d:
+#             triplet.append(arr[j])
+
+#             for k in range(j+1, len(arr)):
+
+#                 if arr[k] - arr[j] == d:
+
+#                     triplet.append(arr[k])
+#                     b_triplets.append(triplet)
+#                     triplet = triplet[:-1]
+            
+#             triplet = triplet[:-1]
+  
+# print(b_triplets)
+
+'This second approach worked perfectly'
+
+
+
+
 'xxx'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
