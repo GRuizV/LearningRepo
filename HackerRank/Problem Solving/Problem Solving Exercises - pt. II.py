@@ -265,26 +265,70 @@ My solution worked just fine, but I am curious if there was another way to do it
 
 
 
+'Minimum Distances'
+
+
+# # My Approach
+# a = [3,2,1,2,3]
+# a = [7, 1, 3, 4, 1, 7]
+
+# distances = list()
+
+# for ind, elem in enumerate(a):  
+
+#     if a.count(elem) <= 1:
+#         continue
+
+#     for j in range(ind+1, len(a[ind+1:]) + 1):
+
+#         if a[j] == elem:            
+#             distances.append(abs(j-ind))
+
+# distances.sort()
+
+# print(distances)
+# print(distances[0])
+
+'''
+When submitting my solution to HR, it worked 80% of the time
+But after checking with ChtaGPT, there a couple of problems with my solution
+to begin with it has a compl of O(n^2) and there is time when pairing are ignored
+due to the 'range(ind+1, len(a[ind+1:]) + 1)' loop, 
+and the final sorting adds another complexity of O(n log n), which, apparently is unnecessary
+
+There's another approach based on dict that works more efficiently
+'''
+
+# a = [7, 1, 3, 4, 1, 7]
+
+
+# def minimumDistance(a):
+
+#     element_to_index = dict()
+#     min_distance = float('inf')
+
+
+#     for i, elem in enumerate(a):
+
+#         if elem in element_to_index:
+
+#             distance = i - element_to_index[elem]
+#             min_distance = min(distance, min_distance)
+
+#         element_to_index[elem] = i
+
+#     return min_distance if min_distance != float('inf') else -1
+
+
+# print(minimumDistance(a))
+
+
+'This solution has a compl of O(n) and works 100% of times'
+
+
+
+
 'xxx'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
