@@ -328,7 +328,73 @@ There's another approach based on dict that works more efficiently
 
 
 
+'Halloween Sale'
+
+# inp = [int(x) for x in '100 19 1 180'.split()]
+
+# p = inp[0]
+# d = inp[1]
+# m = inp[2]
+# s = inp[3]
+
+# count = int()
+
+# if s >= p:
+
+#     while s >= m and s >= p:
+
+#         count += 1
+
+#         if p > m:       
+#             s -= p
+#             p -= d
+
+#         else:
+#             s -= m
+
+# else:
+#     count = 0
+
+'This solution worked just fine'
+
+
+
+
 'xxx'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
