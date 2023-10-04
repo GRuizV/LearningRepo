@@ -1,4 +1,4 @@
-from Hash_Table_Implementation_RP import HashTable, BLANK
+from Hash_Table_Implementation_RP import HashTable
 import pytest
 
 
@@ -14,7 +14,6 @@ def test_should_create_hashtable_with_size():
     assert HashTable(capacity=100) is not None
 
 
-
 def test_should_report_capacity():
 
     assert len(HashTable(capacity=100)) == 100
@@ -23,14 +22,14 @@ def test_should_report_capacity():
 def test_should_create_empty_value_slots():
 
     #Given
-    expected_values = [BLANK, BLANK, BLANK]
+    expected_pairs = [None, None, None]
     hash_table = HashTable(capacity=3)
 
     #When
-    actual_values = hash_table.values
+    actual_pairs = hash_table.pairs
 
     #then
-    assert actual_values == expected_values
+    assert actual_pairs == expected_pairs
 
 
 def test_should_insert_key_value_pairs():
@@ -44,9 +43,9 @@ def test_should_insert_key_value_pairs():
     hash_table[False] = True
     
     #then
-    assert 'Hello' in hash_table.values
-    assert 37 in hash_table.values
-    assert True in hash_table.values
+    assert ('Hola', 'Hello') in hash_table.pairs
+    assert (98.6, 37) in hash_table.pairs
+    assert (False, True) in hash_table.pairs
 
     assert len(hash_table) == 100
 
@@ -57,8 +56,9 @@ def test_should_not_shrink_when_removing_elements():
 
 
 def test_should_not_contain_none_value_when_created():
-
-    assert None not in HashTable(capacity=100).values
+    hash_table = HashTable(capacity=100)
+    values = [pair.value for pair in hash_table.pairs if pair]
+    assert None not in values
 
 
 def test_should_insert_none_value():
@@ -67,7 +67,7 @@ def test_should_insert_none_value():
     
     hash_table['Key'] = None
 
-    assert None in hash_table.values
+    assert None in hash_table.pairs
 
 
 @pytest.fixture
@@ -122,9 +122,53 @@ def test_should_get_value_with_default(hash_table):
     assert hash_table.get('Hola', 'default') == 'Hello'
 
 
+def test_should_delete_key_value_pair(hash_table):
+
+    assert 'Hola' in hash_table
+    assert ('Hola','Hello') in hash_table.pairs
+    assert len(hash_table) == 100
+
+    del hash_table['Hola']
+
+    # assert 'Hola' not in hash_table
+    assert ('Hola','Hello') not in hash_table.pairs
+    assert len(hash_table) == 100
+
+
+def test_should_raise_key_error_when_deleting(hash_table):
+
+    with pytest.raises(KeyError) as exception_info:
+
+        del hash_table['missing_key']
+    
+    assert exception_info.value.args[0] == 'missing_key'
+
+
+def test_should_update_value(hash_table):
+
+    assert hash_table['Hola'] == 'Hello'
+
+    hash_table['Hola'] = 'Hi'
+
+    assert hash_table['Hola'] == 'Hi'
+    assert hash_table[98.6] == 37
+    assert hash_table[False] == True
+    assert len(hash_table) == 100
+
+
+def test_should_return_pairs(hash_table):
+
+    assert ('Hola', 'Hello') in hash_table.pairs
+    assert (98.6, 37) in hash_table.pairs
+    assert (False, True) in hash_table.pairs
 
 
 
+
+
+
+# Route on current work: 'C:\Users\USUARIO\GR\Software Development\Learning\Data Structures\Hash Table'
+# Command for running test: python -m pytest
 
 
 

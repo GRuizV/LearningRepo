@@ -1,33 +1,41 @@
+from typing import NamedTuple, Any
 
-BLANK = object()
+class Pair(NamedTuple):
+    key: Any
+    value: Any
+
+# BLANK = object()
 
 class HashTable:
 
     def __init__(self, capacity=int()):
 
-        self.values = capacity * [BLANK]
+        self.pairs = capacity * [None]
 
 
     def __len__(self):
 
-        return len(self.values)
+        return len(self.pairs)
+
+
+    def _index(self, key):
+
+        return hash(key) % len(self)
 
 
     def __setitem__(self, key, value):
-
-        index = hash(key) % len(self)
-        self.values[index] = value
+        
+        self.pairs[self._index(key)] = Pair(key, value)
 
     
     def __getitem__(self, key):
+        
+        pair = self.pairs[self._index(key)]
 
-        index = hash(key) % len(self)
-        value = self.values[index]
-
-        if value is BLANK:
+        if pair is None:
             raise KeyError(key)
 
-        return value
+        return pair.value
     
 
     def __contains__(self,key):
@@ -51,9 +59,22 @@ class HashTable:
             return default
 
 
+    def __delitem__(self, key):
+        
+        # #Initially
+        # self.pairs[self._index(key)] = None
 
+        if key in self:
 
+            #Refactored
+            self[key] = None
 
+        #This is possible because by assigning with ['key'] it
+        #delegates the assignment to the __setitem__() directly
+
+        else:
+
+            raise KeyError(key)
 
 
 
