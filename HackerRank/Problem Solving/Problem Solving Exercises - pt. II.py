@@ -360,14 +360,83 @@ There's another approach based on dict that works more efficiently
 
 
 
+'The Time in Words'
+
+
+# words = [
+#     'one',
+#     'two', 
+#     'three', 
+#     'four', 
+#     'five', 
+#     'six', 
+#     'seven', 
+#     'eight', 
+#     'nine', 
+#     'ten', 
+#     'eleven', 
+#     'twelve', 
+#     'thirteen', 
+#     'fourteen', 
+#     'quarter', 
+#     'sixteen', 
+#     'seventeen', 
+#     'eighteen', 
+#     'nineteen', 
+#     'twenty', 
+#     'twenty one', 
+#     'twenty two', 
+#     'twenty three', 
+#     'twenty four', 
+#     'twenty five', 
+#     'twenty six', 
+#     'twenty seven', 
+#     'twenty eight', 
+#     'twenty nine', 
+#     'half'
+#     ]
+
+# numbers = range(1,31)
+
+# time_in_words = list(zip(numbers,words))
+
+# dict_time = {k:v for k,v in time_in_words}
+
+
+# h = 7
+# m = 15
+
+# if m == 0:
+#     print(f"{dict_time[h]} o' clock")
+
+# elif m == 1:
+#     print(f"{dict_time[m]} minute past {dict_time[h]}")
+
+# elif m == 15:
+#     print(f"quarter past {dict_time[h]}")
+
+# elif m == 30:
+#     print(f"half past {dict_time[h]}")
+
+# elif m > 30 and m != 45 and m != 59:
+#     print(f"{dict_time[60-m]} minutes to {dict_time[h+1]}")
+
+# elif m == 45:
+#     print(f"quarter to {dict_time[h+1]}")
+
+# elif m == 59:
+#     print(f"one minute to {dict_time[h+1]}")
+
+# else:
+#     print(f"{dict_time[m]} minutes past {dict_time[h]}")
+
+
+'Done!'
+
+
+
+
 'xxx'
-
-
-
-
-
-
-
 
 
 
