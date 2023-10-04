@@ -1,5 +1,6 @@
 from Hash_Table_Implementation_RP import HashTable
 import pytest
+from pytest_unordered import unordered
 
 
 # Command for running test: python -m pytest
@@ -9,27 +10,30 @@ def test_should_always_pass():
     assert 2 + 2 == 4, "This is just a dummy test"
 
 
+@pytest.fixture
+def hash_table():
+
+    sample_data = HashTable(capacity=100)
+    sample_data['Hola'] = 'Hello'
+    sample_data[98.6] = 37
+    sample_data[False] = True
+
+    return sample_data
+
+
 def test_should_create_hashtable_with_size():
     
     assert HashTable(capacity=100) is not None
 
 
-def test_should_report_capacity():
+def test_should_report_lenght_of_empty_hash_table():
 
-    assert len(HashTable(capacity=100)) == 100
+    assert len(HashTable(capacity=100)) == 0
 
 
 def test_should_create_empty_value_slots():
-
-    #Given
-    expected_pairs = [None, None, None]
-    hash_table = HashTable(capacity=3)
-
-    #When
-    actual_pairs = hash_table.pairs
-
-    #then
-    assert actual_pairs == expected_pairs
+   
+    assert HashTable(capacity=3)._slots == [None, None, None]
 
 
 def test_should_insert_key_value_pairs():
@@ -47,7 +51,7 @@ def test_should_insert_key_value_pairs():
     assert (98.6, 37) in hash_table.pairs
     assert (False, True) in hash_table.pairs
 
-    assert len(hash_table) == 100
+    assert len(hash_table) == 3
 
 
 @pytest.mark.skip
@@ -56,9 +60,8 @@ def test_should_not_shrink_when_removing_elements():
 
 
 def test_should_not_contain_none_value_when_created():
-    hash_table = HashTable(capacity=100)
-    values = [pair.value for pair in hash_table.pairs if pair]
-    assert None not in values
+    
+    assert None not in HashTable(capacity=100).values
 
 
 def test_should_insert_none_value():
@@ -67,18 +70,7 @@ def test_should_insert_none_value():
     
     hash_table['Key'] = None
 
-    assert None in hash_table.pairs
-
-
-@pytest.fixture
-def hash_table():
-
-    sample_data = HashTable(capacity=100)
-    sample_data['Hola'] = 'Hello'
-    sample_data[98.6] = 37
-    sample_data[False] = True
-
-    return sample_data
+    assert None in hash_table._slots
 
 
 def test_should_find_value_by_key(hash_table):
@@ -126,13 +118,13 @@ def test_should_delete_key_value_pair(hash_table):
 
     assert 'Hola' in hash_table
     assert ('Hola','Hello') in hash_table.pairs
-    assert len(hash_table) == 100
+    assert len(hash_table) == 3
 
     del hash_table['Hola']
 
-    # assert 'Hola' not in hash_table
+    assert 'Hola' not in hash_table
     assert ('Hola','Hello') not in hash_table.pairs
-    assert len(hash_table) == 100
+    assert len(hash_table) == 2
 
 
 def test_should_raise_key_error_when_deleting(hash_table):
@@ -153,15 +145,109 @@ def test_should_update_value(hash_table):
     assert hash_table['Hola'] == 'Hi'
     assert hash_table[98.6] == 37
     assert hash_table[False] == True
-    assert len(hash_table) == 100
+    assert len(hash_table) == 3
 
 
 def test_should_return_pairs(hash_table):
 
-    assert ('Hola', 'Hello') in hash_table.pairs
-    assert (98.6, 37) in hash_table.pairs
-    assert (False, True) in hash_table.pairs
+    assert hash_table.pairs == {
+        ('Hola', 'Hello'), 
+        (98.6, 37),
+        (False, True)
+    }
 
+
+def test_should_get_pairs_of_empty_hash_table():
+
+    assert HashTable(capacity=100).pairs == set()
+
+
+def test_should_return_copy_of_pairs(hash_table):
+    
+    assert hash_table.pairs is not hash_table.pairs
+
+
+def test_should_not_include_blank_pairs(hash_table):
+
+    assert None not in hash_table.pairs
+
+
+def test_should_return_duplicate_values():
+
+    hash_table = HashTable(capacity = 100)
+    hash_table['Alice'] = 24
+    hash_table['Bob'] = 42
+    hash_table['Joe'] = 42
+
+    assert [24, 42, 42] == sorted(hash_table.values)
+
+
+def test_should_get_values(hash_table):
+    
+    assert unordered(hash_table.values) == ['Hello', 37, True]
+
+
+def test_should_get_values_of_empty_hash_table():
+
+    assert HashTable(capacity=100).values == []
+
+
+def test_should_return_copy_of_values(hash_table):
+
+    assert hash_table.values is not hash_table.values
+
+
+def test_should_get_keys(hash_table):
+
+    assert hash_table.keys == {'Hola', 98.6, False}
+
+
+def test_shuold_get_keys_of_empty_hash_table():
+
+    assert HashTable(capacity=100).keys == set()
+
+
+def test_should_return_copy_of_keys(hash_table):
+
+    assert hash_table.keys is not hash_table.keys
+
+
+def test_should_convert_to_dict(hash_table):
+
+    dictionary = dict(hash_table.pairs)
+
+    # the built-in set data type is used to disregard the order of the keys and items pairs 
+    # to be compared to one another
+    assert set(dictionary.keys()) == hash_table.keys
+    assert set(dictionary.items()) == hash_table.pairs
+    assert list(dictionary.values()) == hash_table.values
+
+
+def test_should_not_creat_hash_table_with_zero_capacity():
+
+    with pytest.raises(ValueError):
+        HashTable(capacity=0)
+
+
+def test_should_not_create_hash_table_with_negative_capacity():
+
+    with pytest.raises(ValueError):
+        HashTable(capacity=-100)
+
+
+def test_should_report_length(hash_table):
+
+    assert len(hash_table) == 3
+
+
+def test_should_report_capacity_of_empty_hash_table():
+
+    assert HashTable(capacity=100).capacity == 100
+
+
+def test_should_report_capacity(hash_table):
+
+    assert hash_table.capacity == 100
 
 
 

@@ -612,6 +612,7 @@ The first recursion problem I review:
 
 
 
+
 'Slinding window for median calculation'
 
 # data = [random.randint(0,9) for _ in range(9)]
@@ -681,3 +682,25 @@ The first recursion problem I review:
 
 
 
+
+
+
+
+'Test to check if two elements contains the same elements'
+
+# def have_same_elements(list1, list2):
+#     return all(element in list1 for element in list2)
+
+# a = ['a', True, 15]
+
+# b = [15, 'a', True, 0]
+
+# print(have_same_elements(a,b))
+
+
+
+
+
+
+
+'xxxx'

@@ -10,27 +10,25 @@ class HashTable:
 
     def __init__(self, capacity=int()):
 
-        self.pairs = capacity * [None]
-
+        if capacity < 1:
+            raise ValueError('Capacity mush be a positive number')
+                
+        self._slots = capacity * [None]
+    
 
     def __len__(self):
 
         return len(self.pairs)
 
 
-    def _index(self, key):
-
-        return hash(key) % len(self)
-
-
     def __setitem__(self, key, value):
         
-        self.pairs[self._index(key)] = Pair(key, value)
+        self._slots[self._index(key)] = Pair(key, value)
 
     
     def __getitem__(self, key):
         
-        pair = self.pairs[self._index(key)]
+        pair = self._slots[self._index(key)]
 
         if pair is None:
             raise KeyError(key)
@@ -49,6 +47,26 @@ class HashTable:
         else:
             return True
 
+        
+    def __delitem__(self, key):
+        
+        # #Initially
+        # self.pairs[self._index(key)] = None
+
+        if key in self:
+
+            #Refactored
+            self._slots[self._index(key)] = None
+
+        #This is possible because by assigning with ['key'] it
+        #delegates the assignment to the __setitem__() directly
+
+        else:
+
+            raise KeyError(key)
+
+
+
 
     def get(self, key, default=None):
 
@@ -59,22 +77,38 @@ class HashTable:
             return default
 
 
-    def __delitem__(self, key):
-        
-        # #Initially
-        # self.pairs[self._index(key)] = None
 
-        if key in self:
 
-            #Refactored
-            self[key] = None
+    def _index(self, key):
 
-        #This is possible because by assigning with ['key'] it
-        #delegates the assignment to the __setitem__() directly
+        return hash(key) % self.capacity
 
-        else:
 
-            raise KeyError(key)
+    @property
+    def pairs(self):
+        return {pair for pair in self._slots if pair}
+    
+
+    @property
+    def keys(self):
+        return {pair.key for pair in self.pairs}
+
+
+    @property
+    def values(self):
+        return [pair.value for pair in self.pairs]
+    
+
+    @property
+    def capacity(self):
+        return len(self._slots)
+
+
+
+
+
+
+
 
 
 
