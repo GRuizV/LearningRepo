@@ -254,8 +254,40 @@ def test_should_convert_to_dict(hash_table):
 
 
 
+def test_should_iterate_over_keys(hash_table):
+
+    for key in hash_table.keys:
+        assert key in ('Hola', 98.6, False)
+
+def test_should_iterate_over_values(hash_table):
+
+    for value in hash_table.values:
+        assert value in ('Hello', 37, True)
+
+def test_should_iterate_over_pairs(hash_table):
+
+    for key, value in hash_table.pairs:
+        assert key in hash_table.keys
+        assert value in hash_table.values
+
+def test_should_iterate_over_instance(hash_table):
+    
+    for key in hash_table:
+        assert key in ('Hola', 98.6, False)
 
 
+
+
+def test_should_use_dict_literal_for_str(hash_table):
+
+    assert str(hash_table) in {
+        "{'Hola': 'Hello', 98.6: 37, False: True}",
+        "{'Hola': 'Hello', False: True, 98.6: 37}",
+        "{98.6: 37, 'Hola': 'Hello', False: True}",
+        "{98.6: 37, False: True, 'Hola': 'Hello'}",
+        "{False: True, 'Hola': 'Hello', 98.6: 37}",
+        "{False: True, 98.6: 37, 'Hola': 'Hello'}",
+    }
 
 
 
@@ -270,5 +302,12 @@ def test_should_convert_to_dict(hash_table):
 
 
 
+# a = {
+#     'Hola' : 'Hello',
+#     98.6 : 37,
+#     False : True
+#     }
+
+# print(type(repr(a)))
 
 

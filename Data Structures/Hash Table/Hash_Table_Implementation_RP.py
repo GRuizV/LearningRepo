@@ -15,16 +15,13 @@ class HashTable:
                 
         self._slots = capacity * [None]
     
-
     def __len__(self):
 
         return len(self.pairs)
 
-
     def __setitem__(self, key, value):
         
         self._slots[self._index(key)] = Pair(key, value)
-
     
     def __getitem__(self, key):
         
@@ -35,7 +32,6 @@ class HashTable:
 
         return pair.value
     
-
     def __contains__(self,key):
 
         try:
@@ -46,7 +42,6 @@ class HashTable:
         
         else:
             return True
-
         
     def __delitem__(self, key):
         
@@ -65,6 +60,18 @@ class HashTable:
 
             raise KeyError(key)
 
+    def __iter__(self):
+
+        yield from self.keys
+
+    def __str__(self):
+
+        pairs = list()
+
+        for key, value in self.pairs:
+            pairs.append(f'{key!r}: {value!r}')
+        
+        return '{' + ', '.join(pairs) + '}'
 
 
 
@@ -84,21 +91,20 @@ class HashTable:
         return hash(key) % self.capacity
 
 
+
+
     @property
     def pairs(self):
         return {pair for pair in self._slots if pair}
     
-
     @property
     def keys(self):
         return {pair.key for pair in self.pairs}
-
 
     @property
     def values(self):
         return [pair.value for pair in self.pairs]
     
-
     @property
     def capacity(self):
         return len(self._slots)
