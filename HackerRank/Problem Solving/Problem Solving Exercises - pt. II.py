@@ -463,11 +463,24 @@ There's another approach based on dict that works more efficiently
 
 
 
-'Chocolate Feast'
+'Service Lane'
+
+# width = [2, 3, 1, 2, 3, 2, 3, 3]
+# cases = [[0, 3], [4, 6], [6, 7], [3, 5], [0, 7]]
+
+# result = list()
+
+# for case in cases:
+#     result.append(min(width[case[0]:case[1]+1]))
+
+# print(result)
+
+'Done!'
 
 
 
 
+'xxx'
 
 
 
