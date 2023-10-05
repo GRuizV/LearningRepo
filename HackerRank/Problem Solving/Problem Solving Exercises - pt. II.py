@@ -436,10 +436,34 @@ There's another approach based on dict that works more efficiently
 
 
 
-'xxx'
+'Chocolate Feast'
+
+# n = 15
+# c = 3
+# m = 2
+
+# wrappers = int()
+# chocolates = int()
+
+# wrappers = chocolates = n // c
+
+# while True:
+
+#     chocolates += wrappers // m
+#     wrappers = (wrappers // m) + (wrappers % m)
+
+#     if wrappers < m:
+#         break
+    
+
+# print(chocolates)
+
+'Done!'
 
 
 
+
+'Chocolate Feast'
 
 
 
