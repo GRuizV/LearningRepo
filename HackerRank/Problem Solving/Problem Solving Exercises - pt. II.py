@@ -480,7 +480,76 @@ There's another approach based on dict that works more efficiently
 
 
 
-'xxx'
+"Lisa's Workbook"
+
+# # Input
+# n = 1
+# k = 1
+# arr = 100
+
+
+# # My Approach
+# page = 1
+# workbook = list()
+# special_problems = int()
+
+# if type(arr) is int:
+#     arr = [arr]
+
+# for chapter in range(len(arr)):
+
+#     problems_in_page = list()
+
+#     for i in range(1, (math.ceil(arr[chapter]/k)*k)+1):
+        
+#         if i > arr[chapter]:
+#             break
+
+#         problems_in_page.append(i)
+
+#         if len(problems_in_page) == k or i == arr[chapter]:         
+
+#             workbook.append([page, problems_in_page.copy()])
+#             page += 1            
+#             problems_in_page.clear()
+              
+
+# for i in range(len(workbook)):
+
+#     if workbook[i][0] in workbook[i][1]:
+
+#         special_problems += 1
+    
+
+# print(workbook)
+# print(special_problems)
+
+
+'''
+This solution worked, but seems little to forced. I am gonna check if there is something more sophisticated.
+
+    There actually was but the logic was the same, there was a listcomp. to abreviate the separation of pages by chapter
+
+    for problems_in_chapter in arr:
+        chapter = [j for j in range(1, problems_in_chapter + 1)]
+        chapter_splitted = [chapter[n : n + k] for n in range(0, len(chapter), k)]
+
+but at the core, the solution was the same.
+
+'''
+
+
+
+
+"xxx"
+
+
+
+
+
+
+
+
 # '-xxx- HackerRank Problem Solving Challenge done'
 
 
