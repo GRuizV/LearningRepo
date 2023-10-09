@@ -541,10 +541,80 @@ but at the core, the solution was the same.
 
 
 
-"xxx"
+"Flatland Space Stations"
+
+# Input
+n = 5
+c = [0, 4]
+
+
+# # My approach
+# cities = [city for city in range(n)]
+
+# cities_with_nearest_st = list()
+# max_distance = 0
+
+
+# for city in cities:
+    
+#     dist_to_st = [abs(city - c[st]) for st in range(len(c))]
+
+#     cities_with_nearest_st.append([city, min(dist_to_st)])
 
 
 
+# for i in cities_with_nearest_st:
+
+#     max_distance = max(max_distance, i[1])
+
+
+# print(max_distance)
+
+
+'My solution pass 19/20 cases and the one that didnt passed was due to time limit'
+
+
+# # My second try
+# cities = list(range(n))
+
+# max_distance = 0
+
+# for city in cities:
+    
+#     dist_to_st = [abs(city - c[st]) for st in range(len(c))]
+#     max_distance = max(max_distance, min(dist_to_st))
+
+
+# print(max_distance)
+
+'After refactoring and cutting one loop, theres still not efficient enough'
+
+
+
+# ChatGPTs Solution
+
+def flatlandSpaceStations(n, c):
+
+    # Sort the list of space station locations
+    c.sort()
+    
+    max_distance = 0
+    
+    # Handle the first city to the first space station
+    max_distance = c[0]
+    
+    # Handle the last city to the last space station
+    max_distance = max(max_distance, n - 1 - c[-1])
+    
+    # Calculate the maximum distance between two adjacent space stations
+    for i in range(1, len(c)):
+        distance = (c[i] - c[i-1]) // 2
+        max_distance = max(max_distance, distance)
+    
+    return max_distance
+
+
+print(flatlandSpaceStations(n, c))
 
 
 
