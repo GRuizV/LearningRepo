@@ -543,9 +543,9 @@ but at the core, the solution was the same.
 
 "Flatland Space Stations"
 
-# Input
-n = 5
-c = [0, 4]
+# # Input
+# n = 5
+# c = [0, 4]
 
 
 # # My approach
@@ -591,30 +591,77 @@ c = [0, 4]
 
 
 
-# ChatGPTs Solution
+# # ChatGPTs Solution
 
-def flatlandSpaceStations(n, c):
+# def flatlandSpaceStations(n, c):
 
-    # Sort the list of space station locations
-    c.sort()
+#     # Sort the list of space station locations
+#     c.sort()
     
-    max_distance = 0
+#     max_distance = 0
     
-    # Handle the first city to the first space station
-    max_distance = c[0]
+#     # Handle the first city to the first space station
+#     max_distance = c[0]
     
-    # Handle the last city to the last space station
-    max_distance = max(max_distance, n - 1 - c[-1])
+#     # Handle the last city to the last space station
+#     max_distance = max(max_distance, n - 1 - c[-1])
     
-    # Calculate the maximum distance between two adjacent space stations
-    for i in range(1, len(c)):
-        distance = (c[i] - c[i-1]) // 2
-        max_distance = max(max_distance, distance)
+#     # Calculate the maximum distance between two adjacent space stations
+#     for i in range(1, len(c)):
+#         distance = (c[i] - c[i-1]) // 2
+#         max_distance = max(max_distance, distance)
     
-    return max_distance
+#     return max_distance
+
+# print(flatlandSpaceStations(n, c))
 
 
-print(flatlandSpaceStations(n, c))
+
+
+"Fair Rations"
+
+# B = [2, 3, 4, 5, 6]
+# # B = [4,5,6,7]
+# # B = [5,6,8,7]
+
+# odds = [x for x in B if x%2 != 0]
+# loaves = int()
+
+# # print(odds)
+
+
+# if len(odds)%2 != 0:
+#     print('NO')
+    
+
+# else:
+#     for i in range(len(B)):
+
+#         if B[i]%2 == 0:
+#             continue
+
+#         else:            
+#             B[i] += 1 
+#             B[i+1] += 1
+#             loaves += 2
+
+
+# print(loaves)
+
+'This one went smoothly, Done!'
+
+
+
+
+"xxx"        
+
+    
+
+        
+
+
+
+
 
 
 
