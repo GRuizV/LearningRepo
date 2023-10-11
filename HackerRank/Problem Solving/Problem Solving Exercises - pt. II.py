@@ -653,12 +653,42 @@ but at the core, the solution was the same.
 
 
 
-"xxx"        
+"Cavity Map"        
 
-    
+# grid = ['1112', '1912', '1892', '1234']
 
+# # 1 1 1 2
+# # 1 9 1 2
+# # 1 8 9 2
+# # 1 2 3 4
+
+# grid = [[int(x) for x in elem] for elem in grid]
+# cavities = list()
+
+# for row in range(1, len(grid)-1):
+
+#     for col in range(1, len(grid[row])-1):
+
+#         cell = grid[row][col]
+#         group = (grid[row][col-1], grid[row][col+1], grid[row-1][col], grid[row+1][col])
         
+#         if 'X' not in group and cell > max(group):
+#             grid[row][col] = 'X'
 
+#         else:
+#             continue
+
+# grid = [''.join(str(x) for x in row) for row in grid]
+
+# for i in grid:
+#     print(i)
+
+'This one also went smoothly, Done!'
+
+
+
+
+"xxx" 
 
 
 
