@@ -8,59 +8,12 @@ class MaxHeap:
         self.heap = []
 
 
-    def _index_handler(self, index):
-
-        if index > (self.heap_len()-1) or index < -self.heap_len():
-            raise IndexError('Index out of range')
-        
-        # converting the index into a positive index
-        if index < 0: 
-
-            norm_index = range(self.heap_len())
-            inv_index = range(-len(norm_index),0)
-            dict_index = {k:v for k,v in zip(inv_index, norm_index)}
-
-            return dict_index[index]
-
-        else:
-
-            return index   
-
-
-    def _heapify_up(self, index):
-
-        parent_index = (index - 1) // 2
-
-        while parent_index >= 0 and self.heap[index] > self.heap[parent_index]:
-
-            self.heap[index], self.heap[parent_index] = self.heap[parent_index], self.heap[index]
-
-            index = parent_index
-            parent_index = (index - 1) // 2
-
-
-    def _heapify_down(self, index):
-
-        left_child_index = 2 * index + 1
-        right_child_index = 2 * index + 2
-        largest = index
-
-        if left_child_index < len(self.heap) and self.heap[left_child_index] > self.heap[largest]:
-            largest = left_child_index
-
-        if right_child_index < len(self.heap) and self.heap[right_child_index] > self.heap[largest]:
-            largest = right_child_index
-
-        if largest != index:
-            self.heap[index], self.heap[largest] = self.heap[largest], self.heap[index]
-            self._heapify_down(largest)
-
+    
 
     def insert(self, value):
 
         self.heap.append(value)
         self._heapify_up(len(self.heap) - 1)
-
 
     def extract_max(self):
 
@@ -75,7 +28,6 @@ class MaxHeap:
             self._heapify_down(0)
         
         return max_value
-
 
     def find_min(self):
 
@@ -116,14 +68,11 @@ class MaxHeap:
 
         return min_val
 
-
     def heap_len(self):
         return len(self.heap)
 
-
     def display(self):
         print(self.heap)
-
 
     def delete(self, index):
 
@@ -158,8 +107,7 @@ class MaxHeap:
 
         else:
             self._heapify_down(ind)
-      
-
+    
     def pop(self):
         
         if not self.heap:
@@ -169,7 +117,6 @@ class MaxHeap:
         self.heap = self.heap[:-1]
 
         return popped
-
 
     def display_heap(self):
         
@@ -189,12 +136,61 @@ class MaxHeap:
 
         for h in range(height):
 
-            #This below calculation brought me confusion, byt my conclusion is that it represents the number of nodes
+            #This below calculation brought me confusion, but my conclusion is that it represents the number of nodes
             #at the end of the heap if the curren level where the lvl 0, i.e. each node in the level act as the root
             #from there, that the in lvl 0: is 8, in lvl 1: is 4, ... lvl 4: is 1
             below = 2 ** (height - h - 1)
             field = (2 * below - 1) * width
             print(gap.join(prepare(e, field) for e in level(self.heap, h)))
+
+
+
+
+    def _index_handler(self, index):
+
+            if index > (self.heap_len()-1) or index < -self.heap_len():
+                raise IndexError('Index out of range')
+            
+            # converting the index into a positive index
+            if index < 0: 
+
+                norm_index = range(self.heap_len())
+                inv_index = range(-len(norm_index),0)
+                dict_index = {k:v for k,v in zip(inv_index, norm_index)}
+
+                return dict_index[index]
+
+            else:
+
+                return index   
+
+    def _heapify_up(self, index):
+
+        parent_index = (index - 1) // 2
+
+        while parent_index >= 0 and self.heap[index] > self.heap[parent_index]:
+
+            self.heap[index], self.heap[parent_index] = self.heap[parent_index], self.heap[index]
+
+            index = parent_index
+            parent_index = (index - 1) // 2
+
+    def _heapify_down(self, index):
+
+        left_child_index = 2 * index + 1
+        right_child_index = 2 * index + 2
+        largest = index
+
+        if left_child_index < len(self.heap) and self.heap[left_child_index] > self.heap[largest]:
+            largest = left_child_index
+
+        if right_child_index < len(self.heap) and self.heap[right_child_index] > self.heap[largest]:
+            largest = right_child_index
+
+        if largest != index:
+            self.heap[index], self.heap[largest] = self.heap[largest], self.heap[index]
+            self._heapify_down(largest)
+
 
 
 
@@ -206,59 +202,12 @@ class MinHeap:
         self.heap = []
 
 
-    def _index_handler(self, index):
-
-        if index > (self.heap_len()-1) or index < -self.heap_len():
-            raise IndexError('Index out of range')
-        
-        # converting the index into a positive index
-        if index < 0: 
-
-            norm_index = range(self.heap_len())
-            inv_index = range(-len(norm_index),0)
-            dict_index = {k:v for k,v in zip(inv_index, norm_index)}
-
-            return dict_index[index]
-
-        else:
-
-            return index   
-
-
-    def _heapify_up(self, index):
-
-        parent_index = (index - 1) // 2
-
-        while parent_index >= 0 and self.heap[index] < self.heap[parent_index]:
-
-            self.heap[index], self.heap[parent_index] = self.heap[parent_index], self.heap[index]
-
-            index = parent_index
-            parent_index = (index - 1) // 2
-
-
-    def _heapify_down(self, index):
-
-        left_child_index = 2 * index + 1
-        right_child_index = 2 * index + 2
-        smallest = index
-
-        if left_child_index < len(self.heap) and self.heap[left_child_index] < self.heap[smallest]:
-            smallest = left_child_index
-
-        if right_child_index < len(self.heap) and self.heap[right_child_index] < self.heap[smallest]:
-            smallest = right_child_index
-
-        if smallest != index:
-            self.heap[index], self.heap[smallest] = self.heap[smallest], self.heap[index]
-            self._heapify_down(smallest)
 
 
     def insert(self, value):
 
         self.heap.append(value)
         self._heapify_up(len(self.heap) - 1)
-
 
     def extract_min(self):
 
@@ -273,7 +222,6 @@ class MinHeap:
             self._heapify_down(0)
         
         return min_value
-
 
     def find_max(self):
 
@@ -314,14 +262,11 @@ class MinHeap:
 
         return max_val
 
-
     def heap_len(self):
         return len(self.heap)
 
-
     def display(self):
         print(self.heap)
-
 
     def delete(self, index):
 
@@ -356,8 +301,7 @@ class MinHeap:
 
         else:
             self._heapify_down(ind)
-      
-
+    
     def pop(self):
         
         if not self.heap:
@@ -367,7 +311,6 @@ class MinHeap:
         self.heap = self.heap[:-1]
 
         return popped
-
 
     def display_heap(self):
         
@@ -393,6 +336,54 @@ class MinHeap:
             below = 2 ** (height - h - 1)
             field = (2 * below - 1) * width
             print(gap.join(prepare(e, field) for e in level(self.heap, h)))
+
+
+
+
+    def _index_handler(self, index):
+
+        if index > (self.heap_len()-1) or index < -self.heap_len():
+            raise IndexError('Index out of range')
+        
+        # converting the index into a positive index
+        if index < 0: 
+
+            norm_index = range(self.heap_len())
+            inv_index = range(-len(norm_index),0)
+            dict_index = {k:v for k,v in zip(inv_index, norm_index)}
+
+            return dict_index[index]
+
+        else:
+
+            return index   
+
+    def _heapify_up(self, index):
+
+        parent_index = (index - 1) // 2
+
+        while parent_index >= 0 and self.heap[index] < self.heap[parent_index]:
+
+            self.heap[index], self.heap[parent_index] = self.heap[parent_index], self.heap[index]
+
+            index = parent_index
+            parent_index = (index - 1) // 2
+
+    def _heapify_down(self, index):
+
+        left_child_index = 2 * index + 1
+        right_child_index = 2 * index + 2
+        smallest = index
+
+        if left_child_index < len(self.heap) and self.heap[left_child_index] < self.heap[smallest]:
+            smallest = left_child_index
+
+        if right_child_index < len(self.heap) and self.heap[right_child_index] < self.heap[smallest]:
+            smallest = right_child_index
+
+        if smallest != index:
+            self.heap[index], self.heap[smallest] = self.heap[smallest], self.heap[index]
+            self._heapify_down(smallest)
 
 
 
