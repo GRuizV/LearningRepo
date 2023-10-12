@@ -34,39 +34,25 @@ class BinarySearchTree:
         self._preorder_traversal(self.root, result)
         return result
 
-    def display_tree(self):
-
-
-        '''
-        After checking if the inserting operation was working as expected, next thing is
-        to make a function that collects the nodes and its childs by level to pass it over to
-        this display_tree function.
-        '''
+    def pretty_print_bst(self, node, prefix="", is_left=True):
+    
+        if not node:
+            node = self.root
         
-        bst = self.preorder_traversal()
+        if not node:
+            print('Empty Tree')
+            return
 
-        #This stands for the index of the first node of each level
-        first = lambda h: 2**h - 1      # H stands for level height
 
-        #This stands for the index of the last node of each level
-        last = lambda h: first(h + 1)
+        if node.right is not None:
+            self.pretty_print_bst(node.right, prefix + ("│   " if is_left else "    "), False)
 
-        level = lambda tree, h: tree[first(h):last(h)]
-        prepare = lambda e, field: str(e).center(field)
+        print(prefix + ("└── " if is_left else "┌── ") + str(node.key))
 
-        width = max(len(str(e)) for e in bst)
+        if node.left is not None:
+            self.pretty_print_bst(node.left, prefix + ("    " if is_left else "│   "), True)
 
-        height = int(log(len(bst), 2)) + 1    
-        gap = ' ' * width
 
-        for h in range(height):
-
-            #This below calculation brought me confusion, but my conclusion is that it represents the number of nodes
-            #at the end of the heap if the curren level where the lvl 0, i.e. each node in the level act as the root
-            #from there, that the in lvl 0: is 8, in lvl 1: is 4, ... lvl 4: is 1
-            below = 2 ** (height - h - 1)
-            field = (2 * below - 1) * width
-            print(gap.join(prepare(e, field) for e in level(bst, h)))
 
 
 
@@ -109,9 +95,6 @@ class BinarySearchTree:
             result.append(root.key)
             self._preorder_traversal(root.left, result)
             self._preorder_traversal(root.right, result)
-
-        
-
 
 
 
