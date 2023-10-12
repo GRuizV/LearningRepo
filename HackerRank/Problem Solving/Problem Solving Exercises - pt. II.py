@@ -688,13 +688,27 @@ but at the core, the solution was the same.
 
 
 
-"xxx" 
+"Manasa and Stones"
 
+# n = 3
+# a = 1
+# b = 2
 
+# possibilities = list(itertools.combinations_with_replacement((a,b),r=n-1))
 
+# print(possibilities)
+# print()
 
+# possibilities = sorted(map(sum, possibilities))
 
+# result = []
 
+# [result.append(x) for x in possibilities if x not in result]
+
+# print(result)
+# print()
+
+# 'Done!'
 
 
 # '-xxx- HackerRank Problem Solving Challenge done'
