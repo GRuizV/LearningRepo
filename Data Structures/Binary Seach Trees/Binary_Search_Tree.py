@@ -20,7 +20,7 @@ class BinarySearchTree:
         self.root = self._insert(self.root, key)
 
     def search(self, key):
-        return self.root._search(self.root, key)
+        return self._search(self.root, key)
 
     def inorder_traversal(self):
         
@@ -52,7 +52,27 @@ class BinarySearchTree:
         if node.left is not None:
             self.pretty_print_bst(node.left, prefix + ("    " if is_left else "│   "), True)
 
+    def find_min(self, node):
 
+        current = node
+
+        while current.left is not None:
+            current = current.left
+        
+        return current.key
+
+    def find_max(self, node):
+
+        current = node
+
+        while current.right is not None:
+            current = current.right
+
+        return current.key
+
+    def delete(self, key):
+
+        self.root = self._delete(self.root, key)
 
 
 
@@ -76,9 +96,9 @@ class BinarySearchTree:
             return root
         
         if key < root.key:
-            return root.left._search(root.left, key)
+            return self._search(root.left, key)
         
-        return root.right._search(root.right, key)
+        return self._search(root.right, key)
 
     def _inorder_traversal(self, root, result):
 
@@ -96,6 +116,36 @@ class BinarySearchTree:
             self._preorder_traversal(root.left, result)
             self._preorder_traversal(root.right, result)
 
+    def _delete(self, root, key):
+
+        if root is None:
+            return root
+        
+        if key < root.key:
+            root.left = self._delete(root.left, key)
+        
+        elif key > root.key:
+            root.right = self._delete(root.right, key)
+
+        else:
+
+            # Case 1 & 2: Node with only one child or no child
+
+            if root.left is None:
+                return root.right
+            
+            elif root.right is None:
+                return root.left
+            
+
+            # Case 3: Node with two children: Get the in-order successor (Min value or the right subtree)
+            root.key = self.find_min(root.right)
+
+            # Finally, delete the in-order successor
+
+            root.right = self._delete(root.right, root.key)
+
+        return root
 
 
 
