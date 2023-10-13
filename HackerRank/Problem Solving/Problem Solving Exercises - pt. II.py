@@ -713,7 +713,78 @@ but at the core, the solution was the same.
 
 
 
-"xxx"
+"The Grid Search"
+
+
+
+# My approach:
+def index_caller(li, val):
+
+    occur = list()
+
+    try:
+        while True:
+            index = li.index(val)
+            occur.append(index)
+            li = li[index+1:]
+    
+    except ValueError:
+        pass
+
+    return occur
+
+
+G = ['7283455864', '6731158619', '8988242643', '3830589324', '2229505813', '5633845374', '6473530293', '7053106601', '0834282956', '4607924137']
+P = ['9505', '3845', '3530']
+
+
+# 7 2 8 3 4 5 5 8 6 4
+# 6 7 3 1 1 5 8 6 1 9
+# 8 9 8 8 2 4 2 6 4 3
+# 3 8 3 0 5 8 9 3 2 4
+# 2 2 2 9 5 0 5 8 1 3
+# 5 6 3 3 8 4 5 3 7 4
+# 6 4 7 3 5 3 0 2 9 3
+# 7 0 5 3 1 0 6 6 0 1
+# 0 8 3 4 2 8 2 9 5 6
+# 4 6 0 7 9 2 4 1 3 7
+G = [ [int(x) for x in elem] for elem in G ]
+
+# 9 5 0 5
+# 3 8 4 5
+# 3 5 3 0
+P = [ [int(x) for x in elem] for elem in P ]
+
+res = 'NO'
+
+for i in range(len(G)-len(P) + 1):    
+            
+    if P[0][0] in G[i][: len(G[0])-len(P[0]) + 1 ]:
+
+        occur = [i for i,v in enumerate(G[i][: len(G[0])-len(P[0]) + 1 ]) if v == P[0][0]]
+        # occur = index_caller(G[i][: len(G[0])-len(P[0]) + 1 ], P[0][0] )
+
+        for j in occur:
+
+            sample = [G[i+x][j:j+len(P[0])] for x in range(len(P))]
+
+            if sample == P:
+                print('Found It!')
+                break
+
+
+'''
+    While I thought my solution without the auxiliary function 'index_caller' may be a good idea
+    turns out, my first solution with the indexes called by a listcomp was better, actually worked 94% of times
+    and the other 6% was due to time exceeding the limits, so to go on, optimizations must be made:
+
+        - I would start by checking if there's anything better than the two comprehensions at the begining.
+'''
+
+
+
+
+
 
 
 # '-xxx- HackerRank Problem Solving Challenge done'
