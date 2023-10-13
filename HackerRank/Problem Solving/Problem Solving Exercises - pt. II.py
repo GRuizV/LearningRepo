@@ -1,5 +1,7 @@
 import math
 import itertools
+import collections
+import random
 
 
 'Encryption'
@@ -787,13 +789,23 @@ but at the core, the solution was the same.
 
 
 
-"xxx"
+"Happy Ladybugs"
+
+b = 'DD__FQ_QQF'
+
+print(len(b))
+
+print(collections.Counter(b))
 
 
+'''
+    if count(char) that is non '_' is == 1, NO
+    if no '_' and any char is not at side of the same letter, NO
 
 
+    if all '_', YES
 
-
+'''
 
 # '-xxx- HackerRank Problem Solving Challenge done'
 
