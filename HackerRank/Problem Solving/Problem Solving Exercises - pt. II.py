@@ -856,45 +856,32 @@ Observations
 
 "Strange Counter"
 
-t = 4
+t = 22
+
 time = 1
 value = 3
-loop = 1
 
-while True:
-
-    if time == t:
-        break
-
-    value -= 1
-    time += 1
-
-    if value == 0:
-        loop += 1
-        value = 3**loop
+last_value = int()
+last_time = int()
 
 
-# last, result = int(), int()
-
-# while time < t:
-
-#     last = time
-#     time += value
-#     value *= 2
-
-# if (t-1) % 3 != 0:
-#     value = time - last
-#     value = value - (t - last)
+'3'
+while time < t:
+    last_value = value
+    value *= 2
+    last_time = time
+    time += value - last_value
 
 
-print(value)
+if time == t:
+    print(value)
+
+else:
+    result = last_value - (t-last_time)
+    print(result)
 
 
-
-
-
-
-
+'Done!'
 
 
 
