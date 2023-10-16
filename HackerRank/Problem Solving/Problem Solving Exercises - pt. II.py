@@ -854,7 +854,47 @@ Observations
 
 
 
-"xxx"
+"Strange Counter"
+
+t = 4
+time = 1
+value = 3
+loop = 1
+
+while True:
+
+    if time == t:
+        break
+
+    value -= 1
+    time += 1
+
+    if value == 0:
+        loop += 1
+        value = 3**loop
+
+
+# last, result = int(), int()
+
+# while time < t:
+
+#     last = time
+#     time += value
+#     value *= 2
+
+# if (t-1) % 3 != 0:
+#     value = time - last
+#     value = value - (t - last)
+
+
+print(value)
+
+
+
+
+
+
+
 
 
 
