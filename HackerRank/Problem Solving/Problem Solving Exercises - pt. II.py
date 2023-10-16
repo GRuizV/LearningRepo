@@ -791,21 +791,72 @@ but at the core, the solution was the same.
 
 "Happy Ladybugs"
 
-b = 'DD__FQ_QQF'
+# b = 'G'
 
-print(len(b))
+# # Counter({'_': 3, 'Q': 3, 'D': 2, 'F': 2})
+# dic = collections.Counter(b)
 
-print(collections.Counter(b))
+# def already_happy(string):
 
+#     test = list()
+#     if len(string) > 1:
+#         for i, v in enumerate(string):
+
+#             if v != '_':
+#                 if i == 0:
+#                     test.append(True) if string[i+1] == v else test.append(False)
+
+#                 elif i == len(string)-1:
+#                     test.append(True) if string[i-1] == v else test.append(False)
+
+#                 else:
+#                     test.append(True) if string[i+1] == v or string[i-1] == v else test.append(False)
+            
+#         return all(test)
+
+
+# if already_happy(b):
+#     print('YES')
+
+# else:
+
+#     lady_bugs_with_more_than_one = [x for x in dic if dic[x] != 1 and x != '_']
+#     dict_wo_undr = [x for x in dic if x != '_'] 
+    
+#     if len(lady_bugs_with_more_than_one) == len(dict_wo_undr) and dic['_'] > 0:
+#         print('YES')
+    
+#     else:
+#         print('NO')
+
+
+
+
+# # Case Generator to observe
+# #   Case 1: RYR_YYXYRX
+# a = ['X','R','Y', '_']
+# li = ''.join([a[random.randint(0,3)] for _ in range(8)])
+
+# print(li)
 
 '''
-    if count(char) that is non '_' is == 1, NO
-    if no '_' and any char is not at side of the same letter, NO
+Observations
 
+    No singletons: characters different from '_'   /:   if count(char) that is non '_' is == 1, NO
+    No already arrange without any spaces (no '_')   /:   if no '_' and any char is not at side of the same letter, NO
 
     if all '_', YES
 
 '''
+
+'It worked! Done!'
+
+
+
+
+"xxx"
+
+
 
 # '-xxx- HackerRank Problem Solving Challenge done'
 
