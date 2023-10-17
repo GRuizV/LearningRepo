@@ -856,32 +856,71 @@ Observations
 
 "Strange Counter"
 
-t = 22
+# t = 22
 
-time = 1
-value = 3
+# time = 1
+# value = 3
 
-last_value = int()
-last_time = int()
-
-
-'3'
-while time < t:
-    last_value = value
-    value *= 2
-    last_time = time
-    time += value - last_value
+# last_value = int()
+# last_time = int()
 
 
-if time == t:
-    print(value)
+# '3'
+# while time < t:
+#     last_value = value
+#     value *= 2
+#     last_time = time
+#     time += value - last_value
 
-else:
-    result = last_value - (t-last_time)
-    print(result)
+
+# if time == t:
+#     print(value)
+
+# else:
+#     result = last_value - (t-last_time)
+#     print(result)
 
 
 'Done!'
+
+
+
+
+"Absolute Permutation"
+
+# n = 10
+# k = 0
+
+# def absolutePermutation(n, k):
+    
+#     if k == 0:
+#         return [x for x in range(1, n+1)]
+
+#     elif n % (2*k) != 0:
+#         return -1
+    
+#     else: 
+#         abs_permutation = list()
+        
+#         for i in range(0, int(n/(2*k))):
+            
+#             for j in range(1, (2*k)+1):
+
+#                 if j <= k:
+#                     abs_permutation.append(((i*(k*2))+j)+k)
+#                 else:
+#                     abs_permutation.append(((i*(k*2))+j)-k)
+        
+#         return abs_permutation
+
+
+# print(absolutePermutation(n,k))
+
+
+
+
+"xxx"
+
 
 
 
