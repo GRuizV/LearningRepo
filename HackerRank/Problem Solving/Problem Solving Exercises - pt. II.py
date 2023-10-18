@@ -919,7 +919,104 @@ Observations
 
 
 
-"xxx"
+"The Bomberman Game"
+
+
+n = 2
+
+# .......
+# ...O...
+# ....O..
+# .......
+# OO.....
+# OO.....
+
+grid = ['.......', '...O...', '....O..','.......', 'OO.....', 'OO.....']
+
+bombs = [(i,j) for i in range(len(grid)) for j in range(len(grid[i])) if grid[i][j] == 'O']
+
+
+bombs = list()
+
+for i in range(len(grid)):
+
+    for j in range(len(grid[i])):
+
+        if grid[i][j] == 'O':
+
+            if i == 0 and j == 0:
+                bombs.extend([(i,j), (i+1,j), (i,j+1)])
+            
+            elif i == 0 and j < len(grid[0])-1:
+                bombs.extend([(i,j), (i+1,j), (i,j+1), (i,j-1)])
+            
+            elif i == 0 and j == len(grid[0])-1:
+                bombs.extend([(i,j), (i+1,j), (i,j-1)])
+
+            elif i < len(grid)-1 and j == 0:
+                bombs.extend([(i,j), (i+1,j), (i-1,j), (i,j+1)])
+
+            elif i == len(grid)-1 and j == 0:
+                bombs.extend([(i,j), (i-1,j), (i,j+1)])
+            
+            elif i == len(grid)-1 and j < len(grid[0])-1:
+                bombs.extend([(i,j), (i-1,j), (i,j+1), (i,j-1)])
+            
+            elif i == len(grid)-1 and j == len(grid[0])-1:
+                bombs.extend([(i,j), (i-1,j), (i,j-1)])
+            
+            elif i < len(grid)-1 and j < len(grid[0])-1:
+                bombs.extend([(i,j), (i-1,j), (i+1,j), (i,j+1), (i,j-1)])
+
+
+
+# ...#...
+# ..###..
+# ...###.
+# ##..#..
+# ###....
+# ###....
+for i in range(len(grid)):
+
+    for j in range(len(grid[i])):
+
+        if (i,j) in bombs:
+            grid[i] = grid[i][:j]+'#'+grid[i][j+1:]
+
+
+
+for i in range(len(grid)):
+
+    grid[i] = grid[i].replace('.','O')
+    grid[i] = grid[i].replace('#','.')
+ 
+
+
+for i in grid:
+    print(i)
+
+
+
+
+
+# for i in range(1, n+1):
+
+#     if n % 3 == 1:
+
+#         bombs = [(i,j) for i in range(len(grid)) for j in range(len(grid[i])) if grid[i][j] == 'O']
+
+
+#     elif n % 3 == 2:
+        
+#         grid = ['O' * len(grid[0])] * len(grid)
+
+#     else:
+        
+#         grid = ['O' * len(grid[0])] * len(grid)
+
+
+# for i in grid:
+#     print(i)
 
 
 
