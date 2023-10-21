@@ -703,4 +703,25 @@ The first recursion problem I review:
 
 
 
-'xxxx'
+'Accesing local variables within a function'
+
+#     # with Python 3.12, a local() function called inside a function will return the local variables in a dict
+
+# def foo():
+
+#     x = str()
+#     y = int()
+#     z = [1,2,3]
+#     w = dict()
+
+#     print(locals())
+
+# foo()   # {'x': '', 'y': 0, 'z': [1, 2, 3], 'w': {}}
+
+
+
+
+
+
+
+'xxx'
