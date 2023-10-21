@@ -1,5 +1,6 @@
 from timeit import default_timer as timer
 import random
+import itertools
 
 
 ''' Prime numbers' sieve '''
@@ -702,6 +703,8 @@ The first recursion problem I review:
 
 
 
+'Comming from Python 3.12'
+
 
 'Accesing local variables within a function'
 
@@ -724,4 +727,22 @@ The first recursion problem I review:
 
 
 
+'Batched method in itertools'
+
+# li = [1,2,3,4,5,6,7,8,9,10,11]
+
+# batches = itertools.batched(li,3)
+
+# # [(1, 2, 3), (4, 5, 6), (7, 8, 9), (10, 11)]
+# print(list(batches))
+
+
+
+
+
+
+
 'xxx'
+
+
+
