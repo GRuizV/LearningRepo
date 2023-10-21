@@ -2,6 +2,7 @@ import math
 import itertools
 import collections
 import random
+import re
 
 
 'Encryption'
@@ -943,172 +944,184 @@ grid = [x for x in a.split('\n')]
 
 # My Approach
 
-# def bombs_effect_map(grid):
-
+def bombs_effect_map(grid):
     
-#     bombs_effect = list()
+    bombs_effect = list()
 
-#     for i in range(len(grid)):
+    for i in range(len(grid)):
 
-#         for j in range(len(grid[i])):
+        for j in range(len(grid[i])):
 
-#             if grid[i][j] == 'O':
+            if grid[i][j] == 'O':
                 
-#                 #Top three cases: up-left corner, up mid, up-right corner
-#                 if i == 0 and j == 0:
-#                     bombs_effect.extend([(i,j), (i+1,j), (i,j+1)])
+                #Top three cases: up-left corner, up mid, up-right corner
+                if i == 0 and j == 0:
+                    bombs_effect.extend([(i,j), (i+1,j), (i,j+1)])
                 
-#                 elif i == 0 and j < len(grid[0])-1:
-#                     bombs_effect.extend([(i,j), (i+1,j), (i,j+1), (i,j-1)])
+                elif i == 0 and j < len(grid[0])-1:
+                    bombs_effect.extend([(i,j), (i+1,j), (i,j+1), (i,j-1)])
                 
-#                 elif i == 0 and j == len(grid[0])-1:
-#                     bombs_effect.extend([(i,j), (i+1,j), (i,j-1)])
+                elif i == 0 and j == len(grid[0])-1:
+                    bombs_effect.extend([(i,j), (i+1,j), (i,j-1)])
 
 
-#                 #Middle three cases: mid-left corner, mid-mid, mid-right
-#                 elif i < len(grid)-1 and j == 0:
-#                     bombs_effect.extend([(i,j), (i+1,j), (i-1,j), (i,j+1)])
+                #Middle three cases: mid-left corner, mid-mid, mid-right
+                elif i < len(grid)-1 and j == 0:
+                    bombs_effect.extend([(i,j), (i+1,j), (i-1,j), (i,j+1)])
                 
-#                 elif i < len(grid)-1 and j < len(grid[0])-1:
-#                     bombs_effect.extend([(i,j), (i-1,j), (i+1,j), (i,j+1), (i,j-1)])
+                elif i < len(grid)-1 and j < len(grid[0])-1:
+                    bombs_effect.extend([(i,j), (i-1,j), (i+1,j), (i,j+1), (i,j-1)])
 
-#                 elif i < len(grid)-1 and j == len(grid[0])-1:
-#                     bombs_effect.extend([(i,j), (i-1,j), (i+1,j), (i,j-1)])
+                elif i < len(grid)-1 and j == len(grid[0])-1:
+                    bombs_effect.extend([(i,j), (i-1,j), (i+1,j), (i,j-1)])
 
 
 
-#                 #Bottom three cases: down-left corner, down-mid, down-right
-#                 elif i == len(grid)-1 and j == 0:
-#                     bombs_effect.extend([(i,j), (i-1,j), (i,j+1)])
+                #Bottom three cases: down-left corner, down-mid, down-right
+                elif i == len(grid)-1 and j == 0:
+                    bombs_effect.extend([(i,j), (i-1,j), (i,j+1)])
                 
-#                 elif i == len(grid)-1 and j < len(grid[0])-1:
-#                     bombs_effect.extend([(i,j), (i-1,j), (i,j+1), (i,j-1)])
+                elif i == len(grid)-1 and j < len(grid[0])-1:
+                    bombs_effect.extend([(i,j), (i-1,j), (i,j+1), (i,j-1)])
                 
-#                 elif i == len(grid)-1 and j == len(grid[0])-1:
-#                     bombs_effect.extend([(i,j), (i-1,j), (i,j-1)])
+                elif i == len(grid)-1 and j == len(grid[0])-1:
+                    bombs_effect.extend([(i,j), (i-1,j), (i,j-1)])
                 
 
-#     grid = ['.' * len(grid[0])] * len(grid)
+    grid = ['.' * len(grid[0])] * len(grid)
 
-#     for i in range(len(grid)):
+    for i in range(len(grid)):
 
-#         for j in range(len(grid[i])):
+        for j in range(len(grid[i])):
 
-#             if (i,j) not in bombs_effect:
-#                 grid[i] = grid[i][:j]+'O'+grid[i][j+1:]
+            if (i,j) not in bombs_effect:
+                grid[i] = grid[i][:j]+'O'+grid[i][j+1:]
 
-#     return grid       
+    return grid       
 
 
-# def bomberMan(n, grid):
+def bomberMan(n, grid):
 
-#     if n == 0:
-#         return grid
+    if n == 0:
+        return grid
     
     
-#     elif n % 3 == 1:
+    elif n % 3 == 1:
 
-#         if n % 2 == 0:
-#             return ['O'*len(grid[0])]*len(grid)
+        if n % 2 == 0:
+            return ['O'*len(grid[0])]*len(grid)
         
-#         else:
-#             if n % 12 == 1:
-#                 return grid
+        else:
+            if n % 12 == 1:
+                return bombs_effect_map(bombs_effect_map(grid))
             
-#             elif n % 12 == 7:
-#                 return bombs_effect_map(grid)
+            elif n % 12 == 7:
+                return bombs_effect_map(grid)
     
 
-#     elif n % 3 == 0:
+    elif n % 3 == 0:
          
-#         if n % 2 == 0:
-#             return ['O'*len(grid[0])]*len(grid)
+        if n % 2 == 0:
+            return ['O'*len(grid[0])]*len(grid)
         
-#         else:
-#             if n % 12 == 3:
-#                 return bombs_effect_map(grid)
+        else:
+            if n % 12 == 3:
+                return bombs_effect_map(grid)
             
-#             elif n % 12 == 9:
-#                 return grid
+            elif n % 12 == 9:
+                return bombs_effect_map(bombs_effect_map(grid))
             
 
-#     elif n % 3 == 2:
+    elif n % 3 == 2:
          
-#         if n % 2 == 0:
-#             return ['O'*len(grid[0])]*len(grid)
+        if n % 2 == 0:
+            return ['O'*len(grid[0])]*len(grid)
         
-#         else:
-#             if n % 12 == 5:
-#                 return grid
+        else:
+            if n % 12 == 5:
+                return bombs_effect_map(bombs_effect_map(grid))
             
-#             elif n % 11 == 9:
-#                 return bombs_effect_map(grid)
+            elif n % 12 == 11:
+                return bombs_effect_map(grid)
 
-          
 
-# for i in bomberMan(n, grid):
-#     print(i)
 
+
+for i in bomberMan(n, grid):
+    print(i)
 
 
 # # # Reasoning to identify the inner conditionals' condition
 # # # mod 1
 # # a = [1,7,13,19,25,31,37,43]  # Result mod12: [1, 7, 1, 7, 1, 7, 1, 7]
+# # 1: 2xBomberman / 7: BomberMan
 # # #mod 0
 # # b = [3,9,15,21,27,33,39,45,51]  # Result mod12: [3, 9, 3, 9, 3, 9, 3, 9, 3]
+# # 3: Bomberman / 9: 2xBomberMan
 # # #mod 2
 # # c = [5,11,17,23,29,35,41,47,53]  # Result mod12: [5, 11, 5, 11, 5, 11, 5, 11, 5] 
+# # 5: 2xBomberman / 11: BomberMan
 
 # # print(list(map(lambda x: x%12, c)))
 
+
+
+
+
+
+
 '''
-At my best, my solution works 42% of the time and I for real ran out of energy at this point, fuck it!
+At my best, my solution works 46% of the time and I for real ran out of energy at this point, fuck it!
 Tomorrow I am going to study another solution for this problem.
 
     PS: I also think the way the problem was redacted does not give much and lacks clarity to solve it properly.
 
+    20 Oct - Update: I made a misobservation leading me to give the incorrect output, after correcting the timing the efficacy of my solution
+    grew 10%, now being 56% of the time giving the right output in the right time. Now the solution does not run fast enough and that's the rest 
+    of the 44% of cases.
+
 '''
 
 
+print()
 
-# Another Approach
+# # Another Approach
+# def bombs_list(grid):
+#     bombs = []
+#     for i,x in enumerate(grid):        
+#         bombs.extend([(i, m.start(0)) for m in re.finditer(chr(79), x)])
+#     return bombs
 
-
-
-
-
-
-
-
-# '-xxx- HackerRank Problem Solving Challenge done'
-'-Bomberman Game- HackerRank Problem Solving Challenge done'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# def bomberMan2(n, grid):
+#     # Write your code here
+#     if n == 1:
+#         return grid
+        
+#     full_row = chr(79) * len(grid[0])
+#     full_grid = [full_row] * len(grid)
+        
+#     if n % 2 == 0:        
+#         return full_grid
+             
+#     bombs = bombs_list(grid)
+#     for _ in range(2):        
+#         gb = full_grid.copy()        
+#         for j in bombs:
+#             if j[0]-1 >= 0:                
+#                 gb[j[0]-1] = gb[j[0]-1][:j[1]] + '.' + gb[j[0]-1][j[1]+1:]
+#             if j[0]+1 < len(grid):                
+#                 gb[j[0]+1] = gb[j[0]+1][:j[1]] + '.' + gb[j[0]+1][j[1]+1:]
+#             if j[1]+1 < len(grid[0]):                
+#                 gb[j[0]] = gb[j[0]][:j[1]+1] + '.' + gb[j[0]][j[1]+2:]
+#             if j[1]-1 >= 0:                
+#                 gb[j[0]] = gb[j[0]][:j[1]-1] + '.' + gb[j[0]][j[1]:]
+#             gb[j[0]] = gb[j[0]][:j[1]] + '.' + gb[j[0]][j[1]+1:]
+#         if n == 3 or (n-3)%4 == 0:
+#             return gb
+#         bombs = bombs_list(gb)          
+#     return gb
 
 
+# for i in bomberMan2(n, grid):
+#     print(i)
 
