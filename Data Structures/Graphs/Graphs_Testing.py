@@ -1,9 +1,10 @@
-from Graphs_Implementation import AMGraph, ALGraph
+from Graphs_Implementation import WAMGraph, WALGraph, ALGraph
+import collections
 
 
 
 'Adjacency Matrix'
-# am_graph = AMGraph(5)
+# am_graph = WAMGraph(5)
 
 # print(am_graph)
 # print()
@@ -20,7 +21,7 @@ from Graphs_Implementation import AMGraph, ALGraph
 
 
 'Adjacency List'
-# al_graph = ALGraph()
+# al_graph = WALGraph()
 
 # # print(al_graph)
 # # print()
@@ -42,3 +43,23 @@ from Graphs_Implementation import AMGraph, ALGraph
 # print()
 
 # print(al_graph.graph)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

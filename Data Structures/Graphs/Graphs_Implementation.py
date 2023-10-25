@@ -1,7 +1,7 @@
 # wieghted graph implementation using adjacency matrix
 
 
-class AMGraph:
+class WAMGraph:
 
     def __init__(self, num_vertices, undir = True):
 
@@ -49,13 +49,13 @@ class AMGraph:
 
             if self.undir:
                 self.graph[vtx2][vtx1] = 0
-    
 
 
 
 
 
-class ALGraph:
+
+class WALGraph:
 
     def __init__(self, undir=True):
 
@@ -94,4 +94,51 @@ class ALGraph:
 
             if self.undir:
                 self.graph[vtx2] = [(vtx, w) for vtx, w in self.graph[vtx2] if vtx != vtx1 ]
+
+
+
+
+
+
+class ALGraph:
+
+    def __init__(self, undir=True):
+
+        self.graph = dict()
+        self.undir = undir
+
+    def __str__(self):
+        
+        res = ''
+
+        for vtx, neighbors in self.graph.items():
+            res += f'{vtx} -> {neighbors} \n'
+        
+        return res
+
+
+
+    def get_graph(self):
+        return self.graph
+
+    def add_vertex(self, vtx1):
+
+        if vtx1 not in self.graph:
+            self.graph[vtx1] = list()
+
+    def add_edge(self, vtx1, vtx2):
+
+        if vtx2 not in self.graph[vtx1]:
+            self.graph[vtx1].append(vtx2)
+        
+            if self.undir and vtx1 not in self.graph[vtx2]:
+                self.graph[vtx2].append(vtx1)
+    
+    def remove_edge(self,vtx1,vtx2):
+
+        if vtx1 in self.graph and vtx2 in self.graph:
+            self.graph[vtx1] = [vtx for vtx in self.graph[vtx1] if vtx != vtx2 ]
+
+            if self.undir:
+                self.graph[vtx2] = [vtx for vtx in self.graph[vtx2] if vtx != vtx1 ]
 
