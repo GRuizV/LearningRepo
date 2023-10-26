@@ -1,5 +1,6 @@
 from Graphs_Implementation import WAMGraph, WALGraph, ALGraph
 import collections
+import heapq
 
 
 'Topological Sort'
@@ -58,6 +59,61 @@ import collections
 
 
 
+
+"Dijkstra's Algorithm"
+
+def dijkstra(graph, start):
+
+    distances = {vertex: float('inf') for vertex in graph}
+    distances[start] = 0
+    priority_queue = [(0, start)]
+
+    while priority_queue:
+
+        current_distance, current_vertex = heapq.heappop(priority_queue)
+
+        # Ignore outdated entries
+        if current_distance > distances[current_vertex]:
+            continue
+
+
+        for neighbor, weight in graph[current_vertex]:
+
+            distance = current_distance + weight
+
+            if distance < distances[neighbor]:
+
+                heapq.heappush(priority_queue, (distance, neighbor))
+
+
+    return distances
+
+
+
+
+# Graph initialization
+al_graph = ALGraph()
+
+al_graph.graph = {
+
+    "A": [("B", 1),("C", 4)],
+    "B": [("C", 2),("D", 5)],
+    "C": [("D", 1)],
+    "D": []
+
+}
+
+
+graph = al_graph.get_graph()
+start = "A"
+result = dijkstra(graph, start)
+
+
+print(result)
+
+
+
+'The algorithm is not working well, needs a closer look'
 
 
 
