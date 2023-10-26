@@ -16,15 +16,19 @@ def bfs(graph, start):
 
             visited.add(node)
 
-            print(node) # Process the node (you can replace this with your own logic)
+            print(node, end=' ') # Process the node (you can replace this with your own logic)
 
-            # Enqueue unvisited neighbors
-            queue.extend(neighbor for neighbor in graph[node] if neighbor not in visited)
+            # # Enqueue unvisited neighbors
+            for neighbor in graph[node]:
+
+                if neighbor not in visited:
+
+                    queue.extend(neighbor)
 
 
 'The Shortest Path form'
 def shortest_path_bfs(graph, start, end):
-    
+
     visited = set()
     queue = collections.deque([(start, [start])])  # Queue stores a tuple with the current node and the path so far
 
@@ -80,33 +84,78 @@ def shortest_path_bfs(graph, start, end):
 
 'A more complex case'
 
-#Graph Creation
-al_graph = ALGraph(undir=False)
+# #Graph Creation
+# al_graph = ALGraph(undir=False)
 
-al_graph.graph = {
+# al_graph.graph = {
 
-    "Boston": ["New York", "Providence"],
-    "New York": ["Boston", "Philadelphia", "Providence"],
-    "Philadelphia": ["New York", "Las Vegas"],
-    "Providence": ["Boston", "New York", "Hartford"],
-    "Hartford": ["Providence"],
-    "San Francisco": ["Los Angeles", "Seattle"],
-    "Los Angeles": ["San Francisco", "Las Vegas"],
-    "Las Vegas": ["Los Angeles"],
-    "Seattle": ["San Francisco"]
-}
+#     "Boston": ["New York", "Providence"],
+#     "New York": ["Boston", "Philadelphia", "Providence"],
+#     "Philadelphia": ["New York", "Las Vegas"],
+#     "Providence": ["Boston", "New York", "Hartford"],
+#     "Hartford": ["Providence"],
+#     "San Francisco": ["Los Angeles", "Seattle"],
+#     "Los Angeles": ["San Francisco", "Las Vegas"],
+#     "Las Vegas": ["Los Angeles", 'Philadelphia'],
+#     "Seattle": ["San Francisco"]
+# }
 
-print(al_graph)
-
-
+# print(al_graph)
 
 
-graph = al_graph.get_graph()
-start_city = "Boston"
-end_city = "San Francisco"
-path = shortest_path_bfs(graph, start_city, end_city)
 
-if path:
-    print(f"Shortest path from {start_city} to {end_city}: {path}")
-else:
-    print(f"No path found from {start_city} to {end_city}")
+
+# graph = al_graph.get_graph()
+# # start_city = "Boston"
+# # end_city = "San Francisco"
+# # path = shortest_path_bfs(graph, start_city, end_city)
+
+# # if path:
+# #     print(f"Shortest path from {start_city} to {end_city}: {path}")
+# # else:
+# #     print(f"No path found from {start_city} to {end_city}")
+
+# bfs(graph, 'Hartford')
+
+
+
+
+
+
+'A Tree Case'
+
+# # Graph Creation
+# al_graph = ALGraph(undir=False)
+
+# al_graph.graph = {
+
+#     "A": ["B", "C"],
+#     "B": ["D", "E"],
+#     "D": ["H", "I"],
+#     "H": [],
+#     "I": [],
+#     "E": ["J"],
+#     "J": [],
+#     "C": ["F", "G"],
+#     "F": ["K", "L"],
+#     "K": [],
+#     "L": [],
+#     "G": ["M"],
+#     "M": []  
+
+# }
+
+# graph = al_graph.get_graph()
+
+# start = 'A'
+# end = 'K'
+
+#     # Graph traversal
+# print(f"BFS Traversal strating from node: '{start}'")
+# bfs(graph, start)
+
+
+#     # Graph Shortest Path
+# print(f"BFS Shortest Path from {start} to {end}")
+# path = shortest_path_bfs(graph, start, end)
+# print(path)
