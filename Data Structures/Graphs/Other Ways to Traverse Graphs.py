@@ -62,11 +62,11 @@ import heapq
 
 "Dijkstra's Algorithm"
 
-def dijkstra(graph, start):
+def dijkstra(graph, start_vertex):
 
-    distances = {vertex: float('inf') for vertex in graph}
-    distances[start] = 0
-    priority_queue = [(0, start)]
+    distances = {vertex: float('infinity') for vertex in graph}
+    distances[start_vertex] = 0
+    priority_queue = [(0, start_vertex)]
 
     while priority_queue:
 
@@ -76,18 +76,18 @@ def dijkstra(graph, start):
         if current_distance > distances[current_vertex]:
             continue
 
+        if current_vertex in graph:
 
-        for neighbor, weight in graph[current_vertex]:
+            for neighbor, weight in graph[current_vertex]:
 
-            distance = current_distance + weight
+                distance = current_distance + weight
 
-            if distance < distances[neighbor]:
+                if distance < distances.get(neighbor, float('infinity')):
 
-                heapq.heappush(priority_queue, (distance, neighbor))
-
+                    distances[neighbor] = distance
+                    heapq.heappush(priority_queue, (distance, neighbor))
 
     return distances
-
 
 
 
@@ -99,21 +99,23 @@ al_graph.graph = {
     "A": [("B", 1),("C", 4)],
     "B": [("C", 2),("D", 5)],
     "C": [("D", 1)],
-    "D": []
+    
 
 }
 
 
 graph = al_graph.get_graph()
 start = "A"
+
+# print(al_graph)
+
 result = dijkstra(graph, start)
 
 
+# Expected Output: {'A': 0, 'B': 1, 'C': 3, 'D': 4}
 print(result)
 
 
-
-'The algorithm is not working well, needs a closer look'
 
 
 
