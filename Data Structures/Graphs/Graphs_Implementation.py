@@ -102,10 +102,11 @@ class WALGraph:
 
 class ALGraph:
 
-    def __init__(self, undir=True):
+    def __init__(self, undir=True, weighted=True):
 
         self.graph = dict()
         self.undir = undir
+        self.weighted = weighted
 
     def __str__(self):
         
@@ -126,13 +127,13 @@ class ALGraph:
         if vtx1 not in self.graph:
             self.graph[vtx1] = list()
 
-    def add_edge(self, vtx1, vtx2):
+    def add_edge(self, vtx1, vtx2, weight):
 
         if vtx2 not in self.graph[vtx1]:
-            self.graph[vtx1].append(vtx2)
+            self.graph[vtx1].append(vtx2) if self.weighted is False else self.graph[vtx1].append((vtx2, weight))
         
             if self.undir and vtx1 not in self.graph[vtx2]:
-                self.graph[vtx2].append(vtx1)
+                self.graph[vtx2].append(vtx1) if self.weighted is False else self.graph[vtx2].append((vtx1, weight))
     
     def remove_edge(self,vtx1,vtx2):
 
