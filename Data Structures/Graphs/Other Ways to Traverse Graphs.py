@@ -62,33 +62,115 @@ import heapq
 
 "Dijkstra's Algorithm"
 
-def dijkstra(graph, start_vertex):
+# def dijkstra(graph, start_vertex):
 
-    distances = {vertex: float('infinity') for vertex in graph}
-    distances[start_vertex] = 0
-    priority_queue = [(0, start_vertex)]
+#     distances = {vertex: float('infinity') for vertex in graph}
+#     distances[start_vertex] = 0
+#     priority_queue = [(0, start_vertex)]
 
-    while priority_queue:
+#     while priority_queue:
 
-        current_distance, current_vertex = heapq.heappop(priority_queue)
+#         current_distance, current_vertex = heapq.heappop(priority_queue)
 
-        # Ignore outdated entries
-        if current_distance > distances[current_vertex]:
-            continue
+#         # Ignore outdated entries
+#         if current_distance > distances[current_vertex]:
+#             continue
 
-        if current_vertex in graph:
+#         if current_vertex in graph:
 
-            for neighbor, weight in graph[current_vertex]:
+#             for neighbor, weight in graph[current_vertex]:
 
-                distance = current_distance + weight
+#                 distance = current_distance + weight
 
-                if distance < distances.get(neighbor, float('infinity')):
+#                 if distance < distances.get(neighbor, float('infinity')):
 
-                    distances[neighbor] = distance
-                    heapq.heappush(priority_queue, (distance, neighbor))
+#                     distances[neighbor] = distance
+#                     heapq.heappush(priority_queue, (distance, neighbor))
 
-    return distances
+#     return distances
 
+
+
+# # Graph initialization
+# al_graph = ALGraph()
+
+# al_graph.graph = {
+
+#     "A": [("B", 1),("C", 4)],
+#     "B": [("C", 2),("D", 5)],
+#     "C": [("D", 1)],
+    
+
+# }
+
+
+# graph = al_graph.get_graph()
+# start = "A"
+
+# # print(al_graph)
+
+# result = dijkstra(graph, start)
+
+
+# # Expected Output: {'A': 0, 'B': 1, 'C': 3, 'D': 4}
+# print(result)
+
+
+
+
+
+
+"A* Search Algorithm"
+
+def astar(graph, start, goal):
+    # Initialize open and closed sets
+    open_set = []
+    closed_set = set()
+
+    # Create a dictionary to keep track of the best known path to each node
+    g_score = {node: float('inf') for node in graph}
+    g_score[start] = 0
+
+    # Create a dictionary to store the parent node of each node
+    parent = {}
+
+    # Add the starting node to the open set with a priority of 0
+    heapq.heappush(open_set, (0, start))
+
+    while open_set:
+        # Get the node with the lowest f-score from the open set
+        _, current = heapq.heappop(open_set)
+
+        if current == goal:
+            # Reconstruct the path if the goal is reached
+            path = []
+            while current in parent:
+                path.insert(0, current)
+                current = parent[current]
+            path.insert(0, start)
+            return path
+
+        closed_set.add(current)
+
+        for neighbor, cost in graph[current]:
+            if neighbor in closed_set:
+                continue
+
+            tentative_g_score = g_score[current] + cost
+
+            if tentative_g_score < g_score[neighbor]:
+                # This is a better path to the neighbor
+                parent[neighbor] = current
+                g_score[neighbor] = tentative_g_score
+                f_score = g_score[neighbor] + heuristic(neighbor, goal)
+                heapq.heappush(open_set, (f_score, neighbor))
+
+    # No path found
+    return None
+
+def heuristic(node, goal):
+    # This is a simple heuristic; you can modify it for specific problems
+    return 0  # For Dijkstra's algorithm, set it to 0
 
 
 # Graph initialization
@@ -103,20 +185,42 @@ al_graph.graph = {
 
 }
 
+al_graph.graph = {
+    'A': [('B', 1), ('C', 3)],
+    'B': [('D', 2)],
+    'C': [('D', 2)],
+    'D': [('E', 3)],
+    'E': []
+}
+
+
 
 graph = al_graph.get_graph()
 start = "A"
+goal = "E"
+
 
 # print(al_graph)
 
-result = dijkstra(graph, start)
+path = astar(graph, start, goal)
+print(path)
+print()
+
+total_cost = int()
 
 
-# Expected Output: {'A': 0, 'B': 1, 'C': 3, 'D': 4}
-print(result)
+for node in path[:-1]:
+
+    print(graph[node])
+
+    if node == 'A':
+        print(graph[node].index('B'))
 
 
+# if path:
+#     print("Shortest path:", path)
+#     print("Total cost:", sum(graph[node][1] for node in path[:-1]))
 
-
-
+# else:
+#     print("No path found.")
 
