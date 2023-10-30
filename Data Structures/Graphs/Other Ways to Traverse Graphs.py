@@ -217,6 +217,12 @@ for node in path[:-1]:
         print(graph[node].index('B'))
 
 
+'''
+A* Search relatively understood, still needs it complex case and some fixing in pulling the total cost of the path
+
+'''
+
+
 # if path:
 #     print("Shortest path:", path)
 #     print("Total cost:", sum(graph[node][1] for node in path[:-1]))

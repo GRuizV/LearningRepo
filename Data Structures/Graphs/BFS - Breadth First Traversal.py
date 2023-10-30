@@ -18,12 +18,14 @@ def bfs(graph, start):
 
             print(node, end=' ') # Process the node (you can replace this with your own logic)
 
-            # # Enqueue unvisited neighbors
-            for neighbor in graph[node]:
+            # Enqueue unvisited neighbors
+            for neighbor in graph.get(node, []):
 
                 if neighbor not in visited:
 
-                    queue.extend(neighbor)
+                    queue.extend([neighbor])
+    
+    print()
 
 
 'The Shortest Path form'
@@ -58,14 +60,14 @@ def shortest_path_bfs(graph, start, end):
 'Testing'
 
 # #Graph Creation
-# al_graph = ALGraph(undir=False)
+# al_graph = ALGraph(undir=False, weighted=False)
 
 # [al_graph.add_vertex(x) for x in range(1,7)]
 
-# [al_graph.add_edge(1,x) for x in range(2,4)]
-# [al_graph.add_edge(2,x) for x in range(4,6)]
-# al_graph.add_edge(3,6)
-# al_graph.add_edge(5,6)
+# [al_graph.add_edge(1,x, None) for x in range(2,4)]
+# [al_graph.add_edge(2,x, None) for x in range(4,6)]
+# al_graph.add_edge(3,6, None)
+# al_graph.add_edge(5,6, None)
 
 # print(al_graph)
 # print()
@@ -128,21 +130,13 @@ def shortest_path_bfs(graph, start, end):
 # al_graph = ALGraph(undir=False)
 
 # al_graph.graph = {
-
 #     "A": ["B", "C"],
 #     "B": ["D", "E"],
 #     "D": ["H", "I"],
-#     "H": [],
-#     "I": [],
 #     "E": ["J"],
-#     "J": [],
 #     "C": ["F", "G"],
 #     "F": ["K", "L"],
-#     "K": [],
-#     "L": [],
 #     "G": ["M"],
-#     "M": []  
-
 # }
 
 # graph = al_graph.get_graph()
@@ -150,12 +144,13 @@ def shortest_path_bfs(graph, start, end):
 # start = 'A'
 # end = 'K'
 
-#     # Graph traversal
+# # Graph traversal
 # print(f"BFS Traversal strating from node: '{start}'")
 # bfs(graph, start)
+# print()
 
 
-#     # Graph Shortest Path
-# print(f"BFS Shortest Path from {start} to {end}")
+# # Graph Shortest Path
+# print(f"BFS Shortest Path from '{start}' to '{end}'")
 # path = shortest_path_bfs(graph, start, end)
-# print(path)
+# print(' '.join(str(x) for x in path))
