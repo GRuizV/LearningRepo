@@ -33,6 +33,7 @@ def es_dfs(graph, start):
 def rec_dfs(graph, node, visited):
     
     if node not in visited:
+
         visited.add(node)
         print(node, end = ' ')
 
@@ -41,6 +42,7 @@ def rec_dfs(graph, node, visited):
             for neighbor in graph[node]:
 
                 if neighbor not in visited:
+
                     rec_dfs(graph, neighbor, visited)
 
 
@@ -52,44 +54,44 @@ def rec_dfs(graph, node, visited):
 
 'Testing'
 
-#Graph Creation
-al_graph = ALGraph()
+# #Graph Creation
+# al_graph = ALGraph()
 
-al_graph.graph = {
+# al_graph.graph = {
 
-    "A": ["B", "C"],
-    "B": ["D", "E"],
-    "D": ["H", "I"],
-    "E": ["J"], 
-    "C": ["F", "G"],
-    "F": ["K", "L"],
-    "G": ["M"],
-}
+#     "A": ["B", "C"],
+#     "B": ["D", "E"],
+#     "D": ["H", "I"],
+#     "E": ["J"], 
+#     "C": ["F", "G"],
+#     "F": ["K", "L"],
+#     "G": ["M"],
+# }
 
-# print(al_graph)
+# # print(al_graph)
+# # print()
+
+# dummy_graph = al_graph.get_graph()
+# start = 'A'
+
+
+# # Explicit Stack DFS Version
+# print(f"Explicit Stack BFS Traversal strating from node: '{start}'")
+
+# # Travesal result: A C G M F L K B E J D I H
+# es_dfs(dummy_graph, start)
+# print()
 # print()
 
-dummy_graph = al_graph.get_graph()
-start = 'A'
 
+# # Recursive DFS Version
+# visited = set()
 
-#Explicit Stack DFS Version
-print(f"Explicit Stack BFS Traversal strating from node: '{start}'")
+# # Travesal result: A B D H I E J C F K L G M 
+# print(f"Recursive BFS Traversal strating from node: '{start}'")
 
-# Travesal result: A C G M F L K B E J D I H
-es_dfs(dummy_graph, start)
-print()
-print()
-
-
-#Recursive DFS Version
-visited = set()
-
-# Travesal result: A B D H I E J C F K L G M 
-print(f"Recursive BFS Traversal strating from node: '{start}'")
-
-rec_dfs(dummy_graph, start, visited)
-print()
+# rec_dfs(dummy_graph, start, visited)
+# print()
 
 
 
@@ -109,8 +111,8 @@ print()
 #    "G": ["H"],
 # }
 
-# print(al_graph)
-# print()
+# # print(al_graph)
+# # print()
 
 # graph = al_graph.get_graph()
 
