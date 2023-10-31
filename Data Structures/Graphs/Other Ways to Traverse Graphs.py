@@ -1,7 +1,7 @@
 from Graphs_Implementation import WAMGraph, WALGraph, ALGraph
 import collections
 import heapq
-
+from timeit import default_timer as timer
 
 'Topological Sort'
 
@@ -301,26 +301,171 @@ def bellman_ford(graph, source_vertex):
 
 
 
-"Bellman-Ford Algorithm"
+"Iterative Deepening Depth-First Search (IDDFS)"
+
+
+def iddfs(graph, start, target):
+
+    def dfs(graph, node, target, depth, max_depth, visited):
+
+        if depth > max_depth:
+            return None, []
+        
+        visited.add(node)
+
+        if node == target:
+            return [node], visited
+           
+        for neighbor in graph.get(node, []):
+
+            if neighbor not in visited:
+                
+                new_path, _ = dfs(graph, neighbor, target, depth + 1, max_depth, visited)
+
+                if new_path:
+                    return [node] + new_path, visited
+                
+        return None, visited
+
+
+    for depth_limit in range(len(graph)):
+
+        visited = set()
+
+        result, _ = dfs(graph, start, target, 0, depth_limit, visited)
+
+        if result is not None:
+            return result
+        
+    return None
+
+
+
+
+
+# # Graph Creation
+# al_graph = ALGraph()
+
+# al_graph.graph = {
+
+#     "A": ["B", "C"],
+#     "B": ["D", "E"],
+#     "D": ["H", "I"],
+#     "E": ["J"], 
+#     "C": ["F", "G"],
+#     "F": ["K", "L"],
+#     "G": ["M"],
+# }
+
+# graph = al_graph.get_graph()
+
+# start = "A"
+# target = "K"
+
+# result = iddfs(graph, start, target)
+
+# print(result)   # ['A', 'C', 'F', 'K']
 
 
 
 
 
 
+" - Now let's make DFS, BFS and IDDFS compete - "
+
+
+def bfs(graph, start, target):
+
+    visited = set()
+    queue = collections.deque([start])
+    
+    while queue:
+
+        node = queue.popleft()
+        
+        if node not in visited:
+
+            visited.add(node)
+
+            if node == target:
+                return print(f"found target: '{target}'")
+
+            # Enqueue unvisited neighbors
+            for neighbor in graph.get(node, []):
+
+                if neighbor not in visited:
+
+                    queue.extend([neighbor])
+    
+    print()
 
 
 
+def es_dfs(graph, start, target):
+
+    visited = set()
+    stack = [start]
+
+    while stack:
+
+        node = stack.pop()
+
+        if node not in visited:
+
+            visited.add(node)
+
+            if node == target:
+                return print(f"found target: '{target}'")
+
+            if node in graph:
+
+                for neighbor in graph[node]:
+
+                    if neighbor not in visited:
+
+                        stack.extend(neighbor)
 
 
 
+# Graph Creation
+al_graph = ALGraph()
+
+al_graph.graph = {
+
+    "A": ["B", "C"],
+    "B": ["D", "E"],
+    "D": ["H", "I"],
+    "E": ["J"], 
+    "C": ["F", "G"],
+    "F": ["K", "L"],
+    "G": ["M"],
+}
+
+graph = al_graph.get_graph()
+start = "A"
+target = "L"
 
 
+print()
+print(f'Depth-First Search')
+s = timer()
+es_dfs(graph, start, target)
+e = timer()
+print(f'time: {e-s:.2e}s')
+print()
+
+print(f'Breadth-First Search')
+s = timer()
+bfs(graph, start, target)
+e = timer()
+print(f'time: {e-s:.2e}s')
+print()
 
 
-
-
-
-
-
-
+print(f'Iterative Deepening Depth-First Search')
+s = timer()
+result = iddfs(graph, start, target)
+e = timer()
+print(f"found target: '{result[-1]}'")
+print(f'time: {e-s:.2e}s')
+print()
