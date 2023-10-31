@@ -239,3 +239,88 @@ def heuristic(node, goal):
 
 
 
+"Bellman-Ford Algorithm"
+
+def bellman_ford(graph, source_vertex):
+
+    all_nodes = [x for x in graph]
+    all_nodes.extend([x[0] for elem in graph.values() for x in elem if x[0] not in all_nodes])
+    all_nodes = sorted((set(all_nodes)))
+
+    distance = {vertex: float('inf') for vertex in all_nodes}
+    distance[source_vertex] = 0
+
+    for _ in range(len(all_nodes) - 1):
+
+        for vertex in graph:
+
+            for neighbor in graph[vertex]:
+
+                if distance[vertex] != float('inf'):
+
+                    if isinstance(neighbor, tuple):
+
+                        neighbor_vertex, weight = neighbor
+
+                        if distance[vertex] + weight < distance[neighbor_vertex]:
+                            distance[neighbor_vertex] = distance[vertex] + weight
+                    
+                    else:
+                        if distance[vertex] + 1 < distance[neighbor]:
+                            distance[neighbor] = distance[vertex] + 1
+
+    return distance
+
+
+
+# # Graph initialization
+# al_graph = ALGraph()
+
+# al_graph.graph = {
+
+#     "A": [("B", 4), ("C", 3)],
+#     "B": [("C", -2),("D", 2)],
+#     "C": [("E", 5)],
+#     "D": [("C", 1), ("E", 2)]
+# }
+
+
+# graph = al_graph.get_graph()
+
+# start = 'A'
+
+# distances = bellman_ford(graph, start)
+
+# print(f'The shortest distance from "{start}" to each node is:')
+
+# for i in distances:
+#     print(f'to "{i}": {distances[i]}', end='\t')
+
+
+
+
+
+
+"Bellman-Ford Algorithm"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
