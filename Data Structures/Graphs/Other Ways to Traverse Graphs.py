@@ -374,98 +374,218 @@ def iddfs(graph, start, target):
 " - Now let's make DFS, BFS and IDDFS compete - "
 
 
-def bfs(graph, start, target):
+# def bfs(graph, start, target):
 
-    visited = set()
-    queue = collections.deque([start])
+#     visited = set()
+#     queue = collections.deque([start])
     
-    while queue:
+#     while queue:
 
-        node = queue.popleft()
+#         node = queue.popleft()
         
-        if node not in visited:
+#         if node not in visited:
 
-            visited.add(node)
+#             visited.add(node)
 
-            if node == target:
-                return print(f"found target: '{target}'")
+#             if node == target:
+#                 return print(f"found target: '{target}'")
 
-            # Enqueue unvisited neighbors
-            for neighbor in graph.get(node, []):
+#             # Enqueue unvisited neighbors
+#             for neighbor in graph.get(node, []):
 
-                if neighbor not in visited:
+#                 if neighbor not in visited:
 
-                    queue.extend([neighbor])
+#                     queue.extend([neighbor])
     
-    print()
+#     print()
 
 
 
-def es_dfs(graph, start, target):
+# def es_dfs(graph, start, target):
 
-    visited = set()
-    stack = [start]
+#     visited = set()
+#     stack = [start]
 
-    while stack:
+#     while stack:
 
-        node = stack.pop()
+#         node = stack.pop()
 
-        if node not in visited:
+#         if node not in visited:
 
-            visited.add(node)
+#             visited.add(node)
 
-            if node == target:
-                return print(f"found target: '{target}'")
+#             if node == target:
+#                 return print(f"found target: '{target}'")
 
-            if node in graph:
+#             if node in graph:
 
-                for neighbor in graph[node]:
+#                 for neighbor in graph[node]:
 
-                    if neighbor not in visited:
+#                     if neighbor not in visited:
 
-                        stack.extend(neighbor)
+#                         stack.extend(neighbor)
+
+
+
+# # Graph Creation
+# al_graph = ALGraph()
+
+# al_graph.graph = {
+
+#     "A": ["B", "C"],
+#     "B": ["D", "E"],
+#     "D": ["H", "I"],
+#     "E": ["J"], 
+#     "C": ["F", "G"],
+#     "F": ["K", "L"],
+#     "G": ["M"],
+# }
+
+# graph = al_graph.get_graph()
+# start = "A"
+# target = "L"
+
+
+# print()
+# print(f'Depth-First Search')
+# s = timer()
+# es_dfs(graph, start, target)
+# e = timer()
+# print(f'time: {e-s:.2e}s')
+# print()
+
+# print(f'Breadth-First Search')
+# s = timer()
+# bfs(graph, start, target)
+# e = timer()
+# print(f'time: {e-s:.2e}s')
+# print()
+
+
+# print(f'Iterative Deepening Depth-First Search')
+# s = timer()
+# result = iddfs(graph, start, target)
+# e = timer()
+# print(f"found target: '{result[-1]}'")
+# print(f'time: {e-s:.2e}s')
+# print()
+
+
+
+
+
+
+"Bi-Directional Search"
+
+def bidirectional_search_with_path(graph, start, goal):
+
+    forward_queue = collections.deque([(start, [start])])
+    backward_queue = collections.deque([(goal, [goal])])
+    forward_visited = set([start])
+    backward_visited = set([goal])
+
+    while forward_queue and backward_queue:
+
+        current_node_forward, path_forward = forward_queue.popleft()
+
+        for neighbor in graph.get(current_node_forward, []):
+
+            if neighbor not in forward_visited:
+
+                forward_visited.add(neighbor)
+                new_path = path_forward + [neighbor]
+                forward_queue.append((neighbor, new_path))
+
+
+        current_node_backward, path_backward = backward_queue.popleft()
+
+        for neighbor in graph.get(current_node_backward, []):
+
+            if neighbor in forward_visited:
+                
+                # Merge the forward and backward paths when a meeting point is found
+                meeting_node = neighbor
+                forward_path = next(path for node, path in forward_queue if node == meeting_node)
+                return forward_path + path_backward[::-1]
+
+            if neighbor not in backward_visited:
+
+                backward_visited.add(neighbor)
+                new_path = path_backward + [neighbor]
+                backward_queue.append((neighbor, new_path))
+
+    return []  # No path found
+
+
 
 
 
 # Graph Creation
-al_graph = ALGraph()
 
-al_graph.graph = {
+al_graph = ALGraph(weighted=False)
 
-    "A": ["B", "C"],
-    "B": ["D", "E"],
-    "D": ["H", "I"],
-    "E": ["J"], 
-    "C": ["F", "G"],
-    "F": ["K", "L"],
-    "G": ["M"],
-}
+[al_graph.add_vertex(x) for x in "ABCDEFGHIJKLMNOP"]
+
+[al_graph.add_edge("A", x, None) for x in "BC"]
+[al_graph.add_edge("B", x, None) for x in "ADG"]
+[al_graph.add_edge("C", x, None) for x in "AFE"]
+[al_graph.add_edge("D", x, None) for x in "BH"]
+[al_graph.add_edge("G", x, None) for x in "BH"]
+[al_graph.add_edge("F", x, None) for x in "CI"]
+[al_graph.add_edge("E", x, None) for x in "CK"]
+[al_graph.add_edge("H", x, None) for x in "DGJMI"]
+[al_graph.add_edge("I", x, None) for x in "FHK"]
+[al_graph.add_edge("J", x, None) for x in "HPL"]
+[al_graph.add_edge("K", x, None) for x in "IEMO"]
+[al_graph.add_edge("P", x, None) for x in "JL"]
+[al_graph.add_edge("L", x, None) for x in "JPN"]
+[al_graph.add_edge("M", x, None) for x in "HKON"]
+[al_graph.add_edge("O", x, None) for x in "KM"]
+[al_graph.add_edge("N", x, None) for x in "LM"]
+
+# al_graph.graph = {  
+#     "A": ['B', 'C'],
+#     "B": ['A', 'D', 'G'],
+#     "C": ['A', 'F', 'E'],
+#     "D": ['B', 'H'],
+#     "E": ['C', 'K'],
+#     "F": ['C', 'I'],
+#     "G": ['B', 'H'],
+#     "H": ['D', 'G', 'J', 'M', 'I'],
+#     "I": ['F', 'H', 'K'],
+#     "J": ['H', 'P', 'L'],
+#     "K": ['E', 'I', 'M', 'O'],
+#     "L": ['J', 'P', 'N'],
+#     "M": ['H', 'K', 'O', 'N'],
+#     "N": ['L', 'M'],
+#     "O": ['K', 'M'],
+#     "P": ['J', 'L']
+# }
+
+# for i in al_graph.graph:
+#     print(f'"{i}": {al_graph.graph[i]}')
+
+
+
 
 graph = al_graph.get_graph()
+
 start = "A"
-target = "L"
+target = "N"
 
 
-print()
-print(f'Depth-First Search')
-s = timer()
-es_dfs(graph, start, target)
-e = timer()
-print(f'time: {e-s:.2e}s')
-print()
+path = bidirectional_search_with_path(graph, start, target)
 
-print(f'Breadth-First Search')
-s = timer()
-bfs(graph, start, target)
-e = timer()
-print(f'time: {e-s:.2e}s')
-print()
+# Expected Output: ["A", "B", "D", "H", "J", "L", "N"]
+print(path)
 
 
-print(f'Iterative Deepening Depth-First Search')
-s = timer()
-result = iddfs(graph, start, target)
-e = timer()
-print(f"found target: '{result[-1]}'")
-print(f'time: {e-s:.2e}s')
-print()
+
+
+
+
+
+
+
+
+
