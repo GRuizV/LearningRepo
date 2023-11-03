@@ -744,19 +744,94 @@ The first recursion problem I review:
 
 "My definitive version of Fibonacci's seq. generator based on recursion"
 
-def fib_seq(n):
+# def fib_seq(n):
 
-    def fibonacci(n):
+#     def fibonacci(n):
 
-        if n == 0: return 0
-        if n == 1: return 1
+#         if n == 0: return 0
+#         if n == 1: return 1
         
-        return fibonacci(n-2) + fibonacci(n-1)
+#         return fibonacci(n-2) + fibonacci(n-1)
     
-    result = [0,1]
+#     result = [0,1]
 
-    [result.append(fibonacci(i)) for i in range(2, n+1)]
-    return result
+#     [result.append(fibonacci(i)) for i in range(2, n+1)]
+#     return result
+
+
+
+
+
+
+
+"b001 - The Even Groups Problem"
+
+'''
+    Create a function, split_integer(), that takes two integers as inputs, a and b,
+    the integer a needs to be split into b groups as evenly as possible:
+
+        e.g.:
+
+            split_integer(7, 3) -> [2,2,3]
+            split_integer(3, 5) -> [0,0,1,1,1]
+            split_integer(10, 4) -> [2,2,3,3]
+            
+'''
+
+
+# # My version
+# def split_integer(num, parts):
+
+#     quotient, remainder = divmod(num, parts)
+
+#     result = [quotient for part in range(parts)]
+
+#     for i in range(remainder):
+#         result[i%len(result)] += 1
+
+#     return result[::-1]
+
+
+# # b001 version
+# def split_integer(num, parts):
+
+#     # step #1: retrive the quotient and the remainder (The most important)
+#     quotient, remainder = divmod(num, parts)
+
+#     # step #2: pull the number of parts that will be the qoutient straight
+#     base_part_count = parts - remainder
+
+#     # step #3: Make a list with the base parts
+#     base_parts = [quotient] * base_part_count
+
+#     # step #4: Make a list with the additional parts with the extra from the remainder
+#     extra_parts = [quotient + 1] * remainder
+
+#     return base_parts + extra_parts
+
+
+# test_1 = print('Test #1: Pass') if split_integer(7, 3) == [2,2,3] else print('Test #1: Failed')
+# test_2 = print('Test #2: Pass') if split_integer(3, 5) == [0,0,1,1,1] else print('Test #2: Failed')
+# test_3 = print('Test #3: Pass') if split_integer(10, 4) == [2,2,3,3] else print('Test #3: Failed')
+
+
+'''
+    Note:
+        First the knowledge of the use of the divmod() was crucial here, but that aside,
+        the way b001 wrote the function was way more readable and self explanatory than mine.
+        I think that is the difference between a newbie and someone with experience.
+'''
+
+
+
+
+
+
+
+"xxx"
+
+
+
 
 
 
