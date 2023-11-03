@@ -742,7 +742,21 @@ The first recursion problem I review:
 
 
 
-'xxx'
+"My definitive version of Fibonacci's seq. generator based on recursion"
+
+def fib_seq(n):
+
+    def fibonacci(n):
+
+        if n == 0: return 0
+        if n == 1: return 1
+        
+        return fibonacci(n-2) + fibonacci(n-1)
+    
+    result = [0,1]
+
+    [result.append(fibonacci(i)) for i in range(2, n+1)]
+    return result
 
 
 
