@@ -1,5 +1,4 @@
 
-
 "1. Sum up of digits"
 
 '''
@@ -60,6 +59,92 @@
 
 
 '''
+
+"My approach"
+
+# # Auxiliary primes function
+# def primes(num):
+
+#     primes = [1]
+#     not_primes = list()
+
+#     for i in range(2, num+1):
+
+#         if i not in not_primes:
+#             primes.append(i)
+
+#         for j in range(i+i, num+1, i):
+#             not_primes.append(j)
+
+#     return primes
+
+
+# # First I will try to do it without recursion, then I'll figure out the recursive version
+# def nr_gcd(a, b):
+
+#     if a == 0 or b == 0:        
+#         return a if b == 0 else b
+
+#     num = min(a, b)
+
+#     num_gcd = set()
+
+#     while num != 1:
+
+#         num_primes = primes(num)[1::]
+
+#         for i in num_primes:
+
+#             if num % i == 0:
+#                 num_gcd.add(num//i)
+#                 num //= i
+#                 break
+    
+#     num_gcd = sorted(num_gcd, reverse = True)
+#     num_gcd.insert(0, b)       
+
+#     num = max(a, b)
+
+#     for div in num_gcd:
+
+#         if num % div == 0:
+
+#             return div    
+
+
+# print(nr_gcd(48,18))
+
+"I think I'm done with this exercise"
+
+
+
+"Chat GPT's Solution"
+
+# def gcd(a,b):
+
+#     if b == 0:
+#         return a
+    
+#     return gcd(b, a % b)
+
+# a = 48
+# b = 18
+
+# print(gcd(a,b))
+
+
+
+
+
+"3. xxx"
+
+
+
+
+
+    
+
+
 
 
 

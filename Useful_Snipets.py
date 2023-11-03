@@ -828,10 +828,51 @@ The first recursion problem I review:
 
 
 
+"My Version of the Minimum Common Multiple Algorithm"
+
+
+# def mcm(a):
+
+#     # Auxiliary primes function
+#     def primes(num):
+
+#         primes = [1]
+#         not_primes = list()
+
+#         for i in range(2, num+1):
+
+#             if i not in not_primes:
+#                 primes.append(i)
+
+#             for j in range(i+i, num+1, i):
+#                 not_primes.append(j)
+
+#         return primes
+
+
+#     a_mcm = list()
+
+#     while a != 1:
+
+#         a_primes = primes(a)[1::]
+
+#         for i in a_primes:
+
+#             if a % i == 0:
+#                 a_mcm.append(i)
+#                 a //= i
+#                 break
+  
+'''
+    Note:
+        During the work on the greatest common divisor recursion challenge given by ChatGPT,
+        I developed my own version of the 'Minimum Common Mutiple' algorithm.
+'''
+
+
+
+
+
+
+
 "xxx"
-
-
-
-
-
-
