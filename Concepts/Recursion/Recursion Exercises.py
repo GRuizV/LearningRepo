@@ -136,13 +136,35 @@
 
 
 
-"3. xxx"
+"3. Write a Python program to sum recursion lists."
+
+'''
+Test Data: [1, 2, [3, 4], [5, 6]]
+Expected Result: 21
+'''
+
+"Page's Solution"
+
+def rec_sum(lst):
+   
+    total = 0
+
+    for element in lst:
+
+        if isinstance(element, list):
+            total += rec_sum(element)
+        
+        else:
+            total += element
+        
+    return total    
 
 
 
 
+data = [1, 2, [3, 4], [5, 6]]
 
-    
+print(rec_sum(data))
 
 
 

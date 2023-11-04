@@ -875,4 +875,27 @@ The first recursion problem I review:
 
 
 
-"xxx"
+"A Recursive sum to sum nested lists"
+
+'''
+    Test Data: [1, 2, [3, 4], [5, 6]]
+    Expected Result: 21
+'''
+
+
+def rec_sum(lst):
+
+    total = 0
+
+    for elem in lst:
+
+        if isinstance(elem, list):
+            total += rec_sum(elem)           
+        
+        else:
+            total += elem
+
+    return total
+
+data = [1, 2, [3, 4], [5, 6]]
+print(rec_sum(data))
