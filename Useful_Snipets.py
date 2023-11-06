@@ -875,27 +875,64 @@ The first recursion problem I review:
 
 
 
-"A Recursive sum to sum nested lists"
+"A Recursive Nested List Sum: It is actually the recursive way to travere Nested Lists"
 
 '''
     Test Data: [1, 2, [3, 4], [5, 6]]
     Expected Result: 21
 '''
 
+# def rec_sum(lst):
 
-def rec_sum(lst):
+#     total = 0
 
-    total = 0
+#     for elem in lst:
 
-    for elem in lst:
-
-        if isinstance(elem, list):
-            total += rec_sum(elem)           
+#         if isinstance(elem, list):
+#             total += rec_sum(elem)           
         
-        else:
-            total += elem
+#         else:
+#             total += elem
 
-    return total
+#     return total
 
-data = [1, 2, [3, 4], [5, 6]]
-print(rec_sum(data))
+# data = [1, 2, [3, 4], [5, 6]]
+# print(rec_sum(data))    # Result: 21
+
+
+
+
+
+
+
+"A Non-Recursive way to traverse a Nested List"
+
+# def item_counter(item_list):
+
+#     count = 0
+#     stack = list()
+#     element = item_list
+#     i = 0
+
+#     while True:
+
+#         if i == len(element):
+
+#             if element == item_list:
+#                 return count
+            
+#             else:
+#                 element, i = stack.pop()
+#                 i += 1
+#                 continue
+            
+
+#         if isinstance(element[i], list):
+
+#             stack.append([element, i])
+#             element = element[i]
+#             i = 0
+            
+#         else:
+#             count += 1
+#             i += 1
