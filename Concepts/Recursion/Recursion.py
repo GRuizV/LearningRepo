@@ -1,3 +1,7 @@
+import sys
+from timeit import timeit
+import statistics
+
 
 "First Basic Recursion Case: Fibonacci's sequence"
 
@@ -191,3 +195,235 @@
 
 # n = 5
 # rec_sum(n)
+
+
+
+
+
+"Other notes on recursion"
+
+
+'This is the recursion limit for this machine'
+# # By deafult, python sets it to 1000
+# print(sys.getrecursionlimit())
+
+
+
+
+'''
+The factorial function again, but better established to show
+how the recursion makes the calls
+'''
+
+# def factorial(n):
+
+#     print(f"factorial() called with n = ({n})")
+
+#     return_val = 1 if n == 0 else n * factorial(n-1)
+
+#     print(f"-> factorial({n}) returns {return_val}")
+
+#     return return_val
+
+
+# factorial(5)
+
+# # The printouts are clearer this way
+
+# '''
+#     factorial() called with n = (5)
+#     factorial() called with n = (4)
+#     factorial() called with n = (3)
+#     factorial() called with n = (2)
+#     factorial() called with n = (1)
+#     factorial() called with n = (0)
+#     -> factorial(0) returns 1
+#     -> factorial(1) returns 1
+#     -> factorial(2) returns 2
+#     -> factorial(3) returns 6
+#     -> factorial(4) returns 24
+#     -> factorial(5) returns 120
+# '''
+
+
+
+
+'''
+Now, we will compare execution times with recursion 
+'''
+
+
+# # First, this will be the metric to measure
+
+# code_to_measure = 'print(string)'
+# setup_code = "string = 'foobar'"
+
+# exec_time = timeit(code_to_measure, setup_code, number=100)
+
+# # Executed in 0.010
+# print(f'Executed in {exec_time:.3f}s')
+
+
+
+# # Now, with the actual example
+
+# # The recursive case
+# setup_string = """
+# def factorial(n):
+#     return 1 if n <= 1 else n * factorial(n - 1)
+# """
+# exec_time = timeit('factorial(4)', setup_string, number=1000000)
+
+# # The code took 3.627s to complete
+# print(f"Recursive: {exec_time:.3f}s")
+
+
+
+# # The non-recursive case
+# setup_string = """
+# def factorial(n):
+#     return_value = 1
+#     for i in range(2, n+1):
+#         return_value *= 1
+#     return return_value
+# """
+# exec_time = timeit('factorial(4)', setup_string, number=1000000)
+
+# # The code took 1.393s to complete
+# print(f"Iterative: {exec_time:.3f}s")
+
+
+
+
+'''
+Recursion for Nested List Traversals 
+'''
+
+# Let's consider this list
+# names = ["Adam", ["Bob", ["Chet", "Cat"], "Barb", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
+
+
+# Now, is requiered to know how many name are contained in the list
+
+
+'   My attempt to do it so recursively'
+# def item_counter(item_list):
+
+#     print(f"List: {item_list}")
+#     count = 0
+
+#     for item in item_list:
+
+#         if isinstance(item, list):
+#             print('Encountered Sublist')
+#             count += item_counter(item)
+        
+#         else:
+#             print(f"Counted leaf item '{item}'")
+#             count += 1
+
+#     print(f"-> Returning count: {count}")
+#     return count
+# # works fine
+
+# item_counter(names) # The answer is 10
+
+
+
+"   Non-recursive version"
+# def item_counter(item_list):
+
+#     count = 0
+#     stack = list()
+#     element = item_list
+#     i = 0
+
+#     while True:
+
+#         if i == len(element):
+
+#             if element == item_list:
+#                 return count
+            
+#             else:
+#                 element, i = stack.pop()
+#                 i += 1
+#                 continue
+            
+
+#         if isinstance(element[i], list):
+
+#             stack.append([element, i])
+#             element = element[i]
+#             i = 0
+            
+#         else:
+#             count += 1
+#             i += 1
+
+
+# print(item_counter(names))
+
+
+
+
+'''
+Detecting Palindromes 
+'''
+
+
+'   My attempt to make a function that detects palindromes recursively'
+
+# Criteria for being a Palindrome (Actually, taken from RealPython)
+#   1. If len(substring) == 1 is a palindrome.
+#   2. First and last character are equal.
+
+
+# def is_palindrome(string):
+
+#     if len(string) <= 1:
+#         return True
+
+#     if string[0] == string[-1]:
+#         return is_palindrome(string[1:-1])
+    
+#     else:
+#         return False
+    
+
+# print(is_palindrome(''))
+
+
+
+
+'''
+Sort with QuickSort
+'''
+
+
+def quick_sort(numbers):
+
+    if len(numbers) <= 1:
+        return numbers
+    
+    else:
+
+        pivot = statistics.median([numbers[0], numbers[len(numbers)//2], numbers[-1]])
+
+    items_less = [num for num in numbers if num < pivot]
+    pivot_items = [num for num in numbers if num == pivot]
+    items_greater =  [num for num in numbers if num > pivot]
+
+
+    return quick_sort(items_less) + pivot_items + quick_sort(items_greater)
+
+
+
+
+testing_numbers = [24, 4, 67, 71, 84]
+
+
+
+result = quick_sort(testing_numbers)
+
+print(result)

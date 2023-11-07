@@ -145,27 +145,32 @@ Expected Result: 21
 
 "Page's Solution"
 
-def rec_sum(lst):
+# def rec_sum(lst):
    
-    total = 0
+#     total = 0
 
-    for element in lst:
+#     for element in lst:
 
-        if isinstance(element, list):
-            total += rec_sum(element)
+#         if isinstance(element, list):
+#             total += rec_sum(element)
         
-        else:
-            total += element
+#         else:
+#             total += element
         
-    return total    
+#     return total    
 
 
 
 
-data = [1, 2, [3, 4], [5, 6]]
+# data = [1, 2, [3, 4], [5, 6]]
 
-print(rec_sum(data))
+# print(rec_sum(data))
 
+# '-Nested list recursion sum- Recursion Challenge Done!'
+
+
+
+"4. xxx"
 
 
 
