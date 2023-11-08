@@ -476,6 +476,10 @@ Thinking Recursively - Santa's Presents Deliveries
 
 
 
+
+
+
+
 '''
 Recursion Cases interpretation
     Geeks for geeks Article
@@ -500,8 +504,6 @@ My interpretation:
 According to Geeks for geeks:
     is the expansion of the ecuation:    x(x+1)/2 + y
 '''
-
-
 
 
 'Try to predict the output of this'
@@ -535,8 +537,6 @@ This is the recursion tree:
 '''
 
 
-
-
 'Try to predict the output of this'
 
 # def fun(a, n):
@@ -560,8 +560,6 @@ This is the recursion tree:
 'The answer: 100'
 
 
-
-
 'Try to predict the output of this'
 
 # def fun(i): 
@@ -576,8 +574,6 @@ This is the recursion tree:
 # print(fun(200))
 
 'The answer: 199'
-
-
 
 
 'Try to predict the output of this'
@@ -598,8 +594,6 @@ This is the recursion tree:
 'The answer: 12'
 
 
-
-
 'Try to predict the output of this'
 
 # def fun(a, b):
@@ -617,8 +611,6 @@ This is the recursion tree:
 'The answer: 64'
  
 
-
-
 'Try to predict the output of this'
 
 # def fun(n):
@@ -633,8 +625,6 @@ This is the recursion tree:
 
 'The answer: 91'
  
-
-
 
 'Give the relation between len() and the characters printed'
 
@@ -668,8 +658,6 @@ total = 1 + 2 +....+ 2^(strlen(s)-1) = (2^strlen(s)) - 1
 '''
 
 
-
-
 'Try to predict the output'
 
 # def fun(count):
@@ -689,8 +677,6 @@ total = 1 + 2 +....+ 2^(strlen(s)-1) = (2^strlen(s)) - 1
 '''
 The answers: 1 2 3 3 3 3 3
 '''
-
-
 
 
 'Try to predict the output'
@@ -722,143 +708,219 @@ The answers: 5
 
 
 
+
+
+
+
 "Tower of Hanoi Puzzle"
 
 
 'Recursive solution'
-c = 1
 
-def tower_of_hanoi(n, from_rod, to_rod, aux_rod):
-    global c
-    if n == 0:
-        return
+# c = 1
 
-    tower_of_hanoi(n-1, from_rod, aux_rod, to_rod)
-    print(c, "Move disk", n, "from rod", from_rod, "to rod", to_rod)
-    c+=1
-    tower_of_hanoi(n-1, aux_rod, to_rod, from_rod)
+# def tower_of_hanoi(n, from_rod, to_rod, aux_rod):
 
-n = 3
+#     global c
+
+#     if n == 0:
+#         return
+
+#     tower_of_hanoi(n-1, from_rod, aux_rod, to_rod)
+
+#     print(c, "Move disk", n, "from rod", from_rod, "to rod", to_rod)
+#     c+=1
+
+#     tower_of_hanoi(n-1, aux_rod, to_rod, from_rod)
+
+# n = 3
 
 # tower_of_hanoi(n, "A", "C", "B")
 
 
 
 
+
+'''
+Another way to Recursively solve Hanoi
+    *I like this one better*
+
+'''
+
+# def hanoi(n, start, end):
+    
+#     if n == 1:
+#         pm(n, start, end)
+
+#     else:
+#         other = 6 - (start + end)
+#         hanoi (n-1, start, other)
+#         pm(n, start, end)
+#         hanoi(n-1, other, end)
+
+
+# def pm(n, start, end):
+#     print(f"Move ({n}) from {start} to {end}")
+
+# hanoi(3, 1, 3)
+
+
+
+
+
 'Iterative Solution'
 
-# Python3 program for iterative Tower of Hanoi
-import sys
+# # Python3 program for iterative Tower of Hanoi
+# import sys
  
-# A structure to represent a stack
-class Stack:
-    # Constructor to set the data of
-    # the newly created tree node
-    def __init__(self, capacity):
-        self.capacity = capacity
-        self.top = -1
-        self.array = [0]*capacity
+# # A structure to represent a stack
+# class Stack:
+#     # Constructor to set the data of
+#     # the newly created tree node
+#     def __init__(self, capacity):
+#         self.capacity = capacity
+#         self.top = -1
+#         self.array = [0]*capacity
  
-# function to create a stack of given capacity.
-def createStack(capacity):
-    stack = Stack(capacity)
-    return stack
+# # function to create a stack of given capacity.
+# def createStack(capacity):
+#     stack = Stack(capacity)
+#     return stack
   
-# Stack is full when top is equal to the last index
-def isFull(stack):
-    return (stack.top == (stack.capacity - 1))
+# # Stack is full when top is equal to the last index
+# def isFull(stack):
+#     return (stack.top == (stack.capacity - 1))
    
-# Stack is empty when top is equal to -1
-def isEmpty(stack):
-    return (stack.top == -1)
+# # Stack is empty when top is equal to -1
+# def isEmpty(stack):
+#     return (stack.top == -1)
    
-# Function to add an item to stack.
-# It increases top by 1
-def push(stack, item):
-    if(isFull(stack)):
-        return
-    stack.top+=1
-    stack.array[stack.top] = item
+# # Function to add an item to stack.
+# # It increases top by 1
+# def push(stack, item):
+#     if(isFull(stack)):
+#         return
+#     stack.top+=1
+#     stack.array[stack.top] = item
    
-# Function to remove an item from stack.
-# It decreases top by 1
-def Pop(stack):
-    if(isEmpty(stack)):
-        return -sys.maxsize
-    Top = stack.top
-    stack.top-=1
-    return stack.array[Top]
+# # Function to remove an item from stack.
+# # It decreases top by 1
+# def Pop(stack):
+#     if(isEmpty(stack)):
+#         return -sys.maxsize
+#     Top = stack.top
+#     stack.top-=1
+#     return stack.array[Top]
    
-# Function to implement legal
-# movement between two poles
-def moveDisksBetweenTwoPoles(src, dest, s, d):
-    pole1TopDisk = Pop(src)
-    pole2TopDisk = Pop(dest)
+# # Function to implement legal
+# # movement between two poles
+# def moveDisksBetweenTwoPoles(src, dest, s, d):
+#     pole1TopDisk = Pop(src)
+#     pole2TopDisk = Pop(dest)
  
-    # When pole 1 is empty
-    if (pole1TopDisk == -sys.maxsize):
-        push(src, pole2TopDisk)
-        moveDisk(d, s, pole2TopDisk)
+#     # When pole 1 is empty
+#     if (pole1TopDisk == -sys.maxsize):
+#         push(src, pole2TopDisk)
+#         moveDisk(d, s, pole2TopDisk)
        
-    # When pole2 pole is empty
-    elif (pole2TopDisk == -sys.maxsize):
-        push(dest, pole1TopDisk)
-        moveDisk(s, d, pole1TopDisk)
+#     # When pole2 pole is empty
+#     elif (pole2TopDisk == -sys.maxsize):
+#         push(dest, pole1TopDisk)
+#         moveDisk(s, d, pole1TopDisk)
        
-    # When top disk of pole1 > top disk of pole2
-    elif (pole1TopDisk > pole2TopDisk):
-        push(src, pole1TopDisk)
-        push(src, pole2TopDisk)
-        moveDisk(d, s, pole2TopDisk)
+#     # When top disk of pole1 > top disk of pole2
+#     elif (pole1TopDisk > pole2TopDisk):
+#         push(src, pole1TopDisk)
+#         push(src, pole2TopDisk)
+#         moveDisk(d, s, pole2TopDisk)
        
-    # When top disk of pole1 < top disk of pole2
-    else:
-        push(dest, pole2TopDisk)
-        push(dest, pole1TopDisk)
-        moveDisk(s, d, pole1TopDisk)
+#     # When top disk of pole1 < top disk of pole2
+#     else:
+#         push(dest, pole2TopDisk)
+#         push(dest, pole1TopDisk)
+#         moveDisk(s, d, pole1TopDisk)
    
-# Function to show the movement of disks
-def moveDisk(fromPeg, toPeg, disk):
-    print("Move the disk", disk, "from '", fromPeg, "' to '", toPeg, "'")
+# # Function to show the movement of disks
+# def moveDisk(fromPeg, toPeg, disk):
+#     print("Move the disk", disk, "from '", fromPeg, "' to '", toPeg, "'")
    
-# Function to implement TOH puzzle
-def tohIterative(num_of_disks, src, aux, dest):
-    s, d, a = 'S', 'D', 'A'
+# # Function to implement TOH puzzle
+# def tohIterative(num_of_disks, src, aux, dest):
+#     s, d, a = 'S', 'D', 'A'
    
-    # If number of disks is even, then interchange
-    # destination pole and auxiliary pole
-    if (num_of_disks % 2 == 0):
-        temp = d
-        d = a
-        a = temp
-    total_num_of_moves = int(pow(2, num_of_disks) - 1)
+#     # If number of disks is even, then interchange
+#     # destination pole and auxiliary pole
+#     if (num_of_disks % 2 == 0):
+#         temp = d
+#         d = a
+#         a = temp
+#     total_num_of_moves = int(pow(2, num_of_disks) - 1)
    
-    # Larger disks will be pushed first
-    for i in range(num_of_disks, 0, -1):
-        push(src, i)
+#     # Larger disks will be pushed first
+#     for i in range(num_of_disks, 0, -1):
+#         push(src, i)
    
-    for i in range(1, total_num_of_moves + 1):
-        if (i % 3 == 1):
-            moveDisksBetweenTwoPoles(src, dest, s, d)
+#     for i in range(1, total_num_of_moves + 1):
+#         if (i % 3 == 1):
+#             moveDisksBetweenTwoPoles(src, dest, s, d)
    
-        elif (i % 3 == 2):
-            moveDisksBetweenTwoPoles(src, aux, s, a)
+#         elif (i % 3 == 2):
+#             moveDisksBetweenTwoPoles(src, aux, s, a)
    
-        elif (i % 3 == 0):
-            moveDisksBetweenTwoPoles(aux, dest, a, d)
+#         elif (i % 3 == 0):
+#             moveDisksBetweenTwoPoles(aux, dest, a, d)
  
-# Input: number of disks
-num_of_disks = 3
+# # Input: number of disks
+# num_of_disks = 3
  
-# Create three stacks of size 'num_of_disks'
-# to hold the disks
-src = createStack(num_of_disks)
-dest = createStack(num_of_disks)
-aux = createStack(num_of_disks)
+# # Create three stacks of size 'num_of_disks'
+# # to hold the disks
+# src = createStack(num_of_disks)
+# dest = createStack(num_of_disks)
+# aux = createStack(num_of_disks)
  
-tohIterative(num_of_disks, src, aux, dest)
+# tohIterative(num_of_disks, src, aux, dest)
 
 
 
 
 
+
+
+
+"Tree traversals thru recursion"
+
+
+'''
+First, I need to solve how to import my custom DS Implementations to specific cases
+
+    From ChatGPT I got one solution which is temporary and with affecting the sys variables
+    I can use my structures. So, below is Method # 1
+
+'''
+
+# import sys
+# sys.path.append(r'C:\Users\USUARIO\GR\Software Development\Learning\Data Structures\Binary Seach Trees')
+
+# from Binary_Search_Tree import TreeNode, BinarySearchTree
+
+# new_tree = BinarySearchTree()
+
+# [new_tree.insert(i) for i in [4,2,6,1,3,7,5]]
+
+# new_tree.pretty_print_bst(new_tree.root)
+
+
+
+'''
+The Method # 2: 
+Was thru setting the Environmental variable 'PYTHONPATH'
+'''
+
+import gr_binary_search_tree
+
+new_tree = gr_binary_search_tree.BinarySearchTree()
+
+[new_tree.insert(i) for i in [4,2,6,1,3,7,5]]
+
+new_tree.pretty_print_bst(new_tree.root)
