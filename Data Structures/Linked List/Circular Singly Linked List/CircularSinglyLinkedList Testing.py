@@ -1,35 +1,31 @@
-from CircularSinglyLinkedList import *
+# from CircularSinglyLinkedList import *
+from gr_linked_lists import CircularSinglyLinkedList, Node
 
-new_list = CircularSinglyLinkedList()
 
+'List creation test'
+# new_list = CircularSinglyLinkedList()
 
-new_list.append('Beth')
-
-new_list.append('George')
-
-new_list.append('Kathy')
-
-new_list.append('Beth')
-
-new_list.append('Sam')
-
-new_list.insert_after('Joey', 'Sam')
-
-new_list.prepend('Tom')
-
-new_list.reverse()
+# [new_list.append(x) for x in ['Beth', 'George', 'Kathy', 'Beth', 'Sam']]
+# new_list.insert_after('Joey', 'Sam')
+# new_list.prepend('Tom')
+# new_list.reverse()
 
 # new_list.print_list()
 # print()
 
+# # print(new_list.return_node(-1).next.data)
 
-list_to_extend = CircularSinglyLinkedList()
-[list_to_extend.append(x) for x in 'XYZ']
 
-list_to_extend_2 = CircularSinglyLinkedList()
-[list_to_extend_2.append(x) for x in 'ABC']
 
-list_to_extend_2.extend(list_to_extend)
+
+'Extend & Pop methods test'
+# list_to_extend = CircularSinglyLinkedList()
+# [list_to_extend.append(x) for x in 'XYZ']
+
+# list_to_extend_2 = CircularSinglyLinkedList()
+# [list_to_extend_2.append(x) for x in 'ABC']
+
+# list_to_extend_2.extend(list_to_extend)
 
 # list_to_extend_2.print_list()
 # print()
@@ -43,13 +39,14 @@ list_to_extend_2.extend(list_to_extend)
 
 # print(a.data)
 
+
 # list_to_extend_2.clear()
 # list_to_extend_2.print_list()
 
 
 
 
-
+'Sorting Test'
 # list_sort = CircularSinglyLinkedList()
 
 # [list_sort.append(x) for x in 'BCA']
@@ -65,23 +62,6 @@ list_to_extend_2.extend(list_to_extend)
 # list_sort.print_nodes()
 
 
-new_list = CircularSinglyLinkedList()
-
-new_list.append('A')
-
-new_list.delete('A')
-
-new_list.print_list()
 
 
-
-_ = '-----------------------------------------------------------------------'
-
-
-_ = "What's next?"
-
-'''
-3. Finish implementing Bubble sort for Cirular Singly
-4. Move on to Circular Doubly
-'''
 
