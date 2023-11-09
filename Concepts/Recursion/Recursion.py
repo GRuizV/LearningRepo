@@ -1,6 +1,8 @@
 import sys
 from timeit import timeit
 import statistics
+import random
+
 
 
 "First Basic Recursion Case: Fibonacci's sequence"
@@ -914,13 +916,146 @@ First, I need to solve how to import my custom DS Implementations to specific ca
 
 '''
 The Method # 2: 
-Was thru setting the Environmental variable 'PYTHONPATH'
+Was thru setting the Environmental variable 'PYTHONPATH'.
+    Done, and learned how to do it for future ref.
 '''
 
-import gr_binary_search_tree
 
-new_tree = gr_binary_search_tree.BinarySearchTree()
 
-[new_tree.insert(i) for i in [4,2,6,1,3,7,5]]
 
-new_tree.pretty_print_bst(new_tree.root)
+'Now, the traversals working with custom BST module'
+# import gr_binary_search_tree
+
+# # Tree creation
+# new_tree = gr_binary_search_tree.BinarySearchTree()
+# [new_tree.insert(i) for i in [4,2,6,1,3,7,5]]
+# # new_tree.pretty_print_bst(new_tree.root)
+
+'''
+Current workint tree
+
+        ┌── 7
+    ┌── 6
+    │   └── 5
+    4
+    │   ┌── 3
+    └── 2
+        └── 1
+'''
+
+# # inorder traversal (left, root, right)
+# def inorder(root, result=list()):
+
+#     if root:
+
+#         inorder(root.left, result)
+#         result.append(root.key)
+#         inorder(root.right, result)
+
+
+# inorder_list = list()
+# inorder(new_tree.root, inorder_list)
+
+# # [1, 2, 3, 4, 5, 6, 7]
+# #print(inorder_list)
+
+
+
+
+# # preorder traversal (root, left, right) /  *My traversal of choice
+# def preorder(root, result=list()):
+
+#     if root:
+
+#         result.append(root.key)
+#         preorder(root.left, result)
+#         preorder(root.right, result)
+
+
+# preorder_list = list()
+# preorder(new_tree.root, preorder_list)
+
+# # [4, 2, 1, 3, 6, 5, 7]
+# print(preorder_list)
+
+
+
+
+# # postorder traversal (left, right, root)
+# def postorder(root, result=list()):
+
+#     if root:
+       
+#         postorder(root.left, result)
+#         postorder(root.right, result)
+#         result.append(root.key)
+
+
+# postorder_list = list()
+# postorder(new_tree.root, postorder_list)
+
+# # [1, 3, 2, 5, 7, 6, 4]
+# print(postorder_list)
+
+
+
+
+
+
+
+
+"DFS - Depth First Search for a Graph"
+
+# import gr_graphs
+
+# al_graph = gr_graphs.ALGraph()
+
+# al_graph.graph = {
+
+#     "A": ["B", "C"],
+#     "B": ["D", "E"],
+#     "D": ["H", "I"],
+#     "E": ["J"], 
+#     "C": ["F", "G"],
+#     "F": ["K", "L"],
+#     "G": ["M"],
+# }
+
+
+# test_graph = al_graph.get_graph()
+# # al_graph.pretty_print()
+
+
+
+
+# # Recursive DFS
+
+# test_visited = set()
+# test_path = list()
+
+
+# def rc_dfs(graph, node, visited, path):
+
+#     if node not in visited:
+
+#         visited.add(node)
+#         path.append(node)
+
+#         if node in graph:
+
+#             for neighbor in graph[node]:
+
+#                 if neighbor not in visited:
+
+#                     rc_dfs(graph, neighbor, visited, path)
+
+
+# rc_dfs(test_graph, "A", test_visited, test_path)
+
+# print(test_path)
+
+
+
+
+
+
