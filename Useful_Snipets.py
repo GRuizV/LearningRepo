@@ -959,3 +959,43 @@ The first recursion problem I review:
 
 # def pm(start, end):
 #     print(f"from {start} to {end}")
+
+
+
+
+
+
+
+"Ternary operator and the 'or' as an assignment"
+
+# # This is how the ternary operator works
+# name = input('User name: ') 
+
+# name = name if name else 'N/A'
+
+# print(name)
+
+
+# # and this does exactly the same with the use of the 'or'
+# name2 = input('User name: ') 
+
+# name2 = name or 'N/A'
+
+# print(name2)
+
+
+
+
+
+
+
+"xxx"
+
+
+
+
+
+
+
+
+
