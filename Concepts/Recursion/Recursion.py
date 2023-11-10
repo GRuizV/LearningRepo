@@ -255,44 +255,44 @@ Now, we will compare execution times with recursion
 '''
 
 
-# # First, this will be the metric to measure
+# First, this will be the metric to measure
 
-# code_to_measure = 'print(string)'
-# setup_code = "string = 'foobar'"
+code_to_measure = 'print(string)'
+setup_code = "string = 'foobar'"
 
-# exec_time = timeit(code_to_measure, setup_code, number=100)
+exec_time = timeit(code_to_measure, setup_code, number=100)
 
-# # Executed in 0.010
-# print(f'Executed in {exec_time:.3f}s')
-
-
-
-# # Now, with the actual example
-
-# # The recursive case
-# setup_string = """
-# def factorial(n):
-#     return 1 if n <= 1 else n * factorial(n - 1)
-# """
-# exec_time = timeit('factorial(4)', setup_string, number=1000000)
-
-# # The code took 3.627s to complete
-# print(f"Recursive: {exec_time:.3f}s")
+# Executed in 0.010
+print(f'Executed in {exec_time:.3f}s')
 
 
 
-# # The non-recursive case
-# setup_string = """
-# def factorial(n):
-#     return_value = 1
-#     for i in range(2, n+1):
-#         return_value *= 1
-#     return return_value
-# """
-# exec_time = timeit('factorial(4)', setup_string, number=1000000)
+# Now, with the actual example
 
-# # The code took 1.393s to complete
-# print(f"Iterative: {exec_time:.3f}s")
+# The recursive case
+setup_string = """
+def factorial(n):
+    return 1 if n <= 1 else n * factorial(n - 1)
+"""
+exec_time = timeit('factorial(4)', setup_string, number=1000000)
+
+# The code took 3.627s to complete
+print(f"Recursive: {exec_time:.3f}s")
+
+
+
+# The non-recursive case
+setup_string = """
+def factorial(n):
+    return_value = 1
+    for i in range(2, n+1):
+        return_value *= 1
+    return return_value
+"""
+exec_time = timeit('factorial(4)', setup_string, number=1000000)
+
+# The code took 1.393s to complete
+print(f"Iterative: {exec_time:.3f}s")
 
 
 
