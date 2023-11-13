@@ -133,67 +133,148 @@
 
 '   Dog Park Example'
 
-class Dog:
+# class Dog:
 
-    species = "Canis familiaris"
+#     species = "Canis familiaris"
 
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
 
-    def __str__(self):
-        return f"{self.name} is {self.age} years old"
+#     def __str__(self):
+#         return f"{self.name} is {self.age} years old"
 
-    def speak(self, sound):
-         return f"{self.name} barks: {sound}"
-
-
-class JackRussellTerrier(Dog):
-
-    def speak(self, sound="Arf"):
-        return f"{self.name} says {sound}"
+#     def speak(self, sound):
+#          return f"{self.name} barks: {sound}"
 
 
-class Dachshund(Dog):
+# class JackRussellTerrier(Dog):
 
-    def speak(self, sound="Woof"):
-        return super().speak(sound)
+#     def speak(self, sound="Arf"):
+#         return f"{self.name} says {sound}"
+
+
+# class Dachshund(Dog):
+
+#     def speak(self, sound="Woof"):
+#         return super().speak(sound)
     
 
-class Bulldog(Dog):
+# class Bulldog(Dog):
 
-    def __init_subclass__(cls):
-        return super().__init_subclass__()
+#     def __init_subclass__(cls):
+#         return super().__init_subclass__()
     
 
-class GoldenRetriever(Dog):
+# class GoldenRetriever(Dog):
 
-    def speak(self, sound = "Bark"):
-        return super().speak(sound)
+#     def speak(self, sound = "Bark"):
+#         return super().speak(sound)
   
    
 
 
-miles = JackRussellTerrier("Miles", 4)
-buddy = Dachshund("Buddy", 9)
-jack = Bulldog("Jack", 3)
-jim = Bulldog("Jim", 5)
+# miles = JackRussellTerrier("Miles", 4)
+# buddy = Dachshund("Buddy", 9)
+# jack = Bulldog("Jack", 3)
+# jim = Bulldog("Jim", 5)
 
-bosco = GoldenRetriever("Bosco", 8)
+# bosco = GoldenRetriever("Bosco", 8)
 
 
-print(miles.speak())    # Miles says Arf
+# print(miles.speak())    # Miles says Arf
 
-print()
+# print()
 
-print(buddy.speak())    # Jack barks: Woof
+# print(buddy.speak())    # Jack barks: Woof
 
-print()
+# print()
 
-print(jack.speak('Arrf'))     # Jack barks: Arrf
-print(jim.speak('Woof'))      # Jim barks: Woof
-print()
+# print(jack.speak('Arrf'))     # Jack barks: Arrf
+# print(jim.speak('Woof'))      # Jim barks: Woof
+# print()
 
-print(bosco.speak())     # Bosco barks: Bark
+# print(bosco.speak())     # Bosco barks: Bark
 
 # print(isinstance(miles, Dog))
+
+
+
+
+'Polymorphism'
+
+# #This is inheritance, NOT polymorphism
+# print('*Inheritance*\n')
+# class Animal:
+
+#     def speak(self):
+#         return print('Generic animal sound')
+
+
+# class Dog(Animal):
+
+#     def bark(self):
+#         return print('Woof!')
+
+
+# class Cat(Animal):
+
+#     def meow(self):
+#         return print('Meow!')
+
+
+# doggo = Dog() 
+# catto = Cat()
+
+
+# doggo.speak() # Generic animal sound
+# catto.speak() # Generic animal sound
+
+# print()
+
+# doggo.bark() # Woof!
+# catto.meow() # Meow!
+
+
+# #This is polymorphism (Runtime polymorphism)
+# print('\n*Polimorphism (Runtime)*\n')
+# class Animal:
+
+#     def intro(self):
+#         return print('Hi, Im an animal')
+    
+#     def speak(self):
+#         return print('Generic animal sound')
+
+
+# class Dog(Animal):
+
+#     def speak(self):
+#         return print('Woof!')
+
+
+# class Cat(Animal):
+
+#     def speak(self):
+#         return print('Meow!')
+
+
+# doggo = Dog()
+# catto = Cat()
+
+# doggo.intro() # Hi, Im an animal
+# doggo.speak() # Woof!
+# print()
+
+# catto.intro() # Hi, Im an animal
+# catto.speak() # Meow!
+
+
+
+
+'Encapsulation'
+
+
+
+
+
