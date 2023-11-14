@@ -274,6 +274,187 @@
 
 'Encapsulation'
 
+# class Car:
+
+#     def __init__(self, make, model, year):
+
+#         self.__make = make  # Encapsulated attribute
+#         self.__model = model  # Encapsulated attribute
+#         self.__year = year  # Encapsulated attribute
+#         self.__odometer_reading = 0  # Encapsulated attribute
+
+
+#     # Getter methods
+#     def get_make(self):
+#         return self.__make
+
+#     def get_model(self):
+#         return self.__model
+
+#     def get_year(self):
+#         return self.__year
+
+#     def get_odometer_reading(self):
+#         return self.__odometer_reading
+
+
+#     # Setter method for odometer reading with validation
+#     def update_odometer(self, mileage):
+
+#         if mileage >= self.__odometer_reading:
+#             self.__odometer_reading = mileage
+#         else:
+#             print("You can't roll back an odometer!")
+
+
+#     # Method to increment odometer reading
+#     def increment_odometer(self, miles):
+
+#         if miles >= 0:
+#             self.__odometer_reading += miles
+#         else:
+#             print("Please provide a positive value for mileage.")
+
+
+
+
+
+# # Creating an instance of the Car class
+# my_car = Car("Toyota", "Corolla", 2022)
+
+# # Accessing attributes using getter methods
+# print(f"Car: {my_car.get_year()} {my_car.get_make()} {my_car.get_model()}") # Car: 2022 Toyota Corolla
+# print(f"Odometer reading: {my_car.get_odometer_reading()} miles") # Odometer reading: 0 miles
+
+
+# '''
+# Warning!
+
+#     # Trying to directly access and modify the encapsulated attribute (not recommended)
+#     # This won't work due to encapsulation (private attribute)
+#     # print(my_car.__odometer_reading)  # This would cause an AttributeError'''
+
+# # print(f"Car: {my_car.__year} {my_car.__make} {my_car.__model}") #  AttributeError: 'Car' object has no attribute '__year' [...]
+# # print(f"Odometer reading: {my_car.__odometer_reading} miles")   #  AttributeError: 'Car' object has no attribute '__odometer_reading'
+
+# '   There is actually a way around, in python there is nothing truly private...'
+# # print(f"Car: {my_car._Car__year} {my_car._Car__make} {my_car._Car__model}") #  AttributeError: 'Car' object has no attribute '__year' [...]
+# # print(f"Odometer reading: {my_car._Car__odometer_reading} miles")   #  AttributeError: 'Car' object has no attribute '__odometer_reading'
+
+
+
+
+# # Modifying the odometer reading using the setter method
+# my_car.update_odometer(1000)
+
+# # Incrementing odometer reading
+# my_car.increment_odometer(500)
+
+# # Displaying updated odometer reading
+# print(f"Updated odometer reading: {my_car.get_odometer_reading()} miles")   # Updated odometer reading: 1500 miles
+
+
+
+
+'Abstraction'
+
+# from abc import ABC, abstractmethod
+
+# # Abstract Database class defining the blueprint for database interaction
+# class Database(ABC):
+
+#     def __init__(self, name):
+#         self.name = name
+
+#     @abstractmethod
+#     def connect(self):
+#         pass
+
+#     @abstractmethod
+#     def query(self, query):
+#         pass
+
+#     @abstractmethod
+#     def update(self, query, data):
+#         pass
+
+
+# # Concrete class implementing Database for MySQL
+# class MySQLDatabase(Database):
+
+#     def connect(self):
+#         print(f"Connecting to MySQL database: {self.name}")
+
+#     def query(self, query):
+#         print(f"Executing MySQL query: {query}")
+
+#     def update(self, query, data):
+#         print(f"Updating MySQL data: {query} with {data}")
+
+# # Concrete class implementing Database for MongoDB
+# class MongoDBDatabase(Database):
+#     def connect(self):
+#         print(f"Connecting to MongoDB database: {self.name}")
+
+#     def query(self, query):
+#         print(f"Executing MongoDB query: {query}")
+
+#     def update(self, query, data):
+#         print(f"Updating MongoDB data: {query} with {data}")
+
+
+
+# # Using the abstract Database class without knowing the details
+# # Instantiating objects of different database types
+# mysql_db = MySQLDatabase("MySQL_DB")
+# mongo_db = MongoDBDatabase("MongoDB_DB")
+
+# # Performing database operations without knowing internal details
+# mysql_db.connect()
+# mysql_db.query("SELECT * FROM table")
+# mysql_db.update("UPDATE table SET column = value", {"key": "value"})
+
+# mongo_db.connect()
+# mongo_db.query("db.collection.find()")
+# mongo_db.update("db.collection.update()", {"key": "value"})
+
+
+
+'   the abc Module in Abstract Classes and Methods'
+
+# from abc import ABC, abstractmethod
+
+# class MyAbstractClass(ABC):
+
+#     @abstractmethod
+#     def my_abstract_method(self):
+#         pass
+
+#     @abstractmethod
+#     def my_abstract_method2(self):
+#         pass
+
+# ' Attempting to create an instance of the abstract class'
+# # my_object = MyAbstractClass()  # This line will raise an error
+
+# class MyDerivedClass(MyAbstractClass):
+
+#     def my_abstract_method(self):
+#         pass
+    
+#     def my_abstract_method2(self):
+#         pass
+
+# my_derived_object = MyDerivedClass() # If either of the abs methods is not implemented, it'll in a TypeError
+
+
+
+
+
+
+
+
+
 
 
 
