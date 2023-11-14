@@ -178,7 +178,7 @@
 
 
 
-'   Dog Park Example'
+# '   Dog Park Example'
 
 # class Dog:
 
@@ -244,6 +244,38 @@
 # print(bosco.speak())     # Bosco barks: Bark
 
 # print(isinstance(miles, Dog))
+
+
+
+# '   Another example of In heritance: With the __init__'
+
+# class Employee:
+
+#     def __init__(self, name, age, salary):
+#         self.name = name
+#         self.age = age
+#         self.salary = salary
+
+
+# class SoftwareEngineer(Employee):
+
+#     def __init__(self, name, age, salary, level):
+#         super().__init__(name, age, salary)
+#         self.level = level
+
+#     def __str__(self):
+#         return f"Employee name: '{self.name}'\nEmployee age:'{self.age}'\nSalary: ${self.salary:,}\nLevel: {self.level}"
+
+
+# jerry = SoftwareEngineer('Jerry', 30, 7000, 'Junior')
+
+# print(jerry)
+
+# # Printout
+# # Employee name: 'Jerry'
+# # Employee age:'30'
+# # Salary: $7,000
+# # Level: Junior
 
 
 
@@ -467,7 +499,7 @@
 
 
 
-'   the abc Module in Abstract Classes and Methods'
+# '   the abc Module in Abstract Classes and Methods'
 
 # from abc import ABC, abstractmethod
 
