@@ -28,6 +28,19 @@
 #         return f"{self.name} is {self.age} years old"
 
 
+#     # Faux Class method
+#     def faux_bark():
+#         return print(f'Dog just barked!!')
+    
+#     # Actual class method
+#     @classmethod
+#     def bark(cls):
+#         return print(f'Dog just barked!!')
+
+#     @classmethod
+#     def species_change(cls, new_species):
+#         cls.species = new_species
+        
 
 
 
@@ -43,32 +56,66 @@
 
 
 
-
-
 # # Class instantiation
 # juno = Dog('Juno', 0)
 
 
-# Class & Instance Testing
+# # Class & Instance Testing
 # print(juno.name) # Juno
 # print(juno.age) # 0
 
 # print(juno.species) # Canis familiaris
 
-
-'    Note: Custom objects are mutable!'
-
-# juno.species = 'Felis silvestris'
-
-# print(juno.species) # Felis silvestris
+# # Class method doesn't need to be instantiated but it could only run on the class
+# Dog.faux_bark()   # Dog just barked!!
 
 
+# '''
+# But it isn't correctly stated is it's supposed to be class method, because if it does,
+# it should have the @classmethod decorator and recieve the 'cls' first argument instead of 'self'
+
+#     The more technical specification is that while a function is defined as the bark method without
+#     the decorator it acts like a class method but it doen't have access to modify the class attributes,
+#     so in essence is just a function that can be called directly from the class but that's it.
+# '''
+
+# Corrected Class method.
+# Dog.bark()  # Dog just barked!!
+
+
+# # Class methods in action
+
+# print(f"{juno.name} species is: {juno.species}", end='\n\n') # Canis familiaris
+
+# '    Note: Custom objects are mutable!'
+# juno.species = 'Felis Silvetris'
+
+# print(f"{juno.name} species is now: {juno.species}", end='\n\n') # Felis Silvestris
+
+# print(f"All Dogs (Dog Class) are still: {Dog.species}")  # Canis familiaris, remain unchanged
+
+# rex = Dog('Rex', 5)
+
+# print()
+# print(f"{rex.name} species is: {rex.species}", end='\n\n') # Canis familiaris
+
+# print(f"Now all Dogs (Dog Class) will be 'Turdus migratorius' from here on...", end='\n\n')
+# Dog.species_change('Turdus migratorius')
+
+# print(f"{rex.name} species is now: {rex.species}", end='\n\n') # Canis familiaris
+
+
+
+
+
+
+# # Instance methods testing
 # print(juno.description())   # Juno is 0 years old
 # print(juno.speak('Woof Woof'))  # Juno says Woof Woof
 # print(juno.speak('Bow Wow'))    # Juno says Bow Wow
 
 
-# Instance representation
+# # Instance representation
 # print(juno) # <__main__.Dog object at 0x0000020E13637170> 
 
 '    after implementing the __str__() method'
