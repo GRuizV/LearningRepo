@@ -137,6 +137,39 @@
 # # print(f"{rex.name} species is now: {rex.species}", end='\n\n') # Canis familiaris
 
 
+# '   An Example of the use of @Classmethods'
+# # The task is to implement an instance counter in the definition of a Class
+
+
+# class Item:
+
+#     instances = int()
+
+#     def __init__(self):
+
+#         Item.instances += 1
+#         print(f'Item #{self.instances} created')
+
+
+
+#     @classmethod
+#     def instantiator(cls, count):
+
+#         for _ in range(count):
+#             Item()
+
+
+# item1 = Item()
+
+# print(f"There currently ({Item.instances}) instances in the class")
+
+# Item.instantiator(5)
+
+# print(f"There currently ({Item.instances}) instances in the class")
+
+
+
+
 # # # Instance methods testing
 # # print(juno.description())   # Juno is 0 years old
 # # print(juno.speak('Woof Woof'))  # Juno says Woof Woof
@@ -169,6 +202,7 @@
 # print(juno.owner) # Juan, The getter still works
 # del juno.owner # Deletter implemented
 # print(juno.owner) # AttributeError, Means it worked
+
 
 
 
