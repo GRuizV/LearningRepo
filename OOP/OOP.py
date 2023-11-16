@@ -23,9 +23,13 @@
         
 #         self.name = name    # Instance Variables
 #         self.age = age
+#         self.__condition = 'Healthy'    #Private Variable (Attribute)
+#         self._owner = None  # Protected Variable (Attribute)
     
 #     def __str__(self):
 #         return f"{self.name} is {self.age} years old"
+
+
 
 
 #     # Faux Class method
@@ -40,7 +44,36 @@
 #     @classmethod
 #     def species_change(cls, new_species):
 #         cls.species = new_species
-        
+
+
+
+
+#     # Pythonic Getters, Setters & Deleters
+
+#     @property   # Getter
+#     def condition(self):
+#         return self.__condition
+    
+#     @condition.setter   # Setter
+#     def condition(self, condition):
+#         self.__condition = condition
+
+#     @condition.deleter
+#     def condition(self):
+#         del self.__condition
+
+#     @property   # Getter
+#     def owner(self):
+#         return self._owner
+    
+#     @owner.setter   # Setter
+#     def owner(self, owner):
+#         self._owner = owner
+
+#     @owner.deleter
+#     def owner(self):
+#         del self._owner
+
 
 
 
@@ -60,14 +93,14 @@
 # juno = Dog('Juno', 0)
 
 
-# # Class & Instance Testing
-# print(juno.name) # Juno
-# print(juno.age) # 0
+# # # Class & Instance Testing
+# # print(juno.name) # Juno
+# # print(juno.age) # 0
 
-# print(juno.species) # Canis familiaris
+# # print(juno.species) # Canis familiaris
 
-# # Class method doesn't need to be instantiated but it could only run on the class
-# Dog.faux_bark()   # Dog just barked!!
+# # # Class method doesn't need to be instantiated but it could only run on the class
+# # Dog.faux_bark()   # Dog just barked!!
 
 
 # '''
@@ -79,48 +112,65 @@
 #     so in essence is just a function that can be called directly from the class but that's it.
 # '''
 
-# Corrected Class method.
-# Dog.bark()  # Dog just barked!!
+# # # Corrected Class method.
+# # Dog.bark()  # Dog just barked!!
 
 
-# # Class methods in action
+# # # Class methods in action
+# # print(f"{juno.name} species is: {juno.species}", end='\n\n') # Canis familiaris
 
-# print(f"{juno.name} species is: {juno.species}", end='\n\n') # Canis familiaris
+# # '    Note: Custom objects are mutable!'
+# # juno.species = 'Felis Silvetris'
 
-# '    Note: Custom objects are mutable!'
-# juno.species = 'Felis Silvetris'
+# # print(f"{juno.name} species is now: {juno.species}", end='\n\n') # Felis Silvestris
 
-# print(f"{juno.name} species is now: {juno.species}", end='\n\n') # Felis Silvestris
+# # print(f"All Dogs (Dog Class) are still: {Dog.species}")  # Canis familiaris, remain unchanged
 
-# print(f"All Dogs (Dog Class) are still: {Dog.species}")  # Canis familiaris, remain unchanged
+# # rex = Dog('Rex', 5)
 
-# rex = Dog('Rex', 5)
+# # print()
+# # print(f"{rex.name} species is: {rex.species}", end='\n\n') # Canis familiaris
 
-# print()
-# print(f"{rex.name} species is: {rex.species}", end='\n\n') # Canis familiaris
+# # Dog.species_change('Turdus migratorius')
+# # print(f"Now all Dogs (Dog Class) will be 'Turdus migratorius' from here on...", end='\n\n')
 
-# print(f"Now all Dogs (Dog Class) will be 'Turdus migratorius' from here on...", end='\n\n')
-# Dog.species_change('Turdus migratorius')
-
-# print(f"{rex.name} species is now: {rex.species}", end='\n\n') # Canis familiaris
-
+# # print(f"{rex.name} species is now: {rex.species}", end='\n\n') # Canis familiaris
 
 
+# # # Instance methods testing
+# # print(juno.description())   # Juno is 0 years old
+# # print(juno.speak('Woof Woof'))  # Juno says Woof Woof
+# # print(juno.speak('Bow Wow'))    # Juno says Bow Wow
 
 
+# # # Instance representation
+# # print(juno) # <__main__.Dog object at 0x0000020E13637170> 
 
-# # Instance methods testing
-# print(juno.description())   # Juno is 0 years old
-# print(juno.speak('Woof Woof'))  # Juno says Woof Woof
-# print(juno.speak('Bow Wow'))    # Juno says Bow Wow
+# # '    after implementing the __str__() method'
+
+# # print(juno) # Juno is 0 years old
 
 
-# # Instance representation
-# print(juno) # <__main__.Dog object at 0x0000020E13637170> 
+# # # Getters and Setters
 
-'    after implementing the __str__() method'
+# # print(juno.name)    # Juno
 
-# print(juno) # Juno is 0 years old
+# # print(juno.__condition) # Private attributes are directly inaccessibles
+# print(juno.condition) # Healty, The getter works
+# juno.condition = 'Sick' # Setter
+# print(juno.condition) # Sick, The getter still works
+# del juno.condition  # Deletter implemented
+# print(juno.condition) # AttributeError, Means it worked
+
+
+# # print(juno._owner)  # protected attributes are directly accessibles, but aren't supposed to be accessed directly
+# print(juno.owner) # None, The getter works
+# juno.owner = 'Juan' # setter
+# print(juno.owner) # Juan, The getter still works
+# del juno.owner # Deletter implemented
+# print(juno.owner) # AttributeError, Means it worked
+
+
 
 
 
