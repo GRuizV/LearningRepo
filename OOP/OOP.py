@@ -208,7 +208,6 @@
 
 
 
-
 'Inheritance'
 
 # class Parent:
@@ -362,6 +361,24 @@
 # # Level: Junior
 
 
+# '   This is why the super() function is important'
+
+# class Parent:
+#     def method(self):
+#         print("Parent method")
+
+
+# class Child(Parent):
+#     def method(self):
+#         print("Child method")
+#         super().method()  # Calls the method from the Parent class
+
+
+# Child().method()    #This will print "Child method\nParent method"
+
+
+
+
 
 
 'Polymorphism'
@@ -431,6 +448,8 @@
 
 # catto.intro() # Hi, Im an animal
 # catto.speak() # Meow!
+
+
 
 
 
@@ -515,6 +534,8 @@
 
 # # Displaying updated odometer reading
 # print(f"Updated odometer reading: {my_car.get_odometer_reading()} miles")   # Updated odometer reading: 1500 miles
+
+
 
 
 
