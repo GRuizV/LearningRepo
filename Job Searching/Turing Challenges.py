@@ -1,5 +1,5 @@
 
-'Problem #2'
+'Coding Challenge - Problem #2'
 # def solutions(s):
 
 #     s = s.split('-')
@@ -17,7 +17,7 @@
 
 
 
-'Problem #1'
+'Coding Challenge - Problem #1'
 
 '''
     The problem statement is how many ways are to reach to the 
@@ -28,20 +28,36 @@
 
 '''
 
-def fibonacci(n):
+# def fibonacci(n):
 
-    result = [0,1]
+#     result = [0,1]
 
-    for i in range(n):
-        result.append(sum(result[-2:]))
+#     for i in range(n):
+#         result.append(sum(result[-2:]))
 
-    return result
-
-
-print(fibonacci(7))
+#     return result
 
 
+# print(fibonacci(7))
 
+
+
+
+
+
+'Practical Challenge'
+
+# email_addr = 'a@g.com'
+
+
+
+# before_at = email_addr.split('@')[0]
+# after_at = email_addr.split('@')[1]
+
+
+# domiain = after_at.split('.')
+
+# print(domiain)
 
 
 
