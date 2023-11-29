@@ -45,6 +45,24 @@
 
 
 
+'Practical Challenge'
+
+# email_addr = 'a@g.com'
+
+
+
+# before_at = email_addr.split('@')[0]
+# after_at = email_addr.split('@')[1]
+
+
+# domiain = after_at.split('.')
+
+# print(domiain)
+
+
+
+
+
 
 
 
