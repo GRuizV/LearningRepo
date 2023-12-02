@@ -989,13 +989,123 @@ The first recursion problem I review:
 
 
 
+"Josephus Permutation Problems and Efficiency with Deques"
+
+
+'''
+    The problem states a group of soldiers that are planing to execute each other in a way that only one has to commit suicide.
+    The problem is how to know at which position the soldier will have to execute himself, if the executioner will do it every k soldiers,
+    is also requested to return the sequence of soldiers, being the last item the position requested.
+
+    Later, the efficiency comes as a problem since if is a solution based on lists, looping and poping items would result in a O(n^2) complexity,
+    then, Deques come handy
+
+'''
+
+
+# # Josephus Permutation Solution based on lists
+
+# from timeit import default_timer as timer
+
+# def solution(arr, k):
+
+#     perm = list()
+#     index = 0
+
+#     while arr:
+
+#         index = (index + k - 1) % len(arr)
+#         item = arr.pop(index)
+#         perm.append(item)
+    
+#     return perm
+
+
+# n_soldiers = 7
+# soldiers = [s+1 for s in range(n_soldiers)]
+# k = 3
+# result = solution(soldiers, k)
+
+
+# # expected solution: [3,6,2,7,5,1,4]
+# print(result)   # [3, 6, 2, 7, 5, 1, 4]
+
+
+        
+# # Efficiency measurement to list's solution
+
+
+
+# n_soldiers = 1_000_000
+# soldiers = [s+1 for s in range(n_soldiers)]
+# k = 3
+
+# s = timer()
+# result = solution(soldiers, k)
+# e = timer()
+
+# print(f'{e-s:.2f}s')    # result: 234.40s
+
+
+
+# # Josephus Permutation Solution based on Deques
+# from collections import deque
+
+# def deque_solution(arr, k):
+
+#     arr = deque(arr)
+#     perm = deque()
+  
+#     while arr:
+
+#         arr.rotate(1-k)
+#         item = arr.popleft()
+#         perm.append(item)
+    
+#     return perm
+
+
+# n_soldiers = 7
+# soldiers = [s+1 for s in range(n_soldiers)]
+# k = 3
+# result = deque_solution(soldiers, k)
+
+# # expected solution: [3,6,2,7,5,1,4]
+# print(result)   # deque([3, 6, 2, 7, 5, 1, 4])
+
+        
+# # Efficiency measurement to deque's solution
+# n_soldiers = 1_000_000
+# soldiers = [s+1 for s in range(n_soldiers)]
+# k = 3
+
+# s = timer()
+# result = deque_solution(soldiers, k)
+# e = timer()
+
+# print(f'{e-s:.2f}s')    # result: 0.26s
+
+'''
+    *Conclusions*
+
+    There's a substantial difference between the implementations with lists
+    vs the one with deques and this is due to the way python work with each one underneath
+    with the lists, in order to be efficient in indexing, it stores neighborly each element of the list
+    and when it comes to the pop operation, all elements from the popped one on needs to be move one to the left,
+    making it inefficient working with big numbers...
+
+    while, with the deques solution, this data structure does not need to have contiguously all the data from the deque,
+    instead, it stores it in the memory with a pointer to the next item (kinda like in a linked list), with this, everytime
+    an element is popped, instead of moving the whole structure over, it just reassign the pointer to the next element, which
+    has a complexity of O(1),
+
+    That's why there is such a big difference between the two implementations.
+'''
+
+
+
+
+
+
+
 "xxx"
-
-
-
-
-
-
-
-
-
