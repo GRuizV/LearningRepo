@@ -379,31 +379,131 @@ import re
 
 
 
-# Question Mark
-pattern = r'colou?r'  # Matches 'colour' or 'color'
+# # Question Mark
+# pattern = r'colou?r'  # Matches 'colour' or 'color'
 
-text = "The colour of the car is blue, but color is also acceptable."
+# text = "The colour of the car is blue, but color is also acceptable."
 
-matches = re.findall(pattern, text)
+# matches = re.findall(pattern, text)
 
-print(matches)  # Output: ['colour', 'color']
-
-
+# print(matches)  # Output: ['colour', 'color']
 
 
 
 
+# # Curly braces
+# pattern = r'a{2}'  # Matches with anything with 2 consecutive (a)s
+
+# text = "a aa aaa aaaa aaaaaa abaa ava aara"
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa', 'aa']
+
+
+# pattern = r'a{1,3}'  # It also matches with inclusive ranges of (a)s
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['a', 'aa', 'aaa', 'aaa', 'a', 'aaa', 'aaa', 'a', 'aa', 'a', 'a', 'aa', 'a']
+
+
+# pattern = r'a{3,}'  # and lastly It'll also match with values higher than n {n,}
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['aaa', 'aaaa', 'aaaaaa']
+
+
+# pattern = r'a{1,2}|a{0}'  # Since maximal count is not suported {,n}, the pattern that will suffice for this is this one, for up to 2 count
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['a', '', 'aa', '', 'aa', 'a', '', 'aa', 'aa', '', 'aa', 'aa', 'aa', '', 'a', '', 'aa', '', 'a', '', 'a', '', 'aa', '', 'a', '']
 
 
 
 
 
 
+'Charater Classes'
+
+# # [aeiou] 
+# pattern = r'[aeiou]'  # Matches with any vowel
+
+# text = "The Price is $20."
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['e', 'i', 'e', 'i']
 
 
+# # [A-Z] 
+# pattern = r'[A-Z]'  # Matches with any Uppercased letter
+
+# text = "The Price is $20."
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['T', 'P']
 
 
+# # [A-Za-z] 
+# pattern = r'[A-Za-z]'  # Matches with any Uppercased or lowercased letter
 
+# text = "The Price is $20."
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['T', 'h', 'e', 'P', 'r', 'i', 'c', 'e', 'i', 's']
+
+
+# # [0-9] 
+# pattern = r'[0-9]'  # Matches with any digit
+
+# text = "The Price is $20."
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['2', '0']
+
+
+# # [^0-9] 
+# pattern = r'[^0-9]'  # Matches with anything but a digit
+
+# text = "The Price is $20."
+
+# matches = re.findall(pattern, text)
+
+# print(matches)  # Output: ['T', 'h', 'e', ' ', 'P', 'r', 'i', 'c', 'e', ' ', 'i', 's', ' ', '$', '.']
+
+
+# Practical case: Matches with words only composed by vowels
+pattern = r'\b[aeiou]+\b'  # Matches with words only made by vowels
+
+text = "aea apple tree juice oui"
+
+matches = re.findall(pattern, text, flags=re.IGNORECASE)
+
+print(matches) # ['aea', 'oui']
+
+#   Practical case: Matches with words that contains two vowels adjacent
+pattern = r'\b\w*?[aeiou]{2}\w*?\b'  # Matches with words only made by vowels
+
+text = "aea apple tree juice oui"
+
+matches = re.findall(pattern, text, flags=re.IGNORECASE)
+
+print(matches) # ['aea', 'tree', 'juice', 'oui']
+
+#   Practical case: Matches with words that starts with two adjacent vowels
+pattern = r'\b[aeiou]{2}\w*?\b'  # Matches with words only made by vowels
+
+text = "aea apple tree juice oui"
+
+matches = re.findall(pattern, text, flags=re.IGNORECASE)
+
+print(matches) # ['aea', 'tree', 'juice', 'oui']
 
 
 
