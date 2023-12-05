@@ -1,6 +1,176 @@
 import re
 
 
+'Corey Schafer CheatSheet'
+
+# .       - Any Character Except New Line
+# \d      - Digit (0-9)
+# \D      - Not a Digit (0-9)
+# \w      - Word Character (a-z, A-Z, 0-9, _)
+# \W      - Not a Word Character
+# \s      - Whitespace (space, tab, newline)
+# \S      - Not Whitespace (space, tab, newline)
+
+# \b      - Word Boundary
+# \B      - Not a Word Boundary
+# ^       - Beginning of a String
+# $       - End of a String
+
+# []      - Matches Characters in brackets
+# [^ ]    - Matches Characters NOT in brackets
+# |       - Either Or
+# ( )     - Group
+
+
+# MetaCharacters (Need to be escaped):
+# . ^ $ * + ? { } [ ] \ | ( )
+
+
+# Quantifiers:
+# *       - 0 or More
+# +       - 1 or More
+# ?       - 0 or One
+# {3}     - Exact Number
+# {3,4}   - Range of Numbers (Minimum, Maximum)
+
+
+#### Sample Regexs ####
+
+# [a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+
+
+
+"   Corey's Example: emails"
+
+# emails = '''
+# CoreyMSchafer@gmail.com
+# corey.schafer@university.edu
+# corey-321-schafer@my-work.net
+# '''
+
+# pattern = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
+
+# matches = pattern.finditer(emails)
+
+# for match in matches:
+#     print(match)
+
+
+
+"   Corey's Example: urls"
+
+# urls = '''
+# https://www.google.com
+# http://coreyms.com
+# https://youtube.com
+# https://www.nasa.gov
+# '''
+
+# pattern = re.compile(r'https?://(www\.)?(\w+)(\.\w+)')
+
+# subbed_urls = pattern.sub(r'\2\3', urls)
+
+# print(subbed_urls)
+
+# matches = pattern.finditer(urls)
+
+# for match in matches:
+#     print(match.group(3))
+
+
+
+
+"   Corey's practical case"
+
+text_to_search = r'''
+abcdefghijklmnopqurtuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+1234567890
+
+Ha HaHa
+
+MetaCharacters (Need to be escaped):
+. ^ $ * + ? { } [ ] \ | ( )
+
+coreyms.com
+
+321-555-4321
+123.555.1234
+123*555*1234
+800-555-1234
+900-555-1234
+
+Mr. Schafer
+Mr Smith
+Ms Davis
+Mrs. Robinson
+Mr. T
+
+cat, mat, pat, bat
+
+CoreyMSchafer@gmail.com
+corey.schafer@university.edu
+corey-321-schafer@my-work.net
+
+https://www.google.com
+http://coreyms.com
+https://youtube.com
+https://www.nasa.gov
+
+'''
+
+# urls  = '''
+# https://www.google.com
+# http://coreyms.com
+# https://youtube.com
+# https://www.nasa.gov
+# '''
+
+# # Pattern to match ...
+# pattern = re.compile(r'https?://(www\.)?(\w+)(\.\w+)')
+
+# subbed_urls = pattern.sub(r'\2\3', urls)   # within the subbed function the backslashed numbers are called "Back references"
+# print(subbed_urls)
+
+# matches = pattern.finditer(text_to_search)
+
+# for match in matches:
+#     print(match.group(3))
+
+
+
+# Pattern to match emails
+# pattern = re.compile(r'[A-Za-z.-_0-9]+@[A-Za-z-]+\.(com|net|edu)')
+
+# # Pattern to match Mr., Mr, Ms, Ms., Mrs. and Mrs
+# pattern = re.compile(r'M[rs]+\.?\s[A-Z]\w*')
+# pattern = re.compile(r'M(r|s|rs)\.?\s[A-Z]\w*') # The same but working with groups '(...)'
+# pattern = re.compile(r'(Mr|Ms|Mrs)\.?\s[A-Z]\w*') # The same but more legible
+
+# # Pattern to match any number with dash or dot as sep.
+# pattern = re.compile(r'\d+[-.]\d+[-.]\d+')
+
+# # Pattern to match any number that starts with 900 or 800
+# pattern = re.compile(r'[89]00+[-.]\d+[-.]\d+')
+
+
+
+
+
+# #   working with a plain-text file and string parsing
+# with open(r'C:\Users\USUARIO\GR\Software Development\Learning\Concepts\RegEx\data.txt', 'r') as f:
+
+#     contents = f.read()
+
+#     matches = pattern.finditer(contents)
+
+#     for match in matches:
+#         print(match)
+
+
+
+
+
+
 'The re module'
 
 # #   The re.compile func
@@ -478,32 +648,33 @@ import re
 # print(matches)  # Output: ['T', 'h', 'e', ' ', 'P', 'r', 'i', 'c', 'e', ' ', 'i', 's', ' ', '$', '.']
 
 
-# Practical case: Matches with words only composed by vowels
-pattern = r'\b[aeiou]+\b'  # Matches with words only made by vowels
+'   practical cases'
+# # Practical case: Matches with words only composed by vowels
+# pattern = r'\b[aeiou]+\b'  # Matches with words only made by vowels
 
-text = "aea apple tree juice oui"
+# text = "aea apple tree juice oui"
 
-matches = re.findall(pattern, text, flags=re.IGNORECASE)
+# matches = re.findall(pattern, text, flags=re.IGNORECASE)
 
-print(matches) # ['aea', 'oui']
+# print(matches) # ['aea', 'oui']
 
-#   Practical case: Matches with words that contains two vowels adjacent
-pattern = r'\b\w*?[aeiou]{2}\w*?\b'  # Matches with words only made by vowels
+# #   Practical case: Matches with words that contains two vowels adjacent
+# pattern = r'\b\w*?[aeiou]{2}\w*?\b'
 
-text = "aea apple tree juice oui"
+# text = "aea apple tree juice oui"
 
-matches = re.findall(pattern, text, flags=re.IGNORECASE)
+# matches = re.findall(pattern, text, flags=re.IGNORECASE)
 
-print(matches) # ['aea', 'tree', 'juice', 'oui']
+# print(matches) # ['aea', 'tree', 'juice', 'oui']
 
-#   Practical case: Matches with words that starts with two adjacent vowels
-pattern = r'\b[aeiou]{2}\w*?\b'  # Matches with words only made by vowels
+# #   Practical case: Matches with words that starts with two adjacent vowels
+# pattern = r'\b[aeiou]{2}\w*?\b'
 
-text = "aea apple tree juice oui"
+# text = "aea apple tree juice oui"
 
-matches = re.findall(pattern, text, flags=re.IGNORECASE)
+# matches = re.findall(pattern, text, flags=re.IGNORECASE)
 
-print(matches) # ['aea', 'tree', 'juice', 'oui']
+# print(matches) # ['aea', 'tree', 'juice', 'oui']
 
 
 
