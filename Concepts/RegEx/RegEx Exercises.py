@@ -25,11 +25,28 @@ import re
 
 
 
+'Re.findall() & Re.finditer()'
+
+# s = 'match a single character not present in the list below'
+
+# pattern = re.compile(r'(?<=[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm])[AEIOUaeiou]{2,}(?=[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm])')
+
+# matches = pattern.findall(s,)
+
+# if matches:
+
+#     for match in matches:
+#         print(match)
+
+# else:
+#     print(-1)
+
+# Done
+
+
+
+
 'xxx'
-
-
-
-
 
 
 
