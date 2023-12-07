@@ -99,6 +99,43 @@ import time
 
 
 
+'   Stacked decorators application'
+
+# def uppercase_decorator(func):
+
+#     def wrapper(*args):
+        
+#         result = func(*args)
+
+#         return result.upper()
+            
+#     return wrapper
+
+
+# def greeting_decorator(func):
+
+#     def wrapper(*args):
+        
+#         result = func(*args)
+
+#         return f"Greeting, {result}"
+            
+#     return wrapper
+
+
+# @uppercase_decorator
+# @greeting_decorator
+# def greet(name):
+#     return f"Hello, {name}!"
+
+
+# result = greet('David')
+
+# print(result)
+
+
+
+
 '   A more sophisticated example'
 
 # def repeat(n_times):
@@ -127,7 +164,15 @@ import time
 
 
 
+def print_message(message):
+    "Enclosong Function"
+    def message_sender():
+        "Nested Function"
+        print(message)
 
+    message_sender()
+
+print_message("Some random message")
 
 
 
