@@ -218,8 +218,76 @@ My solution up to this point is 36% effective.
 
 
 
+
+"Classes: Dealing with Complex Numbers"
+
+# import math
+
+# class Complex(object):
+
+#     def __init__(self, real, imaginary):
+#         self.real = real
+#         self.imaginary = imaginary
+
+#     def __add__(self, no):
+#         return Complex(self.real+no.real, self.imaginary+no.imaginary)
+        
+#     def __sub__(self, no):
+#         return Complex(self.real-no.real, self.imaginary-no.imaginary)
+        
+#     def __mul__(self, no):
+        
+#         new_real_part =  (self.real * no.real) - (self.imaginary * no.imaginary)
+#         new_imaginary_part =  (self.real * no.imaginary) + (self.imaginary * no.real)
+        
+#         return Complex(new_real_part, new_imaginary_part)
+
+#     def __truediv__(self, no):
+
+#         new_real_part =  ( ((self.real * no.real) + (self.imaginary * no.imaginary)) / (pow(no.real, 2) + pow(no.imaginary, 2)) )
+#         new_imaginary_part =  ( ((self.imaginary * no.real) - (self.real * no.imaginary)) / (pow(no.real, 2) + pow(no.imaginary, 2)) )
+        
+#         return Complex(new_real_part, new_imaginary_part)
+
+#     def mod(self):
+#         return Complex( math.sqrt( pow(self.real,2) + pow(self.imaginary,2) ) , 0 )
+
+#     def __str__(self):
+
+#         if self.imaginary == 0:
+#             result = f"{self.real:.2f}+0.00i"
+
+#         elif self.real == 0:
+
+#             if self.imaginary >= 0:
+#                 result = f"0.00+{self.imaginary:.2f}i"
+
+#             else:
+#                 result = f"0.00-{abs(self.imaginary):.2f}i"
+
+#         elif self.imaginary > 0:       
+#             result = f"{self.real:.2f}+{self.imaginary:.2f}i"
+
+#         else:
+#             result = f"{self.real:.2f}-{abs(self.imaginary):.2f}i"
+
+#         return result
+
+
+# A = complex(float(2),float(1))
+# B = complex(float(5),float(6))
+
+# C = Complex(float(2),float(1))
+# D = Complex(float(5),float(6))
+
+# print(D.mod())
+
+# '-Classes: Dealing with Complex Numbers- HackerRank Problem Solving Challenge done'
+
+
+
+
+
+
 "xxx"
-
 # '-xxx- HackerRank Problem Solving Challenge done'
-
-
