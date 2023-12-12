@@ -289,5 +289,51 @@ My solution up to this point is 36% effective.
 
 
 
+"Re.start() & Re.end()"
+
+# import re
+
+# S = 'hbcasckjabchsdcsdcgvdsjhvcb'
+# k = 'q'
+
+# pattern = rf'(?=({k}))'
+
+# matches = re.finditer(pattern, S)
+
+# found_match = False
+
+# for match in matches:
+
+#     found_match = True
+#     start_index = match.start(1)
+#     end_index = match.end(1) - 1
+
+#     print(f"({start_index}, {end_index})")
+
+# if not found_match:    
+#     print("(-1, -1)")
+
+
+
+'''
+    *Learned lesson:
+
+        From this challenge it ran into something I did not know before:
+        Iterator behave different than list in conditionals, because even
+        when it has no matches it still exists, therefore it wouldn't be
+        very useful to make a conditional like "if matches:" because it'd 
+        never evaluate to false.
+
+        The way aorund here is to use a flag to check whether there are matches in the iterator.
+'''
+
+
+# '-Re.start() & Re.end()- HackerRank Problem Solving Challenge done'
+
+
+
+
+
+
 "xxx"
 # '-xxx- HackerRank Problem Solving Challenge done'
