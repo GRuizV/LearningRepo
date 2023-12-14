@@ -63,9 +63,50 @@ the same as passing '2' to the function.
 
 
 
+'''Lambdas can be tested with unittest'''
+
+# import unittest
+
+# addtwo = lambda x: x + 2
+
+# class LambdaTest(unittest.TestCase):
+#     def test_add_two(self):
+#         self.assertEqual(addtwo(2), 4)
+
+#     def test_add_two_point_two(self):
+#         self.assertEqual(addtwo(2.2), 4.2)
+
+#     def test_add_three(self):
+#         # Should fail
+#         self.assertEqual(addtwo(3), 6)
+
+# if __name__ == '__main__':
+#     unittest.main(verbosity=2)
 
 
 
+'''Classic Functional Constructs with Lambdas'''
 
+# # with map
+# print(list(map(lambda x: x.upper(), ['cat', 'dog', 'cow'])))    # ['CAT', 'DOG', 'COW']
+
+# # with filter
+# print(list(filter(lambda x: 'o' in x, ['cat', 'dog', 'cow'])))  # ['dog', 'cow']
+
+# # with reduce
+# from functools import reduce
+# print(reduce(lambda acc, x: f'{acc} | {x}', ['cat', 'dog', 'cow']))  # cat | dog | cow
+
+
+
+'''Lambdas in Key Functions'''
+
+# ids = ['id1', 'id2', 'id30', 'id3', 'id22', 'id100']
+# print(sorted(ids)) # Lexicographic sort: ['id1', 'id100', 'id2', 'id22', 'id3', 'id30']
+
+# sorted_ids = sorted(ids, key=lambda x: int(x[2:])) 
+# print(sorted_ids)   # Integer sort: ['id1', 'id2', 'id3', 'id22', 'id30', 'id100']
+
+# ''' Same works for list.sort(), min(), max() & others...'''
 
 
