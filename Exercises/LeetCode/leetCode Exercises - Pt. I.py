@@ -167,8 +167,7 @@
 
 '3. Longest Substring Without Repeating Characters'
 
-
-s = "abcabcbb"
+# s = "abcabcbb"
 
 
 # # My solution
@@ -202,26 +201,102 @@ s = "abcabcbb"
 # print(max_sub, len(max_sub))
 
 
-# Another more efficient solution
+# # Another more efficient solution
 
-def lengthOfLongestSubstring(s: str) -> int:
+# def lengthOfLongestSubstring(s: str) -> int:
         
-        n = len(s)
-        maxLength = 0
-        charMap = {}
-        left = 0
+#         n = len(s)
+#         maxLength = 0
+#         charMap = {}
+#         left = 0
         
-        for right in range(n):
+#         for right in range(n):
 
-            if s[right] not in charMap or charMap[s[right]] < left:
-                charMap[s[right]] = right
-                maxLength = max(maxLength, right - left + 1)
+#             if s[right] not in charMap or charMap[s[right]] < left:
+#                 charMap[s[right]] = right
+#                 maxLength = max(maxLength, right - left + 1)
 
-            else:
-                left = charMap[s[right]] + 1
-                charMap[s[right]] = right
+#             else:
+#                 left = charMap[s[right]] + 1
+#                 charMap[s[right]] = right
         
-        return maxLength
+#         return maxLength
 
 
-lengthOfLongestSubstring(s)
+# lengthOfLongestSubstring(s)
+
+
+
+
+'4. Median of Two Sorted Arrays'
+
+# # Input
+# nums1 = [1,3]
+# nums2 = [2]
+
+
+# # My Approach
+# nums_total = sorted(nums1 + nums2)
+
+# if len(nums_total) % 2 != 0:
+    
+#     median_idx = len(nums_total) // 2 
+#     median = float(nums_total[median_idx])
+#     print(f'{median:.5f}')
+
+# else:
+#     median_idx = len(nums_total) // 2 
+#     print(nums_total[median_idx-1], nums_total[median_idx] )
+#     median = (nums_total[median_idx-1] + nums_total[median_idx]) / 2
+#     print(f'{median:.5f}')
+
+
+'''
+Note: My solution actually worked, but don't know why is not working in LeetCode.
+        Apparently, they want a solution with mergesort.
+'''
+
+
+# # Mergesort Solution with pointers
+# def findMedianSortedArrays(nums1, nums2) -> float:
+        
+#         m, n = len(nums1), len(nums2)
+#         p1, p2 = 0, 0
+        
+#         # Get the smaller value between nums1[p1] and nums2[p2].
+#         def get_min():
+#             nonlocal p1, p2
+#             if p1 < m and p2 < n:
+#                 if nums1[p1] < nums2[p2]:
+#                     ans = nums1[p1]
+#                     p1 += 1
+#                 else:
+#                     ans = nums2[p2]
+#                     p2 += 1
+#             elif p2 == n:
+#                 ans = nums1[p1]
+#                 p1 += 1
+#             else:
+#                 ans = nums2[p2]
+#                 p2 += 1
+#             return ans
+        
+#         if (m + n) % 2 == 0:
+#             for _ in range((m + n) // 2 - 1):
+#                 _ = get_min()
+#             return (get_min() + get_min()) / 2
+#         else:
+#             for _ in range((m + n) // 2):
+#                 _ = get_min()
+#             return get_min()
+        
+# print(findMedianSortedArrays(nums1, nums2))
+
+'''
+Note: Honestly I feel this is kind of ego lifting.
+'''
+
+
+
+
+'xxx'
