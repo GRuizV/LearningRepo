@@ -299,4 +299,57 @@ Note: Honestly I feel this is kind of ego lifting.
 
 
 
+'5. Longest Palindromic Substring'
+
+# # Input
+# s = "cbbd"
+
+
+# # 1st Approach: Brute Force
+
+# # Creating the possible substrings from the input
+# subs = []
+
+# for i in range(1, len(s)+1):
+    
+#     for j in range((len(s)+1)-i):
+
+#         subs.append(s[j:j+i])
+
+# # # validating
+# # print(subs)        
+
+# palindromes = sorted(filter(lambda x : True if x == x[::-1] else False, subs), key=len, reverse=True)
+
+# print(palindromes)
+
+'''
+Note: While the solution works, is evidently not efficient enough / Time Limit Exceeded.
+'''
+
+
+# # 2nd Approach: Same brute force but less brute
+
+# max_len = 1
+# max_str = s[0]
+
+# for i in range(len(s)-1):
+
+#     for j in range(i+1, len(s)):
+
+#         sub = s[i:j+1]        
+
+#         if (j-i)+1 > max_len and sub == sub[::-1]:
+
+#             max_len = (j-i)+1
+#             max_str = s[i:j+1]
+
+
+# print(max_str)
+
+
+
+
 'xxx'
+
+
