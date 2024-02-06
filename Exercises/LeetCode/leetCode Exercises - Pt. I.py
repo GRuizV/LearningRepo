@@ -350,6 +350,35 @@ Note: While the solution works, is evidently not efficient enough / Time Limit E
 
 
 
+'7. Reverse Integer'
+
+# # Input
+# x = -15
+
+# # My Solution
+# raw_res = str(x)[::-1]
+
+# if '-' in raw_res:
+#     res = int(raw_res[:-1])
+#     res = int('-'+str(res))
+
+# else:
+#     res = int(raw_res)
+
+
+# min_32bit = -2**31
+# max_32bit = 2**31-1
+
+# if res > max_32bit or res < min_32bit:
+#     print(0)
+
+# else:
+#     print(res)
+
+
+
+
 'xxx'
+
 
 
