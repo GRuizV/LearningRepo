@@ -378,7 +378,113 @@ Note: While the solution works, is evidently not efficient enough / Time Limit E
 
 
 
-'xxx'
+'8. String to Integer (atoi)'
+
+#Input
+s = "   -43.2N5"
+
+
+# # My approach
+
+# # Cleaning leading blank spaces
+# s = s.strip()
+
+# # In case of a sign present
+# sign = None
+
+# if s[0] == '-' or s[0] == '+':    
+#     sign = s[0]
+#     s = s[1:]
+
+
+# num = ''
+
+# # Reviewing each valid character
+# for char in s:    
+#     if char not in '0123456789.':
+#         break    
+#     num += char
+
+
+# decimals = None
+
+# # In case of a decimals
+# if '.' in num:
+#     decimals = num[num.find('.')+1:] #35
+#     num = num[:num.find('.')]   #42
+#     decimal_break = 5 * 10**(len(decimals)-1)
+
+#     decimals = int(decimals)
+    
+#     #in case no number befor '.'
+#     if not num:
+#         num = 0
+#     else:
+#         num = int(num)
+    
+#     if decimals >= decimal_break:
+#         num += 1
+
+# elif num:
+#     num = int(num)
 
 
 
+# # In case is negative
+# if sign == '-':
+#     num = int('-'+str(num))
+
+
+# max_32bit = 2**31-1
+# min_32bit = -2**31
+
+
+# #Outputting the result
+# if not num:
+#     print(0)
+
+# else:
+ 
+#     if num < min_32bit:
+#         print(min_32bit)
+
+#     elif num > max_32bit:
+#         print(max_32bit)
+    
+#     else:      
+#         print(num)
+
+''' 
+Note:
+    It leaved cases unhandled. I also don't have the time to keep building the solution.
+'''
+
+# ChatGPT approach
+
+def atoi(s: str) -> int:
+    s = s.strip()  # Remove leading and trailing whitespace
+    if not s:
+        return 0
+    
+    sign = 1
+    i = 0
+    
+    # Check for sign
+    if s[i] in ['+', '-']:
+        if s[i] == '-':
+            sign = -1
+        i += 1
+    
+    # Iterate through characters and build the number
+    num = 0
+    while i < len(s) and s[i].isdigit():
+        num = num * 10 + int(s[i])
+        i += 1
+    
+    # Apply sign and handle overflow
+    num *= sign
+    num = max(-2**31, min(2**31 - 1, num))
+    
+    return num
+
+print(atoi(s))
