@@ -381,7 +381,7 @@ Note: While the solution works, is evidently not efficient enough / Time Limit E
 '8. String to Integer (atoi)'
 
 #Input
-s = "   -43.2N5"
+# s = "   -43.25"
 
 
 # # My approach
@@ -459,32 +459,96 @@ Note:
     It leaved cases unhandled. I also don't have the time to keep building the solution.
 '''
 
-# ChatGPT approach
+# # ChatGPT approach
 
-def atoi(s: str) -> int:
-    s = s.strip()  # Remove leading and trailing whitespace
-    if not s:
-        return 0
+# def atoi(s: str) -> int:
+#     s = s.strip()  # Remove leading and trailing whitespace
+#     if not s:
+#         return 0
     
-    sign = 1
-    i = 0
+#     sign = 1
+#     i = 0
     
-    # Check for sign
-    if s[i] in ['+', '-']:
-        if s[i] == '-':
-            sign = -1
-        i += 1
+#     # Check for sign
+#     if s[i] in ['+', '-']:
+#         if s[i] == '-':
+#             sign = -1
+#         i += 1
     
-    # Iterate through characters and build the number
-    num = 0
-    while i < len(s) and s[i].isdigit():
-        num = num * 10 + int(s[i])
-        i += 1
+#     # Iterate through characters and build the number
+#     num = 0
+#     while i < len(s) and s[i].isdigit():
+#         num = num * 10 + int(s[i])
+#         i += 1
     
-    # Apply sign and handle overflow
-    num *= sign
-    num = max(-2**31, min(2**31 - 1, num))
+#     # Apply sign and handle overflow
+#     num *= sign
+#     num = max(-2**31, min(2**31 - 1, num))
     
-    return num
+#     return num
 
-print(atoi(s))
+# print(atoi(s))
+
+
+
+
+'11. Container With Most Water'
+
+# # Input
+# heights = [1,8,6,2,5,4,8,3,7]
+
+
+# # My Approach
+# max_area = 0
+
+# for i in range(len(heights)):
+
+#     for j in range(i+1, len(heights)):
+
+#         height = min(heights[i], heights[j])
+#         width = j-i
+#         area = height * width
+
+#         max_area = max(max_area, area)
+
+# print(max_area)
+
+
+'''
+Note:
+    While this approach works, its complexity goes up to O(n), and is required to be more efficient
+'''
+
+
+# # Two-pointer solution
+
+# left = 0
+# right = len(heights)-1
+# max_area = 0
+
+# while left < right:
+
+#     h = min(heights[left], heights[right])
+#     width = right - left
+#     area = h * width
+
+#     max_area = max(max_area, area)
+
+#     if heights[left] <= heights [right]:
+#         left += 1
+    
+#     else:
+#         right -= 1
+
+
+# print(max_area)
+
+
+
+
+'xxx'
+
+
+
+
+
