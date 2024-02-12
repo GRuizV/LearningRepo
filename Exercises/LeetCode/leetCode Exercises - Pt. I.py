@@ -546,9 +546,62 @@ Note:
 
 
 
-'xxx'
+'13. Roman to Integer'
+
+'''
+Substraction exceptions:
+    - I can be placed before V (5) and X (10) to make 4 and 9. 
+    - X can be placed before L (50) and C (100) to make 40 and 90. 
+    - C can be placed before D (500) and M (1000) to make 400 and 900.
+'''
+
+# # Input
+# s = 'MCMXCIV'
+
+
+# # My approach
+# res = 0
+# rom_to_int_dic = {'I': 1, 'IV': 4, 'V': 5, 'IX': 9, 'X': 10, 'XL': 40, 'L': 50, 'XC': 90, 'C': 100, 'CD': 400, 'D': 500, 'CM': 900, 'M': 1000, }
+
+
+# #Substraction Exceptions
+# if 'IV' in s:
+#     res += rom_to_int_dic['IV']
+#     s = s.replace('IV','')
+
+# if 'IX' in s:
+#     res += rom_to_int_dic['IX']
+#     s = s.replace('IX','')
+
+# if 'XL' in s:
+#     res += rom_to_int_dic['XL']
+#     s = s.replace('XL','')
+
+# if 'XC' in s:
+#     res += rom_to_int_dic['XC']
+#     s = s.replace('XC','')
+
+# if 'CD' in s:
+#     res += rom_to_int_dic['CD']
+#     s = s.replace('CD','')
+
+# if 'CM' in s:
+#     res += rom_to_int_dic['CM']
+#     s = s.replace('CM','')
+
+# # Dealing with the Remaining Number
+# if s:
+#     for chr in s:
+#         res += rom_to_int_dic[chr]
+
+# else:
+#     print(res)
+
+
+# print(res)
 
 
 
 
+'13.1 Roman to Integer - Variation: the other way around, Just For Fun.'
 
