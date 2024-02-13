@@ -600,8 +600,142 @@ Substraction exceptions:
 
 # print(res)
 
+'''
+Note: This version works, but there is a more concise one
+'''
+
+# s = 'MCMXCIV'
+
+# # ChatGPT's Approach
+# roman_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+# total = 0
+# prev_value = 0
+
+# for char in s[::-1]:    #Reverse to simplify the process
+    
+#     curr_value = roman_dict[char]
+
+#     if curr_value < prev_value:
+#         total -= curr_value
+    
+#     else:
+#         total += curr_value
+#         prev_value = curr_value
+
+# print(total)
+
 
 
 
 '13.1 Roman to Integer - Variation: the other way around, Just For Fun.'
+
+# Input
+num = 1994
+
+# Ref
+rom_to_int_dic = {
+    'I': 1,
+    'IV': 4,
+    'V': 5,
+    'IX': 9,
+    'X': 10,
+    'XL': 40,
+    'L': 50,
+    'XC': 90,
+    'C': 100,
+    'CD': 400,
+    'D': 500,
+    'CM': 900,
+    'M': 1000,
+}
+
+'''
+Substraction exceptions:
+    - I can be placed before V (5) and X (10) to make 4 and 9. 
+    - X can be placed before L (50) and C (100) to make 40 and 90. 
+    - C can be placed before D (500) and M (1000) to make 400 and 900.
+'''
+
+# My approach
+s = ''
+
+while num > 0:
+
+    if num / 1000 >= 1:
+        s = s + 'M'
+        num -= 1000
+
+    elif num / 900 >= 1:
+        s = s + 'CM'
+        num -= 900
+
+    elif num / 500 >= 1:
+        s = s + 'D'
+        num -= 500
+
+    elif num / 400 >= 1:
+        s = s + 'CD'
+        num -= 400
+        
+    elif num / 100 >= 1:
+        s = s + 'C'
+        num -= 100
+
+    elif num / 90 >= 1:
+        s = s + 'XC'
+        num -= 90
+
+    elif num / 50 >= 1:
+        s = s + 'L'
+        num -= 50
+
+    elif num / 40 >= 1:
+        s = s + 'XL'
+        num -= 40
+
+    elif num / 10 >= 1:
+        s = s + 'X'
+        num -= 10
+    
+    elif num / 9 >= 1:
+        s = s + 'IX'
+        num -= 9
+    
+    elif num / 5 >= 1:
+        s = s + 'V'
+        num -= 5
+    
+    elif num / 4 >= 1:
+        s = s + 'IV'
+        num -= 4
+    
+    elif num / 1 >= 1:
+        s = s + 'I'
+        num -= 1
+
+
+# print(s, num)
+
+
+'''
+Note: Again, this version works, but there is a more concise one
+'''
+
+# Input
+num = 1994
+res = ''
+
+inv_roman_dict = {
+    1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L',
+    90: 'XC', 100: 'C', 400: 'CD', 500: 'D', 900: 'CM', 1000: 'M'
+}
+
+for value, symbol in sorted(inv_roman_dict.items(), reverse=True):
+    
+    while num >= value:
+        
+        res = res + symbol
+        num -= value
+    
+print(res)
 
