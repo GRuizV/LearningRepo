@@ -743,4 +743,137 @@ Note: Again, this version works, but there is a more concise one
 
 
 
+'14. Longest Common Prefix'
+
+'''
+Approach:
+    1. Order the array alphabetically 
+        & separate in different lists the words starting with each letter.
+
+    2. Order each array with the longest word upfront.
+
+    3. Build a dict with *Preffix as key and *Count as value.
+        *Count: will be how many words start with the first letter of the first word, the first two letters of the first word, 
+        and so on until exhauting the first (longest) word
+        *Preffix: the actual first, two first and so on substrings.
+
+    4. Merge all the resulting dict, order them descendingly, and return the first value if the count > 2, else: return an empty string.
+
+'''
+
+
+# Input
+
+# #   Custom input for testing
+# strs = ["flower", "flow", "flight", "dog", "racecar", "door", "fleet", "car", "racer"]
+
+# #   Real input
+# strs = ["a"]
+
+
+
+
+# # My approach
+
+# def longestCommonPrefix(strs):
+
+#     strs = sorted(strs, reverse=True)
+
+#     # Here will be stored each list
+#     lists = {}
+
+#     for str in strs:
+
+#         first_letter = str[0]
+
+#         if first_letter in lists:
+#             lists[first_letter].append(str)
+        
+#         else:
+#             lists[first_letter] = [str]
+
+
+#     # Converting the dict into a list to facilitate the logic
+#     groups = list(lists.values())
+
+#     # Ordering each sublist by len
+#     groups = list(map(lambda x: sorted(x, key=len, reverse=True), groups))
+
+#     # Here will be the counting and the prefixes
+#     results = dict()
+
+
+#     for group in groups:
+
+#         for i in range(1, len(group[0])):
+                
+#             prefix = ''
+#             count = 0
+
+#             for j in range(len(group)):
+
+#                 if group[0][:i] in group[j]:
+#                     count += 1
+                
+#             if count > 1:
+
+#                 prefix = group[0][:i]
+#                 results[prefix] = count
+
+
+#     results = sorted(results.items(), key = lambda x: (x[1], x[0]), reverse=True)
+
+#     # print(results)
+
+
+#     if results:
+#         return results[0][0]
+
+#     else:
+#         return ''
+    
+
+# print(longestCommonPrefix(strs))
+
+'''
+Note:
+    My solution appears to be functional but is not working as expected with unexpected input.
+'''
+
+
+# # ChatGPT's approach
+
+# def longestCommonPrefix(strs):
+
+#     if not strs:
+#         return ''
+
+#     strs.sort()
+#     first = strs[0]
+#     last = strs[-1]
+
+#     prefix = ''
+
+#     for i in range(len(first)):
+
+#         if i < len(last) and first[i] == last[i]:
+            
+#             prefix += first[i]
+        
+#         else:
+#             break
+    
+#     return prefix
+
+
+# print(longestCommonPrefix(strs))
+
+'''
+Conclusion:
+        The difference between my implementation and this is that the problem didn't state that the prefix must be present in all the strings, I assumed it wasn't going to be.
+'''
+
+
+
+
 'xxx'
