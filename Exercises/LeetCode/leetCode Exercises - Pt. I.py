@@ -876,4 +876,103 @@ Conclusion:
 
 
 
+'15. 3Sum'
+
+# import itertools
+
+# # Input
+# nums = [0,0,0]
+
+
+# My approach
+
+'''
+Rationale:
+    
+    1) Build all combinations caring for the order.
+    2) Filter down those who met sum(subset) = 0
+    3) Make sure there is no duplicates & return.
+
+'''
+
+# comb = list(itertools.combinations(nums,3))
+
+# comb = [sorted(x) for x in comb if sum(x) == 0]
+
+# res = []
+
+# for i in comb:
+
+#     if i not in res:
+#         res.append(i)
+
+# print(res)
+
+'''
+Notes:
+
+    This solution actually works, but breaks when a big enough input is passed.
+'''
+
+
+# # Two-Pointers approach solution
+
+# def threeSum(self, nums):
+        
+#         nums.sort()
+#         answer = []
+        
+#         # if the inputs have less than 3 items
+#         if len(nums) < 3:
+#             return answer
+        
+#         for i in range(len(nums)):
+
+#             # Since is a sorted input, if first element is positive, there is no way it'll sum up to 0
+#             if nums[i] > 0:
+#                 break
+            
+#             # Apart from the first element, if the following is the same, jump to the next iteration to avoid returning duplicates
+#             if i > 0 and nums[i] == nums[i - 1]:
+#                 continue
+            
+#             # Pointers setting    
+#             low, high = i + 1, len(nums) - 1
+
+#             while low < high:
+
+#                 s = nums[i] + nums[low] + nums[high]
+
+#                 if s > 0:
+#                     high -= 1
+
+#                 elif s < 0:
+#                     low += 1
+
+#                 else:
+
+#                     answer.append([nums[i], nums[low], nums[high]])
+#                     lastLowOccurrence, lastHighOccurrence = nums[low], nums[high]
+                    
+#                     while low < high and nums[low] == lastLowOccurrence:
+#                         low += 1
+                    
+#                     while low < high and nums[high] == lastHighOccurrence:
+#                         high -= 1
+        
+#         return answer
+
+
+
+
 'xxx'
+
+
+
+
+
+
+
+
+
+
