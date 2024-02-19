@@ -45,6 +45,76 @@
 
 
 
+'3 ways to build the fibonaccis sequence up to a certain number'
+
+# # Input
+# s = 10
+
+'function version'
+# def fibonacci(n):
+
+#     if not n:
+#         return []
+    
+#     result = [0,1]
+
+#     for i in range(n-2):
+
+#         result.append(result[i]+result[i+1])
+
+#     if n == 1:
+#         return result[0]
+    
+#     return result
+
+# print(fibonacci(s))
+
+
+'generator version'
+# def fibonacci_gen(x=0, y=1):
+
+#     yield x
+
+#     while True:
+
+#         yield y
+
+#         x, y = y, x + y
+
+# gen = fibonacci_gen()
+# result = []
+
+# for _ in range(s):
+
+#     result.append(next(gen))
+
+# print(result)
+
+
+
+'recursive version'
+# def fibonacci(k):
+
+#     def rec_fibonacci(n):
+        
+#         if n == 0: return 0
+#         if n == 1: return 1
+        
+#         return rec_fibonacci(n-2) + rec_fibonacci(n-1)
+
+#     result = []
+
+#     for i in range(k):
+#         result.append(rec_fibonacci(i))
+
+#     return result
+   
+# print(fibonacci(s))
+
+
+
+
+
 
 
 "xxx"
