@@ -965,14 +965,153 @@ Notes:
 
 
 
+'17. Letter Combinations of a Phone Number'
+
+# # Input
+# s = '23'
+
+
+# # My Approach
+
+'''
+Rationale: Brute-forcing it iterating by the number of characters there are.
+'''
+
+# def letterCombinations(digits):
+
+#     dic = {
+#         '2':['a', 'b', 'c'],
+#         '3':['d', 'e', 'f'],
+#         '4':['g', 'h', 'i'],
+#         '5':['j', 'k', 'l'],
+#         '6':['m', 'n', 'o'],
+#         '7':['p', 'q', 'r', 's'],
+#         '8':['t', 'u', 'v'],
+#         '9':['w', 'x', 'y', 'z'],
+#         }
+
+
+#     lists = []
+
+#     for i in digits:
+#         lists.append(dic[i])
+
+       
+#     comb = []
+
+#     if not digits:
+#         return comb
+
+
+#     if len(digits) == 4:
+#         for i in range(len(lists[0])):
+#             for j in range(len(lists[1])):
+#                 for k in range(len(lists[2])):
+#                     for l in range(len(lists[3])):
+#                         # comb.append(f'{lists[0][i]}{lists[1][j]}{lists[2][k]}{lists[3][l]}')
+#                         comb.append(lists[0][i]+lists[1][j]+lists[2][k]+lists[3][l])
+   
+#     elif len(digits) == 3:
+#         for i in range(len(lists[0])):
+#             for j in range(len(lists[1])):
+#                 for k in range(len(lists[2])):
+#                     comb.append(f'{lists[0][i]}{lists[1][j]}{lists[2][k]}')
+
+#     elif len(digits) == 2:
+#         for i in range(len(lists[0])):
+#             for j in range(len(lists[1])):
+#                 comb.append(f'{lists[0][i]}{lists[1][j]}')
+
+#     elif len(digits) == 1:
+#         for i in range(len(lists[0])):
+#             comb.append(f'{lists[0][i]}')
+
+
+#     return comb
+
+
+# print(letterCombinations(s))
+
+'Notes: It works but it could be better'
+
+
+# # Recursive Approach
+
+# def letterCombinations(digits):
+
+#     dic = {
+#         '2':['a', 'b', 'c'],
+#         '3':['d', 'e', 'f'],
+#         '4':['g', 'h', 'i'],
+#         '5':['j', 'k', 'l'],
+#         '6':['m', 'n', 'o'],
+#         '7':['p', 'q', 'r', 's'],
+#         '8':['t', 'u', 'v'],
+#         '9':['w', 'x', 'y', 'z'],
+#         }
+
+#     lists = []
+
+#     for i in digits:
+#         lists.append(dic[i])
+
+
+#     def combine_sublists(lst):
+
+#         if len(lst) == 1:
+#             return lst[0]
+        
+#         result = []
+
+#         for item in lst[0]:
+#             for rest in combine_sublists(lst[1:]):
+#                 result.append(item + rest)
+        
+#         return result
+    
+#     if not digits:
+#         return []
+    
+#     else:
+#         return combine_sublists(lists)
+
+# print(letterCombinations(s))
+
+'Notes: Works pretty well'
+
+
+# # Itertools Approach
+
+# import itertools
+
+# def letterCombinations(digits):
+
+#     dic = {
+#         '2':['a', 'b', 'c'],
+#         '3':['d', 'e', 'f'],
+#         '4':['g', 'h', 'i'],
+#         '5':['j', 'k', 'l'],
+#         '6':['m', 'n', 'o'],
+#         '7':['p', 'q', 'r', 's'],
+#         '8':['t', 'u', 'v'],
+#         '9':['w', 'x', 'y', 'z'],
+#         }
+
+#     lists = []
+
+#     for i in digits:
+#         lists.append(dic[i])
+
+#     if not digits:
+#         return []
+    
+#     else:
+#         return [''.join(comb) for comb in itertools.product(*lists)]
+    
+
+# print(letterCombinations(s))
+
+
+
+
 'xxx'
-
-
-
-
-
-
-
-
-
-
