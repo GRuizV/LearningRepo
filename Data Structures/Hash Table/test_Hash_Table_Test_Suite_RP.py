@@ -3,8 +3,6 @@ import pytest
 from pytest_unordered import unordered
 
 
-# Command for running test: python -m pytest
-
 def test_should_always_pass():
 
     assert 2 + 2 == 4, "This is just a dummy test"
@@ -388,7 +386,7 @@ def test_should_copy_keys_values_pairs_capacity(hash_table):
 
 
 # Route on current work: 'C:\Users\USUARIO\GR\Software Development\Learning\Data Structures\Hash Table'
-# Command for running test: python -m pytest
+
 
 
 
