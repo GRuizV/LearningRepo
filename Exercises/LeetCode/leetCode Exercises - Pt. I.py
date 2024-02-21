@@ -1114,4 +1114,89 @@ Rationale: Brute-forcing it iterating by the number of characters there are.
 
 
 
+'19. Remove Nth Node From End of List'
+
+
+# Base
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+
+
+# input
+    # [1, 2, 3, 4, 5]
+# one, two, three, four, five = ListNode(1), ListNode(2), ListNode(3), ListNode(4), ListNode(5), 
+# one.next, two.next, three.next, four.next = two, three, four, five
+
+# # # input 2
+# #     # [1, 2]
+# one, two = ListNode(1), ListNode(2)
+# one.next = two
+
+
+# My Approach
+
+# def removeNthFromEnd(self:None, head:ListNode, n:int):
+
+#     """
+#     :type head: ListNode
+#     :type n: int
+#     :rtype: ListNode
+#     """
+#     # Setting variables
+#     curr: ListNode = head
+#     next_node: ListNode = None
+#     list_len: int = 0
+
+#     # Probing the list and defining the target        
+#     while curr is not None:
+#         list_len += 1
+#         curr = curr.next
+
+#     # Handiling the special case [1]
+#     if list_len == 1:
+#         return ListNode('')
+
+#     target: int = list_len - n
+
+#     curr = head # Resetting the current node to modify the list
+
+#     # Handiling the special case tagert = 0
+#     if target == 0:
+#         return curr.next
+    
+#     # Getting to the node before the target
+#     for _ in range(1, target):
+#         curr = curr.next
+
+#     # Actually modifying the list
+#     curr.next = curr.next.next
+
+#     return head
+
+ 
+# result: ListNode = removeNthFromEnd(None, one, 2)
+
+
+# # Verifying the functioning
+# li: list = []
+
+# # if one.next is None:
+# #     print(result)
+
+# if True:
+#     while result is not None:
+#         li.append(result.val)
+#         result = result.next
+
+#     print(li)
+
+
+'Notes: It works!'
+
+
+
+
 'xxx'
