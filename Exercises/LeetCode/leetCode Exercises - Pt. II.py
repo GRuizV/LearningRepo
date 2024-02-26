@@ -53,32 +53,32 @@
 
 
 # Base
-class ListNode(object):
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 
 
 # Input
 
 # 1st Input
-#List 1
-one1, two1, three1 = ListNode(1), ListNode(2), ListNode(4)
-one1.next, two1.next = two1, three1
+# #List 1
+# one1, two1, three1 = ListNode(1), ListNode(2), ListNode(4)
+# one1.next, two1.next = two1, three1
 
-#List 2
-one2, two2, three2 = ListNode(1), ListNode(3), ListNode(4)
-one2.next, two2.next = two2, three2
+# #List 2
+# one2, two2, three2 = ListNode(1), ListNode(3), ListNode(4)
+# one2.next, two2.next = two2, three2
 
 
 # 2nd Input
-#List 1
-one1, two1, three1 = ListNode(1), ListNode(2), ListNode(4)
-one1.next, two1.next = two1, three1
+# #List 1
+# one1, two1, three1 = ListNode(4), ListNode(3), ListNode(4)
+# one1.next, two1.next = two1, three1
 
-#List 2
-one2, two2, three2 = ListNode(1), ListNode(3), ListNode(4)
-one2.next, two2.next = two2, three2
+# #List 2
+# one2, two2, three2 = ListNode(1), ListNode(0), ListNode(50)
+# one2.next, two2.next = two2, three2
 
 
 
@@ -86,52 +86,72 @@ one2.next, two2.next = two2, three2
 
 
 #My Approach
-def mergeTwoLists(list1:ListNode, list2:ListNode) -> ListNode:
+# def mergeTwoLists(list1:ListNode, list2:ListNode) -> ListNode:
 
-    if list1 == None:
-        return list2
+#     if list1.val == None and list2.val != None:
+#         return list2
     
-    if list2 == None:
-        return list1
+#     if list2.val == None and list1.val != None:
+#         return list1
     
-    if list1 == None and list2 == None:
-        return ListNode('')
+#     if list1.val == None and list2.val == None:
+#         return ListNode(None)
 
 
-    head = ListNode()
-    curr_res = head
+#     head = ListNode()
+#     curr_res = head
 
-    curr1, curr2 = list1, list2
+#     curr1, curr2 = list1, list2
 
-    while True:
+#     while True:
 
-        if curr1 != None and curr1.val <= curr2.val:
-            curr_res.next = curr1
-            curr_res = curr_res.next
-            curr1 = curr1.next        
+#         if curr1 != None and curr2 != None:
+            
+#             if curr1.val <= curr2.val:
+#                 curr_res.next = curr1
+#                 curr_res = curr_res.next
+#                 curr1 = curr1.next     
+                
+#             else:
+#                 curr_res.next = curr2
+#                 curr_res = curr_res.next
+#                 curr2 = curr2.next                   
 
-        elif curr2 != None:
-            curr_res.next = curr2
-            curr_res = curr_res.next
-            curr2 = curr2.next
+#         elif curr1 != None:
+#             curr_res.next = curr1
+#             curr_res = curr_res.next
+#             curr1 = curr1.next
+
+#         elif curr2 != None:
+#             curr_res.next = curr2
+#             curr_res = curr_res.next
+#             curr2 = curr2.next
         
-        if curr1 == None and curr2 == None:
-            break
 
-    return head.next
-
-
-res = []
-res_node = mergeTwoLists(ListNode(1), ListNode(2))
-
-while res_node != None:
-
-    res.append(res_node.val)
-    res_node = res_node.next
+#         if curr1 == None and curr2 == None:
+#             break
 
 
-print(res)
+#     return head.next
 
+
+# res = []
+# res_node = mergeTwoLists(one1, one2)
+
+# while res_node != None:
+
+#     res.append(res_node.val)
+#     res_node = res_node.next
+
+
+# print(res)
+
+'Notes: it works!'
+
+
+
+
+'xxx'
 
 
 
