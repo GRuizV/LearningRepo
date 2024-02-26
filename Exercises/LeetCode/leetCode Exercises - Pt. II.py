@@ -151,13 +151,61 @@
 
 
 
+'22. Generate Parentheses'
+
+#Input
+# n = 3   # Expected Output: ['((()))', '(()())', '(())()', '()(())', '()()()']
+
+# # My Approach
+# def generateParenthesis(n):
+ 
+#     if n == 1:
+#         return ['()']
+
+#     result = []
+
+#     for i in generateParenthesis(n-1):
+#         result.append('('+ i +')')
+#         result.append('()'+ i )
+#         result.append(i + '()')
+
+
+#     return sorted(set(result))
+
+# print(generateParenthesis(4))
+
+'''
+Note: 
+    My solution kind of work but it was missing one variation, apparently with DFS is solved.
+'''
+
+
+# # DFS Approach
+
+# def generateParenthesis(n):
+    
+#     res = []
+
+#     def dfs (left, right, s):
+
+#         if len(s) == 2*n:
+#             res.append(s)
+#             return
+
+#         if left < n:
+#             dfs(left+1, right, s + '(')
+
+#         if right < left:
+#             dfs(left, right+1, s + ')')
+
+#     dfs(0,0,'')
+
+#     return res
+
+
+# print(generateParenthesis(4))
+
+
+
+
 'xxx'
-
-
-
-
-
-
-
-
-
