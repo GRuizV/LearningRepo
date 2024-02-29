@@ -285,4 +285,113 @@ Rationale:
 
 
 
-'23. Merge k Sorted Lists'
+'29. Divide Two Integers'
+
+# Input
+
+# Case 1
+# dividend = 10
+# divisor = 3
+
+# Case 2
+# dividend = 7
+# divisor = -3
+
+# My approach
+
+'''
+Rationale:
+    1. Count how many times the divisor could be substracted from the dividend before reaching something smalle than the divisor
+    2. if only one between dividend and the divisor is less than 0, the result would return a negative number 
+'''
+
+
+# def divide(dividend, divisor):
+    
+#     # case where 0 is divided by something
+#     if dividend == 0:
+#         return 0
+    
+
+#     # setting variables to operate
+#     count = 0
+#     div = abs(divisor)
+#     dvnd = abs(dividend)
+
+
+#     # case where the dividend is 1
+#     if div == 1 and dvnd != 0:
+
+#         if (dividend < 0 and divisor > 0) or (dividend > 0 and divisor < 0):
+#             return -dvnd
+        
+#         else:
+#             return dvnd
+    
+
+#     # case where the absolute divisor is greater than the dividend
+#     if div > dvnd:
+#         return 0
+    
+#     # case where both are the same number
+#     if div == dvnd:
+              
+#         if (dividend < 0 and divisor > 0) or (dividend > 0 and divisor < 0):
+#             return -1
+        
+#         else:
+#             return 1
+    
+#     # case where is possible to divide iteratively
+#     while dvnd >= div:
+
+#         dvnd -= div
+#         count += 1
+    
+#     # In case any is negative, the result will also be negative
+#     if (dividend < 0 and divisor > 0) or (dividend > 0 and divisor < 0):
+#         return -count
+
+#     # Otherwise, just return
+#     return count
+
+
+# print(divide(dividend, divisor))
+
+'Notes: My solution actually worked, theres nitpicking cases where it wont, but still '
+
+
+# Another Approach
+
+# def divide(dividend, divisor):
+
+#     if (dividend == -2147483648 and divisor == -1): return 2147483647
+            
+#     a, b, res = abs(dividend), abs(divisor), 0
+
+#     for x in range(32)[::-1]:
+
+#         if (a >> x) - b >= 0:
+#             res += 1 << x
+#             a -= b << x
+    
+#     return res if (dividend > 0) == (divisor > 0) else -res
+
+'Notes: This challenge is solved with bitwise operations '
+
+
+
+
+'xxx'
+
+
+
+
+
+
+
+
+
+
+
+
