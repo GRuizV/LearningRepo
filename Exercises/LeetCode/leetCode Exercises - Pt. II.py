@@ -382,15 +382,46 @@ Rationale:
 
 
 
-'xxx'
+'34. Find First and Last Position of Element in Sorted Array'
+
+# Input
+
+#case1
+# nums = [5,7,7,8,8,10]
+# target = 8  # Expected Output: [3,4]
+
+#case2
+# nums = [5,7,7,8,8,10]
+# target = 6  # Expected Output: [-1,-1]
+
+#case3
+# nums = []
+# target = 0  # Expected Output: [-1,-1]
+
+
+# My Approach
+# def searchRange(nums:list, target:int) -> int:
+    
+#     if target in nums:
+
+#         starting_position = nums.index(target)
+
+#         # The ending positions is calculated as of: (number of indices) - the relative position if the list is reversed
+#         Ending_position = (len(nums)-1) - nums[::-1].index(target)
+
+#         return [starting_position, Ending_position]
+
+#     else:
+#         return [-1,-1]
+
+# print(searchRange(nums, target))
+
+'Notes: It worked!'
 
 
 
 
-
-
-
-
+'36. Valid Sudoku'
 
 
 
