@@ -556,4 +556,81 @@ Notes:
 
 
 
-'xxx'
+'38. Count and Say'
+
+
+# Input
+
+# Case 1
+n = 1   # Exp. Out: "1" (Base Case)
+
+# Case 2
+n = 4   # Exp. Out: "1211" (Base Case)
+
+
+# My approach
+
+import collections
+
+a = '112212211333'
+pairs = []
+count = 0
+char = a[0]
+
+for i in range(len(a)+1):
+
+    if i == len(a):
+        pairs.append(str(count)+char)
+
+    elif a[i] == char:
+        count += 1
+
+    else:       
+        pairs.append(str(count)+char)
+        char = a[i]
+        count = 1
+
+# pairs: [(2, '1'), (2, '2'), (1, '1'), (2, '2'), (2, '1'), (3, '3')]
+pairs = ''.join(pairs)
+
+
+
+print(pairs)
+
+
+
+
+'Recursive Approach'
+def aux_cas(n:int, text:str) -> tuple:
+
+    if n == 1:
+        return '1'
+
+    string = text
+    pairs = []
+    count = 0
+    char = string[0]
+
+    for i in range(len(string)+1):
+
+        if i == len(string):
+            pairs.append(str(count)+char)
+
+        elif string[i] == char:
+            count += 1
+
+        else:       
+            pairs.append(str(count)+char)
+            char = string[i]
+            count = 1
+
+    pairs = ''.join(pairs)
+
+    return aux_cas(n-1, pairs)
+
+
+
+    
+
+    
+          

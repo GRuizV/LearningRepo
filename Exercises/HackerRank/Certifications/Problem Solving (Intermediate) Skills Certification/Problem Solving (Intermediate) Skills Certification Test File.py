@@ -65,74 +65,74 @@
 # distance = [1,1]
 
 # Case 2
-w = 4
-h = 3
-isVertical = [1,1]
-distance = [1,3]
+# w = 4
+# h = 3
+# isVertical = [1,1]
+# distance = [1,3]
 
 
 #My Approach 
 
-class Node:
+# class Node:
 
-    def __init__(self, parent, l, r, op=max):
-        self.parent = parent
-        self.l = l
-        self.r = r
-        self.lc = None
-        self.rc = None
-        self.val = r - l
-        self.op = op
+#     def __init__(self, parent, l, r, op=max):
+#         self.parent = parent
+#         self.l = l
+#         self.r = r
+#         self.lc = None
+#         self.rc = None
+#         self.val = r - l
+#         self.op = op
     
-    def split(self, x):
+#     def split(self, x):
        
-        assert self.l <= x <= self.r
+#         assert self.l <= x <= self.r
 
-        if x == self.l or x == self.r:
-            # Split lies on borders.
-            return
+#         if x == self.l or x == self.r:
+#             # Split lies on borders.
+#             return
         
-        if self.lc:
+#         if self.lc:
 
-            if x == self.lc.r:
-                # Split lies on mid split.
-                return
+#             if x == self.lc.r:
+#                 # Split lies on mid split.
+#                 return
             
-            if x < self.lc.r:
-                self.lc.split(x)
+#             if x < self.lc.r:
+#                 self.lc.split(x)
 
-            else:
-                self.rc.split(x)
+#             else:
+#                 self.rc.split(x)
 
-            self.val = self.op(self.lc.val, self.rc.val)
+#             self.val = self.op(self.lc.val, self.rc.val)
 
-        else:
+#         else:
 
-            self.lc = Node(parent=self, l=self.l, r=x)            
-            self.rc = Node(parent=self, l=x, r=self.r)
-            self.val = self.op(x - self.l, self.r - x)
+#             self.lc = Node(parent=self, l=self.l, r=x)            
+#             self.rc = Node(parent=self, l=x, r=self.r)
+#             self.val = self.op(x - self.l, self.r - x)
 
  
-def getMaxArea(w, h, isVertical, distance):
+# def getMaxArea(w, h, isVertical, distance):
 
-    w_root = Node(parent=None, l=0, r=w)
-    h_root = Node(parent=None, l=0, r=h)
-    result = []
+#     w_root = Node(parent=None, l=0, r=w)
+#     h_root = Node(parent=None, l=0, r=h)
+#     result = []
 
-    for iv, d in zip(isVertical, distance):
+#     for iv, d in zip(isVertical, distance):
 
-        if iv:
-            w_root.split(d)
+#         if iv:
+#             w_root.split(d)
 
-        else:
-            h_root.split(d)
+#         else:
+#             h_root.split(d)
 
-        result.append(w_root.val * h_root.val)
+#         result.append(w_root.val * h_root.val)
 
-    return result
+#     return result
 
 
 
-print(getMaxArea(w, h, isVertical, distance))
+# print(getMaxArea(w, h, isVertical, distance))
 
 
