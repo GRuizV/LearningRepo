@@ -426,17 +426,17 @@ Rationale:
 # Input
 
 # Case 1
-board = [
-["5","3",".",".","7",".",".",".","."]
-,["6",".",".","1","9","5",".",".","."]
-,[".","9","8",".",".",".",".","6","."]
-,["8",".",".",".","6",".",".",".","3"]
-,["4",".",".","8",".","3",".",".","1"]
-,["7",".",".",".","2",".",".",".","6"]
-,[".","6",".",".",".",".","2","8","."]
-,[".",".",".","4","1","9",".",".","5"]
-,[".",".",".",".","8",".",".","7","9"]
-]
+# board = [
+# ["5","3",".",".","7",".",".",".","."]
+# ,["6",".",".","1","9","5",".",".","."]
+# ,[".","9","8",".",".",".",".","6","."]
+# ,["8",".",".",".","6",".",".",".","3"]
+# ,["4",".",".","8",".","3",".",".","1"]
+# ,["7",".",".",".","2",".",".",".","6"]
+# ,[".","6",".",".",".",".","2","8","."]
+# ,[".",".",".","4","1","9",".",".","5"]
+# ,[".",".",".",".","8",".",".","7","9"]
+# ]
 
 # Case 2
 # board = [
@@ -462,75 +462,98 @@ Rationale:
         if one of them have less items than before the casting, return False. Otherwise, return True
 '''
 
-def isValidSudoku(board: list[list[str]]) -> bool:
+# def isValidSudoku(board: list[list[str]]) -> bool:
 
-    rows = board
-    columns = [list(x) for x in zip(*board)]
-
-
-    # # Iterating to build the sub-boxes
-
-    # sub_boxes = []
-    # for i in range(0,9,3):     
-
-    #     for j in range(0,9,3):
-
-    #         sub_b_row = []
-
-    #         sub_b_row.append(board[i][j:j+3])
-    #         sub_b_row.append(board[i+1][j:j+3])
-    #         sub_b_row.append(board[i+2][j:j+3])
-
-    #         sub_boxes.append(sub_b_row)
+#     rows = board
+#     columns = [list(x) for x in zip(*board)]
 
 
-    # Bulding the sub-boxes directly into the list
-        # Did it this way to safe time complexity.
+#     # Bulding the sub-boxes directly into the list
+#         # Did it this way to save time complexity.
             
-    sub_boxes = [
-        [board[0][0:3],board[1][0:3],board[2][0:3]],
-        [board[0][3:6],board[1][3:6],board[2][3:6]],
-        [board[0][6:9],board[1][6:9],board[2][6:9]],
-        [board[3][0:3],board[4][0:3],board[5][0:3]],
-        [board[3][3:6],board[4][3:6],board[5][3:6]],
-        [board[3][6:9],board[4][6:9],board[5][6:9]],
-        [board[6][0:3],board[7][0:3],board[8][0:3]],
-        [board[6][3:6],board[7][3:6],board[8][3:6]],
-        [board[6][6:9],board[7][6:9],board[8][6:9]],
-    ]
+#     sub_boxes = [
+#         [board[0][0:3],board[1][0:3],board[2][0:3]],
+#         [board[0][3:6],board[1][3:6],board[2][3:6]],
+#         [board[0][6:9],board[1][6:9],board[2][6:9]],
+#         [board[3][0:3],board[4][0:3],board[5][0:3]],
+#         [board[3][3:6],board[4][3:6],board[5][3:6]],
+#         [board[3][6:9],board[4][6:9],board[5][6:9]],
+#         [board[6][0:3],board[7][0:3],board[8][0:3]],
+#         [board[6][3:6],board[7][3:6],board[8][3:6]],
+#         [board[6][6:9],board[7][6:9],board[8][6:9]],
+#     ]
 
 
-    # Validating rows
-    for row in rows:
+#     # Validating rows
+#     for row in rows:
 
-        row_wo_dot = [num for num in row if num != '.']
+#         row_wo_dot = [num for num in row if num != '.']
 
-        if len(row_wo_dot) != len(set(row_wo_dot)):
-            return False
-
-
-    # Validating columns
-    for col in columns:
-
-        col_wo_dot = [num for num in col if num != '.']
-
-        if len(col_wo_dot) != len(set(col_wo_dot)):
-            return False
+#         if len(row_wo_dot) != len(set(row_wo_dot)):
+#             return False
 
 
-    # Validating Sub-boxes
-    for subb in sub_boxes:
+#     # Validating columns
+#     for col in columns:
 
-        plain_subb = [num for list in board for num in list if num != '.']
+#         col_wo_dot = [num for num in col if num != '.']
 
-        if len(plain_subb) != len(set(plain_subb)):
-            return False
-
-
-    return True
+#         if len(col_wo_dot) != len(set(col_wo_dot)):
+#             return False
 
 
+#     # Validating Sub-boxes
+#     for subb in sub_boxes:
+
+#         plain_subb = [num for li in subb for num in li if num != '.']
+
+#         if len(plain_subb) != len(set(plain_subb)):
+#             return False
 
 
-print(isValidSudoku(board))
+#     return True
 
+
+# print(isValidSudoku(board))
+
+'Notes: It works perfectly, but could be less verbose'
+
+
+
+
+# Another Approach
+
+# import collections
+
+# def isValidSudoku(self, board):
+
+#     rows = collections.defaultdict(set)
+#     cols = collections.defaultdict(set)
+#     subsquares = collections.defaultdict(set)
+
+#     for r in range(9):
+
+#         for c in range(9):
+
+#             if(board[r][c] == "."):
+#                 continue
+
+#             if board[r][c] in rows[r] or board[r][c] in cols[c] or board[r][c] in subsquares[(r//3, c//3)]:
+#                 return False
+            
+#             rows[r].add(board[r][c])
+#             cols[c].add(board[r][c])
+#             subsquares[(r//3,c//3)].add(board[r][c])
+
+#     return True
+
+'''
+Notes: 
+    This solution was much more elegant. And essentially the difference lays in this solution could be more scalable 
+    since it builds the data holder while iterating.
+'''
+
+
+
+
+'xxx'
