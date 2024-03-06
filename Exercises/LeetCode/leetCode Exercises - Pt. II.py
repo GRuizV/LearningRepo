@@ -558,79 +558,88 @@ Notes:
 
 '38. Count and Say'
 
-
 # Input
 
 # Case 1
-n = 1   # Exp. Out: "1" (Base Case)
+# n = 1   # Exp. Out: "1" (Base Case)
 
 # Case 2
-n = 4   # Exp. Out: "1211" (Base Case)
+# n = 4   # Exp. Out: "1211" (Base Case)
 
 
 # My approach
 
-import collections
+# 'Iterative suboptimal solution' 
+# def countAndSay(n):
 
-a = '112212211333'
-pairs = []
-count = 0
-char = a[0]
+#     if n == 1:
+#         return '1'
+        
+#     res = '1'
 
-for i in range(len(a)+1):
+#     for _ in range(1, n):
+    
+#         pairs = []
+#         count = 0
+#         char = res[0]
 
-    if i == len(a):
-        pairs.append(str(count)+char)
+#         for i in range(len(res)+1):
 
-    elif a[i] == char:
-        count += 1
+#             if i == len(res):
+#                 pairs.append(str(count)+char)
 
-    else:       
-        pairs.append(str(count)+char)
-        char = a[i]
-        count = 1
+#             elif res[i] == char:
+#                 count += 1
 
-# pairs: [(2, '1'), (2, '2'), (1, '1'), (2, '2'), (2, '1'), (3, '3')]
-pairs = ''.join(pairs)
+#             else:       
+#                 pairs.append(str(count)+char)
+#                 char = res[i]
+#                 count = 1
 
+#         res = ''.join(pairs)
+    
+#     return res
 
+# print(countAndSay(6))
 
-print(pairs)
+'Notes: It works'
 
 
 
 
 'Recursive Approach'
-def aux_cas(n:int, text:str) -> tuple:
-
-    if n == 1:
-        return '1'
-
-    string = text
-    pairs = []
-    count = 0
-    char = string[0]
-
-    for i in range(len(string)+1):
-
-        if i == len(string):
-            pairs.append(str(count)+char)
-
-        elif string[i] == char:
-            count += 1
-
-        else:       
-            pairs.append(str(count)+char)
-            char = string[i]
-            count = 1
-
-    pairs = ''.join(pairs)
-
-    return aux_cas(n-1, pairs)
+# def countAndSay(n):
+#     if n == 1:
+#         return '1'
+#     return aux_countAndSay(countAndSay(n - 1))
 
 
-
+# def aux_countAndSay(s):
+   
+#     if not s:
+#         return ''
     
+#     result = []
+#     count = 1
 
-    
-          
+#     for i in range(1, len(s)):
+
+#         if s[i] == s[i - 1]:
+#             count += 1
+
+#         else:
+#             result.append(str(count) + s[i - 1])
+#             count = 1
+
+#     result.append(str(count) + s[-1])
+
+#     return ''.join(result)
+
+
+# print(countAndSay(6))
+
+
+
+
+
+'xxx'
