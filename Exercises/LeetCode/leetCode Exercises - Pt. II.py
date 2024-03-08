@@ -696,16 +696,43 @@ Notes:
 
 
 
+'46. Permutations'
+
+# Input
+
+# Case 1
+# nums = [1,2,3] # Exp. Out: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+# Case 2
+# nums = [0,1] # Exp. Out: [[0,1],[1,0]]
+
+# Case 3
+# nums = [1] # Exp. Out: [[1]]
+
+
+# Solution
+# def permute(nums: list[int]) -> list[list[int]]:
+    
+#     if len(nums) == 0:
+#         return []
+    
+#     if len(nums) == 1:
+#         return [nums]
+    
+#     l = []
+
+#     for i in range(len(nums)):
+
+#         num = nums[i]
+#         rest = nums[:i] + nums[i+1:]
+
+#         for p in permute(rest):
+#             l.append([num] + p)
+        
+#     return l
+
+
+
+
+
 'xxx'
-
-
-
-
-
-
-
-
-
-
-
-
