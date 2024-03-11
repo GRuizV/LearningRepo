@@ -735,4 +735,92 @@ Notes:
 
 
 
+'48. Rotate Image'
+
+# Input
+
+# Case 1
+# matrix = [
+#     [1,2,3],
+#     [4,5,6],
+#     [7,8,9]
+#     ]
+# Exp. Out: [[7,4,1],[8,5,2],[9,6,3]]
+
+# Case 2
+# matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+# Exp. Out: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+
+
+# # My approach
+# def rotate(matrix: list[list[int]]):
+
+#     n = len(matrix)
+
+#     for i in range(n):
+
+#         rot_row = []
+
+#         for j in range(n):  # Since is given that is an squared matrix
+#             rot_row.insert(0, matrix[j][i])
+
+#         matrix.append(rot_row)
+   
+#     for i in range(n):
+#         matrix.pop(0)
+
+# rotate(matrix)
+# print(matrix)
+
+'Notes: It worked, but seems a little unorthodox'
+
+
+# # Another Approach
+# def rotate(matrix):
+
+#     # reverse
+#     # l = 0
+#     # r = len(matrix) -1
+
+#     # while l < r:
+#     #     matrix[l], matrix[r] = matrix[r], matrix[l]
+#     #     l += 1
+#     #     r -= 1
+
+#     x = ''
+#     matrix = matrix[::-1]
+#     x=0
+
+#     # transpose 
+#     for i in range(len(matrix)):
+#         for j in range(i):
+#             matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+
+# rotate(matrix)
+# print(matrix)
+
+'Notes: This one looks more like a canon type solution'
+
+
+
+
+
 'xxx'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
