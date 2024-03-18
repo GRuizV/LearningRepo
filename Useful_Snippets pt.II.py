@@ -45,76 +45,36 @@
 
 
 
-'3 ways to build the fibonaccis sequence up to a certain number'
+'All permutations from a iterable'
 
-# # Input
-# s = 10
+# )
 
-'function version'
-# def fibonacci(n):
 
-#     if not n:
-#         return []
+
+
+
+"Kadane's Algorithm"
+
+'''
+This algorithm designed by Joseph Kadane solves quite efficiently the problem
+of finding a subsegment that fits a max or minimum (or any other criteria for that matter)
+
+'''
+
+
+nums = [-2,1,-3,4,-1,2,1,-5,4]
+# Output: 6 / [4,-1,2,1]
+
+
+def kadanes(nums):
+
+    max_ending_here = max_so_far = nums[0]
+
+    for num in nums[1:]:
+
+        max_ending_here = max(num, max_ending_here + num)
+        max_so_far = max(max_so_far, max_ending_here)
     
-#     result = [0,1]
+    return max_so_far
 
-#     for i in range(n-2):
-
-#         result.append(result[i]+result[i+1])
-
-#     if n == 1:
-#         return result[0]
-    
-#     return result
-
-# print(fibonacci(s))
-
-
-'generator version'
-# def fibonacci_gen(x=0, y=1):
-
-#     yield x
-
-#     while True:
-
-#         yield y
-
-#         x, y = y, x + y
-
-# gen = fibonacci_gen()
-# result = []
-
-# for _ in range(s):
-
-#     result.append(next(gen))
-
-# print(result)
-
-
-
-'recursive version'
-# def fibonacci(k):
-
-#     def rec_fibonacci(n):
-        
-#         if n == 0: return 0
-#         if n == 1: return 1
-        
-#         return rec_fibonacci(n-2) + rec_fibonacci(n-1)
-
-#     result = []
-
-#     for i in range(k):
-#         result.append(rec_fibonacci(i))
-
-#     return result
-   
-# print(fibonacci(s))
-
-
-
-
-
-
-
-"xxx"
+print(kadanes(nums))    # Output: 6
