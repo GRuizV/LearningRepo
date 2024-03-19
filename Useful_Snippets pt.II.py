@@ -47,7 +47,29 @@
 
 'All permutations from a iterable'
 
-# )
+nums = [1,2,3,4]
+
+def permutations(nums):
+
+    if len(nums) == 0:
+        return []
+    
+    if len(nums) == 1:
+        return [nums]
+    
+    lst = []
+
+    for i in range(len(nums)):
+
+        num = nums[i]
+        rest = nums[:i] + nums[i+1:]
+
+        for perm in permutations(rest):
+            lst.append([num] + perm)
+
+    return lst
+
+print(permutations(nums))
 
 
 
@@ -62,19 +84,25 @@ of finding a subsegment that fits a max or minimum (or any other criteria for th
 '''
 
 
-nums = [-2,1,-3,4,-1,2,1,-5,4]
-# Output: 6 / [4,-1,2,1]
+# nums = [-2,1,-3,4,-1,2,1,-5,4]
+# # Output: 6 / [4,-1,2,1]
 
 
-def kadanes(nums):
+# def kadanes(nums):
 
-    max_ending_here = max_so_far = nums[0]
+#     max_ending_here = max_so_far = nums[0]
 
-    for num in nums[1:]:
+#     for num in nums[1:]:
 
-        max_ending_here = max(num, max_ending_here + num)
-        max_so_far = max(max_so_far, max_ending_here)
+#         max_ending_here = max(num, max_ending_here + num)
+#         max_so_far = max(max_so_far, max_ending_here)
     
-    return max_so_far
+#     return max_so_far
 
-print(kadanes(nums))    # Output: 6
+# print(kadanes(nums))    # Output: 6
+
+
+
+
+
+"xxx"
