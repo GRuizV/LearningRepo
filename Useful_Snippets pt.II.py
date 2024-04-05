@@ -47,29 +47,29 @@
 
 'All permutations from a iterable'
 
-nums = [1,2,3,4]
+# nums = [1,2,3,4]
 
-def permutations(nums):
+# def permutations(nums):
 
-    if len(nums) == 0:
-        return []
+#     if len(nums) == 0:
+#         return []
     
-    if len(nums) == 1:
-        return [nums]
+#     if len(nums) == 1:
+#         return [nums]
     
-    lst = []
+#     lst = []
 
-    for i in range(len(nums)):
+#     for i in range(len(nums)):
 
-        num = nums[i]
-        rest = nums[:i] + nums[i+1:]
+#         num = nums[i]
+#         rest = nums[:i] + nums[i+1:]
 
-        for perm in permutations(rest):
-            lst.append([num] + perm)
+#         for perm in permutations(rest):
+#             lst.append([num] + perm)
 
-    return lst
+#     return lst
 
-print(permutations(nums))
+# print(permutations(nums))
 
 
 
@@ -105,4 +105,73 @@ of finding a subsegment that fits a max or minimum (or any other criteria for th
 
 
 
-"xxx"
+"1st Dynamic Programming Problem - LeetCode Challenge #62. Unique Paths"
+
+'''
+Notes:
+
+The basis of the Dynamic Programming is to "Cache" a solution and store it into a grid to later use it
+to save computing resources.
+
+The grid is populated by 1's and summing to the right and down, the bottom right cell will hold the total number of unique ways to get there.
+
+------------------------------------------------------------------------------------
+
+This problem was pretty similar to the one on Turing's tests, althought here is requested
+to find a bigger scale of thar problem. The classic 'How many ways would be to get from x to y',
+
+if the problem were only set to m = 2, it'd be solved with fibonacci, but sadly that was not the case,
+here, Dynamic Programming was needed.
+
+The problem is graphically explained here: https://www.youtube.com/watch?v=IlEsdxuD4lY
+
+But the actual answer I rather take it from the leetCode's solutions wall, since is more intuitive to me.
+
+'''
+
+# Input
+
+# # Case 1:
+# m, n = 3, 7
+# # Output: 28
+
+# # Case 2:
+# m, n = 3, 2
+# # Output: 3
+
+
+# Solution
+
+# def uniquePaths(m: int, n: int) -> int:
+
+#     # Handling the corner case in which any dimention is 0
+#     if n == 0 or m == 0:
+#         return 0
+
+
+#     # Here the grid is initialized
+#     result = [[0]*n for _ in range(m)]
+
+#     # The first column of the grid is set to 1, since there is only (1) way to get to each cell of that column
+#     for row in range(m):
+#         result[row][0] = 1
+
+#     # The first row of the grid is set to 1, since there is only (1) way to get to each cell of that row
+#     for col in range(n):
+#         result[0][col] = 1
+
+
+#     # Here all the grid is traversed summing up the cells to the left and up, since are the only ways to get to the current cell
+#     # The range starts in 1 since all the first column and row are populated, so the traversing should start in [1,1]
+#     for i in range(1, m):
+
+#         for j in range(1, n):
+
+#             result[i][j] = result[i-1][j] + result[i][j-1]
+    
+
+#     # The bottom right cell will store all the unique ways to get there
+#     return result[-1][-1]
+
+
+# print(uniquePaths(m, n))
