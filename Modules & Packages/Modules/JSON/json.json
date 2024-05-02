@@ -1,5 +1,6 @@
 {
   "contents": {
-    "a": "something"
+    "a": "something",
+    "b": "something else"
   }
 }

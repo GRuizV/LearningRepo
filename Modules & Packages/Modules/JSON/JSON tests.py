@@ -23,6 +23,7 @@ with open(path) as f:
 with open(path, 'w') as f:
 
     contents['contents']['a'] = 'something'
+    contents['contents']['b'] = 'something else'    # New Value added
     json.dump(contents,f,indent=2)
  
 
@@ -32,5 +33,7 @@ with open(path) as f:
     contents = json.load(f)
 
     print(contents)
+
+
 
 
