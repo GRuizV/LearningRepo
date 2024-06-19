@@ -3,6 +3,49 @@ import random
 import itertools
 
 
+'''
+Snippets Index
+
+- Prime numbers' sieve
+- Using eval() To evaluate something for each element of a list.
+- Ordering a dict by values.
+- Flattening an Array with ListComp.
+- Transposing a matrix with ListComp & zip functions.
+- Creating multiple lists quickly.
+- Base sorting algorythm.
+- 	My version of the algorythm without double iteration.
+- Taking unique values from a list of dicts.
+- Combining elements of a list of lists without considering order.
+- Combining the elements of a list of lists considering order.
+- Get the depth of a dictionary (RC).
+- A Fibonacci Generator.
+- Merging dictionaries.
+- Sorting with 2 criteria.
+- Unknown number of inputs for a HackerRank problem.
+- This is a Index Handler (made by me) to deal with indexes while working with DataStructures.
+- Slinding window for median calculation.
+- Test to check if two elements contains the same elements.
+- Accesing local variables within a function.
+- Batched method in itertool.
+- My definitive version of Fibonacci's seq. generator based on recursion.
+- b001 - The Even Groups Problem.
+- My Version of the Minimum Common Multiple Algorithm.
+- A Recursive Nested List Sum: It is actually the recursive way to travere Nested Lists.
+- A Non-Recursive way to traverse a Nested List.
+- A recursive solution for the Tower of Hanoi.
+- Ternary operator and the 'or' as an assignment.
+- Josephus Permutation Problems and Efficiency with Deques.
+
+(29)
+
+'''
+
+
+
+
+
+
+
 ''' Prime numbers' sieve '''
 
 # def primeNumbers (cap):
@@ -84,7 +127,7 @@ import itertools
 
 
 
-''' Transposing a matrix with ListComp & zip( ) functions '''
+''' Transposing a matrix with ListComp & zip functions '''
 
  
 # matrix = [ [1,2,3,4], [5,6,7,8], [9,10,11,12] ]
@@ -703,10 +746,7 @@ The first recursion problem I review:
 
 
 
-'Comming from Python 3.12'
-
-
-'Accesing local variables within a function'
+'Accesing local variables within a function (Comming from Python 3.12)'
 
 #     # with Python 3.12, a local() function called inside a function will return the local variables in a dict
 
@@ -1104,4 +1144,3 @@ The first recursion problem I review:
 
 
 
-"xxx"

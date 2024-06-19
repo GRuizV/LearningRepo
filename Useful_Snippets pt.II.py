@@ -1,3 +1,24 @@
+'''
+Snippets Index
+
+- Roman to Integer & Integer to Roman case.
+- All permutations from a iterable. (RC)
+- Kadane's Algorithm (DS)
+- LeetCode Challenge #62. Unique Paths (DS)
+- Floyd's Cycle Detection Algorithm (TP)
+
+
+
+*RC: Recursion
+*DS: Dynamic Programming
+*TP: Two-pointers
+
+(5)
+
+'''
+
+
+
 "Roman to Integer & Integer to Roman case"
 
 # # Roman to Integer
@@ -75,7 +96,7 @@
 
 
 
-"Kadane's Algorithm"
+"Kadane's Algorithm (Dynamic Programming)"
 
 '''
 This algorithm designed by Joseph Kadane solves quite efficiently the problem
@@ -175,3 +196,59 @@ But the actual answer I rather take it from the leetCode's solutions wall, since
 
 
 # print(uniquePaths(m, n))
+
+
+
+
+
+"Floyd's Cycle Detection Algorithm (Two-Pointers)"
+
+'''
+also known as the "tortoise and hare" algorithm, is a pointer algorithm that uses two pointers moving at different speeds to detect cycles in a sequence of values.
+
+'''
+
+
+# nums = [-2,1,-3,4,-1,2,1,-5,4]
+# # Output: 6 / [4,-1,2,1]
+
+
+# def floyd_cycle_detection(sequence):
+#     def next_value(x):
+#         # This function should return the next value in the sequence.
+#         # You need to define this based on your specific problem.
+#         pass
+
+#     slow = sequence
+#     fast = sequence
+
+#     while True:
+#         slow = next_value(slow)
+#         fast = next_value(next_value(fast))
+        
+#         if slow == fast:
+#             break
+
+#     # Find the start of the cycle
+#     slow = sequence
+#     while slow != fast:
+#         slow = next_value(slow)
+#         fast = next_value(fast)
+
+#     return slow  # This is the start of the cycle
+
+
+
+
+
+"xxx"
+
+
+
+
+
+
+
+
+
+
