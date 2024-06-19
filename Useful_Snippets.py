@@ -36,6 +36,10 @@ Snippets Index
 - Ternary operator and the 'or' as an assignment.
 - Josephus Permutation Problems and Efficiency with Deques.
 
+
+
+*RC: Recursion
+
 (29)
 
 '''
