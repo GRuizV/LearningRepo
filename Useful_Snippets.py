@@ -6,7 +6,7 @@ import itertools
 '''
 Snippets Index
 
-- Prime numbers' sieve
+- Eratothenes' sieve (For Prime Numbers)
 - Using eval() To evaluate something for each element of a list.
 - Ordering a dict by values.
 - Flattening an Array with ListComp.
@@ -50,7 +50,7 @@ Snippets Index
 
 
 
-''' Prime numbers' sieve '''
+''' Eratothenes' sieve '''
 
 # def primeNumbers (cap):
 
