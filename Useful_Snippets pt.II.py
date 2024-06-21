@@ -6,6 +6,7 @@ Snippets Index
 - Kadane's Algorithm (DS)
 - LeetCode Challenge #62. Unique Paths (DS)
 - Floyd's Cycle Detection Algorithm (TP)
+- How to reverse a Linked Lists
 
 
 
@@ -13,7 +14,7 @@ Snippets Index
 *DS: Dynamic Programming
 *TP: Two-pointers
 
-(5)
+(6)
 
 '''
 
@@ -241,8 +242,49 @@ also known as the "tortoise and hare" algorithm, is a pointer algorithm that use
 
 
 
-"xxx"
+"How to reverse a Linked Lists"
 
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+
+# def reverseList(head:ListNode) -> ListNode:
+    
+#     # Initialize node holders
+#     prev = None
+#     curr = head    
+
+#     while curr:
+#         next_node = curr.next
+#         curr.next = prev
+#         prev = curr
+#         curr = next_node       
+    
+#     return prev
+
+
+# def rec_reverseList(head:ListNode) -> ListNode:
+    
+#     # Base case
+#     if not head or not head.next:
+#         return head   
+
+#     # Recursive Call
+#     new_head = rec_reverseList(head.next)
+
+#     # Reversing the list
+#     head.next.next = head
+#     head.next = None
+
+#     return new_head
+
+
+
+
+
+"xxx"
 
 
 
