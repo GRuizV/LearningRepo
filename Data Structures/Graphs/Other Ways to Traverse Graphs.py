@@ -1,4 +1,4 @@
-from Graphs_Implementation import WAMGraph, WALGraph, ALGraph
+from Graphs_Implementation import AMGraph, ALGraph
 import collections
 import heapq
 from timeit import default_timer as timer
