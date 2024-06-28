@@ -7,6 +7,7 @@ Snippets Index
 - LeetCode Challenge #62. Unique Paths (DS)
 - Floyd's Cycle Detection Algorithm (TP)
 - How to reverse a Linked Lists
+- How to capture coordinates in a Matrix (Matrix)
 
 
 
@@ -14,7 +15,7 @@ Snippets Index
 *DS: Dynamic Programming
 *TP: Two-pointers
 
-(6)
+(7)
 
 '''
 
@@ -284,13 +285,22 @@ also known as the "tortoise and hare" algorithm, is a pointer algorithm that use
 
 
 
+"How to capture coordinates in a Matrix"
+
+# board = [["o","x","x","o"],["o","o","x","x"],["x","x","x","x"],["x","x","x","o"]]
+
+# coordinates = []
+
+# for i, row in enumerate(board):
+#     coordinates.extend([(i,j) for j,elem in enumerate(row) if board[i][j] == 'o'])
+
+# # [(0, 0), (0, 3), (1, 0), (1, 1), (3, 3)]
+# print(coordinates)
+
+
+
+
+
 "xxx"
-
-
-
-
-
-
-
 
 
