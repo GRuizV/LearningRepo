@@ -1,3 +1,4 @@
 .vscode/
 .pytest_cache/
 .Data Structures/Graphs/__pycache__/
+*.pyc
