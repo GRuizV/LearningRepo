@@ -2,9 +2,6 @@
 
 -- The '@block' marker indicates that the code below is an individual block of code to be executed individually
 
-
-
-
 -- From the 'The Fireship' Tutorial
 
 
@@ -20,8 +17,8 @@ CREATE TABLE Users(
 -- @block // Individual entry insert
 INSERT INTO Users(email, bio, country)
 VALUES(
-    'hello@world.com',
-    'I love strangers!',
+    'hey@world.com',
+    'Something else!',
     'US'
 )
 ;-- Returned an error: 'Column count doesn't match value count at row 1' when country = 'USA'
@@ -32,16 +29,46 @@ INSERT INTO Users(email, bio, country)
 VALUES
 ('hello@world.com', 'foo', 'US'),
 ('hola@mundo.com', 'bar', 'MX'),
-('bnjour@monde.com', 'baz', 'FR') 
+('bonjour@monde.com', 'baz', 'FR') 
 
+
+
+
+-- SELECT STATEMENTS
 
 -- @block
 SELECT * FROM Users;
 
+-- @block / With limtis
+SELECT email, id FROM Users
+LIMIT 2;
+
+-- @block / With order
+SELECT * FROM Users
+ORDER BY email DESC;
+
+-- @block
+SELECT * FROM Users
+ORDER BY id ASC;
+
+-- @block / With conditionals
+SELECT * FROM Users
+WHERE country = 'US';
+
+-- @block
+SELECT * FROM Users
+WHERE country = 'US'
+AND id > 1;
+
+-- @block / With conditionals & a pattern (Stars with 'h')
+SELECT * FROM Users
+WHERE email LIKE 'h%';
 
 
 
 
+-- INDEX
+-- PENDING
 
 
 
