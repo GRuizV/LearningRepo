@@ -3,12 +3,11 @@
 
 -- @block / Create the 'Rooms' table
 CREATE TABLE Rooms(
-    id INT AUTO_INCREMENT, -- Room ID (PRIMARY KEY)
-    street VARCHAR(255),
+    id INT PRIMARY KEY AUTO_INCREMENT, -- Room ID (PRIMARY KEY)
+    street VARCHAR(255) UNIQUE,
     owner_id INT NOT NULL, -- Owner ID (FOREIGN KEY)
-    PRIMARY KEY (id),
     FOREIGN KEY (owner_id) REFERENCES Users(id)
-)
+);
 
 
 -- @block / Insert rooms
@@ -63,6 +62,9 @@ INNER JOIN Rooms ON Rooms.owner_id = Users.id;
 
 
 
+
+
+
 -- @block / JOIN with a intermidiate table: Many-To-Many relationship
 
 -- @block / CREATE the intermidiate TABLE
@@ -83,7 +85,7 @@ INSERT INTO Bookings (guest_id, room_id, check_in)
 VALUES
 (1, 1, '2024-08-07 14:00:00'),
 (2, 3, '2024-08-09 19:00:00'),
-(6, 4, '2024-08-09 07:00:00'),
+(4, 4, '2024-08-09 07:00:00'),
 (5, 2, '2024-08-09 09:00:00'),
 (1, 3, '2024-08-10 10:00:00'),
 (1, 2, '2024-08-15 10:00:00'),
@@ -91,34 +93,33 @@ VALUES
 (3, 4, '2024-08-18 13:00:00');
 
 
+
 -- @block / INSERT bookings in Bookings
 SELECT * FROM Bookings
 where room_id = 2;
 
-SELECT * FROM Bookings;
 
-
--- @block / INNER JOIN to check all the rooms a user has booked
+-- @block / INNER JOIN to check all the rooms a specific user has booked
 SELECT
     guest_id,
     Rooms.street,
     check_in
 FROM Bookings
 INNER JOIN Rooms ON Rooms.id = Bookings.room_id
-WHERE guest_id = 1
+WHERE guest_id = 3
 ;
 
 
--- @block / INNER JOIN to check all guests that have stayed at a rooms
+-- @block / INNER JOIN to check all guests that have stayed at a rooms, ordered asccendingly by room_id
 SELECT
-    room_id,
     guest_id,
+    room_id,    
     email,
     bio,
     check_in
 FROM Bookings
 INNER JOIN Users ON Users.id = guest_id
-WHERE room_id = 4
+ORDER BY room_id ASC
 ;
 
 
@@ -137,12 +138,15 @@ WHERE room_id = 4
 
 
 
+-- @block / Delete individual records
+DELETE FROM Rooms where id = 8;
+
+-- @block / Delete records in bulk
+DELETE FROM Rooms where id BETWEEN 5 AND 7;
 
 
-
--- @block / View all command
+-- @block / Delete table
 DROP TABLE Bookings;
-
 
 -- @block / View all command
 SELECT * FROM rooms;

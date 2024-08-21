@@ -29,7 +29,9 @@ INSERT INTO Users(email, bio, country)
 VALUES
 ('hello@world.com', 'foo', 'US'),
 ('hola@mundo.com', 'bar', 'MX'),
-('bonjour@monde.com', 'baz', 'FR') 
+('bonjour@monde.com', 'baz', 'FR'),
+('hi@world.com', 'Somehting', 'US'),
+('hey@world.com', 'Somehting else', 'US');
 
 
 
