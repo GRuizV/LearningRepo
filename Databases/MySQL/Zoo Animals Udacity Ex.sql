@@ -205,7 +205,24 @@ VALUES
 
 
 
+-- @block // Udacity exercise
+-- Find the one food that is eaten by only one animal.
+-- The animals table has columns (name, species, birthdate) for each individual.
+-- The diet table has columns (species, food) for each food that a species eats.
 
+SELECT food, count(animals.name) AS num FROM diet
+INNER JOIN animals ON animals.species = diet.species
+GROUP BY food
+ORDER BY num ASC
+LIMIT 1;
+
+
+-- @block / Alternate solution
+select food, count(animals.name) as num
+from diet join animals 
+on diet.species = animals.species
+group by food
+having num = 1;
 
 
 
