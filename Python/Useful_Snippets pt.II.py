@@ -308,6 +308,39 @@ Snippets Index
 #     print(fib(10))  # Output: 55
 
 '''Levenshtein Distance'''
+# def x():
+    
+#     def minDistance(word1: str, word2: str) -> int:
 
+#         # Capture each word length
+#         m, n = len(word1), len(word2)
+        
+#         # initialize the dp matrix
+#         dp = [[0]*(n+1) for _ in range(m+1)]
+        
+#         # Fill the first column
+#         for i in range(1, m+1):
+#             dp[i][0] = i
+        
+#         # fill the first row
+#         for j in range(1, n+1):
+#             dp[0][j] = j
+
+#         # Populate the rest of the matrix
+#         for i in range(1, m+1):
+#             for j in range(1, n+1):
+
+#                 if word1[i-1] == word2[j-1]:
+#                     dp[i][j] = dp[i-1][j-1]    # No operation needed
+                
+#                 else:
+#                     dp[i][j] = min(
+#                         dp[i-1][j-1] + 1,   # Replace Operation
+#                         dp[i][j-1] + 1,   # Insert Operation
+#                         dp[i-1][j] + 1,   # Delete Operation
+#                     )
+               
+#         # Return the last cell which will contain the minimum number of operations
+#         return dp[-1][-1]
 
 "xxx"
