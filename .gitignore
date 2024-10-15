@@ -6,3 +6,4 @@ __pycache__/
 
 # Twilio Tutorial .env files
 *.env
+APIs/Whatsapp Chat Bot/Twilio API Test/Twilio_response.json
