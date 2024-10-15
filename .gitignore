@@ -3,3 +3,6 @@
 .Data Structures/Graphs/__pycache__/
 __pycache__/
 
+
+# Twilio Tutorial .env files
+*.env
