@@ -26,7 +26,7 @@ DELETE FROM fishies_table WHERE id IN (6,7,8);
 
 
 
--- RERENTIAL CONSTRAINTS
+-- REFENTIAL CONSTRAINTS
 -- @block Initial reference table creation
 CREATE TABLE products(
     sku TEXT PRIMARY KEY,
