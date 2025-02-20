@@ -10,6 +10,7 @@ Snippets Index
 - How to capture coordinates in a Matrix (Matrix)
 - Fibonacci with Memoization and Dynamic Porgramming (DP)
 - Levenshtein Distance (DP)
+- Function to manage API responses with pagination (BackEnd)
 
 
 
@@ -17,7 +18,7 @@ Snippets Index
 *DP: Dynamic Programming
 *TP: Two-pointers
 
-(8)
+(9)
 
 '''
 
@@ -116,6 +117,7 @@ Snippets Index
 
 '''62. Unique Paths - 1st Dynamic Programming Problem - LeetCode Challenge'''
 # def x():
+    
 #     '''
 #     Notes:
 
@@ -179,9 +181,8 @@ Snippets Index
 
 #         # The bottom right cell will store all the unique ways to get there
 #         return result[-1][-1]
-
-
-#     print(uniquePaths(m, n))
+    
+#     # print(uniquePaths(m, n))
 
 '''Floyd's Cycle Detection Algorithm (Two-Pointers)'''
 # def x():
@@ -343,4 +344,64 @@ Snippets Index
 #         # Return the last cell which will contain the minimum number of operations
 #         return dp[-1][-1]
 
-"xxx"
+'''Function to manage API responses with pagination'''
+# def getAverageTemperatureForUser(userId):
+    
+#     import requests, json
+
+#     base_url = "https://jsonmock.hackerrank.com/api/medical_records"
+#     page = 1
+#     total_temperatures = []
+#     PATH = r'Job Search\HackerRank\Software Developer Certificate\retrived_data.json'
+
+#     dump = {}
+
+#     while True:
+
+#         # Fetch the page data
+#         url = f"{base_url}?userId={userId}&page={page}"
+
+#         # Set the GET request
+#         response = requests.get(url)
+
+#         # Set the request response
+#         data = response.json()
+        
+#         # Store the retrieved page data in the 'dump' variable
+#         dump[f"page {page} response"] = data
+
+#         # Check if there are more pages still
+#         if page >= data["total_pages"]:
+#             break
+
+#         # Move one page ahead
+#         page += 1
+
+#     with open(PATH, 'w') as f:
+#         # Dump the JSON data un the JSON file
+#             json.dump(dump, f, indent=2)
+    
+#     return
+
+'''xxx'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
