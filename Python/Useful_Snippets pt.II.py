@@ -1,3 +1,5 @@
+from typing import List, Optional
+
 '''
 Snippets Index
 
@@ -11,17 +13,52 @@ Snippets Index
 - Fibonacci with Memoization and Dynamic Porgramming (DP)
 - Levenshtein Distance (DP)
 - Function to manage API responses with pagination (BackEnd)
+- How to store all paths in a BST (DFS)
 
 
 
 *RC: Recursion
 *DP: Dynamic Programming
 *TP: Two-pointers
+*DFS: Depth-First Search
 
-(9)
+(10)
 
 '''
 
+"""UTILS"""
+# Binary Tree Node Definition
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None, next=None):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+
+# List Node Definition
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+# Pretty Print Function
+def pretty_print_bst(node:TreeNode, prefix="", is_left=True):
+
+    if not node:
+        return
+
+    if node.right is not None:
+        pretty_print_bst(node.right, prefix + ("│   " if is_left else "    "), False)
+
+    print(prefix + ("└── " if is_left else "┌── ") + str(node.val))
+
+    if node.left is not None:
+        pretty_print_bst(node.left, prefix + ("    " if is_left else "│   "), True)
+
+
+
+
+"""SNIPPETS"""
 
 '''Roman to Integer & Integer to Roman case'''
 # def x():
@@ -383,21 +420,112 @@ Snippets Index
     
 #     return
 
-'''xxx'''
+"""How to store all paths in a BST"""
+# def x():
+
+#     # Recursively
+#     def find_all_paths(root: Optional[TreeNode]) -> List[List[int]]:
+        
+#         # Aux Recursive Function Definition
+#         def dfs(node: Optional[TreeNode], path: List, all_paths: List) -> None:
+            
+#             # No node guard
+#             if not node:
+#                 return None
+
+#             # Append current node value to path
+#             path.append(node.val)
+
+#             # If it's a leaf node, save the path
+#             if not node.left and not node.right:
+#                 all_paths.append(path[:])  # Append a copy of the current path
+            
+#             # Traverse left and right subtrees
+#             dfs(node.left, path, all_paths)
+#             dfs(node.right, path, all_paths)
+
+#             # Backtrack: Remove the last node to explore other paths
+#             path.pop()
+        
+#         # Initialize an empty list holder to store the paths
+#         result = []
+
+#         # Make the rec. func. call
+#         dfs(node=root, path=[], all_paths=result)
+
+#         # Return all the paths traversed
+#         return result
+
+
+#     # Testing
+#     root = [1,2,5,3,4,None,6]
+#     root = TreeNode(1)
+#     root.left = TreeNode(2)
+#     root.right = TreeNode(5)
+#     root.left.left = TreeNode(3)
+#     root.left.right = TreeNode(4)
+#     root.right.right = TreeNode(6)
+
+#     pretty_print_bst(root)
+
+#     paths = find_all_paths(root=root)
+
+#     print(paths)
+#     # Output: [[1, 2, 3], [1, 2, 4], [1, 5, 6]]
 
 
 
 
+#     # Iteratively
+#     def find_all_paths(root: Optional[TreeNode]) -> List[List[int]]:
+    
+#         # No node guard
+#         if not root:
+#             return None
+            
+#         # Initialize the stack to hold the running path
+#         stack = [(root, [root.val])]
 
+#         # Initialize an empty holder for the paths to be stored
+#         all_paths = []
 
+#         # Traverse the tree
+#         while stack:
 
+#             # Take the last element in the stack
+#             node, path = stack.pop()
 
+#             # If it's a leaf node, save it to the path
+#             if not node.left and not node.right:
+#                 all_paths.append(path)
 
+#             # Push right and left children onto the stack (copy path for each)
+#             if node.right:
+#                 stack.append((node.right, path + [node.right.val]))
 
+#             if node.left:
+#                 stack.append((node.left, path + [node.left.val]))
 
+#         # Return all the paths traversed
+#         return all_paths
 
+#     # Testing
+#     root = [1,2,5,3,4,None,6]
+#     root = TreeNode(1)
+#     root.left = TreeNode(2)
+#     root.right = TreeNode(5)
+#     root.left.left = TreeNode(3)
+#     root.left.right = TreeNode(4)
+#     root.right.right = TreeNode(6)
 
+#     pretty_print_bst(root)
 
+#     paths = find_all_paths(root=root)
+
+#     print(paths)
+#     # Output: [[1, 2, 3], [1, 2, 4], [1, 5, 6]]
+
+"""xxx"""
 
 
 
